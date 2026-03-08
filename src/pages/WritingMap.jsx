@@ -69,32 +69,32 @@ const WritingMap = () => {
   // Mock data: 5 từ khóa gợi ý tương ứng cho từng đề cụ thể
   const topicKeywords = {
     // Đề đạo lí
-    'Có ý kiến cho rằng: "Lòng hiếu thảo là nền tảng của mọi đức hạnh".': [
+    'Có ý kiến cho rằng: "Lòng hiếu thảo là nền tảng của mọi đức hạnh". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': [
       "bổn phận con cái",
       "tôn kính cha mẹ",
       "chăm sóc phụng dưỡng",
       "truyền thống gia đình",
       "cội nguồn tổ tiên",
     ],
-    'Có ý kiến cho rằng: "Trung thực là phẩm chất quý giá nhất của con người".':
+    'Có ý kiến cho rằng: "Trung thực là phẩm chất quý giá nhất của con người". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       ["thành thật", "ngay thẳng", "tín nhiệm", "liêm khiết", "đáng tin cậy"],
-    'Có ý kiến cho rằng: "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn".':
+    'Có ý kiến cho rằng: "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       ["bao dung", "tha thứ", "vị tha", "cảm thông", "tâm hồn rộng mở"],
-    'Có ý kiến cho rằng: "Sự kiên trì là chìa khóa dẫn đến thành công".': [
+    'Có ý kiến cho rằng: "Sự kiên trì là chìa khóa dẫn đến thành công". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': [
       "nhẫn nại",
       "bền bỉ",
       "không bỏ cuộc",
       "vượt khó khăn",
       "ý chí bền vững",
     ],
-    'Có ý kiến cho rằng: "Tình yêu thương là sức mạnh để thay đổi thế giới".': [
+    'Có ý kiến cho rằng: "Tình yêu thương là sức mạnh để thay đổi thế giới". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': [
       "yêu thương",
       "chăm sóc",
       "chia sẻ",
       "gắn kết",
       "đồng cảm",
     ],
-    'Có ý kiến cho rằng: "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi".':
+    'Có ý kiến cho rằng: "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "can đảm",
         "vượt khó",
@@ -102,7 +102,7 @@ const WritingMap = () => {
         "khẳng định bản thân",
         "đối mặt thực tại",
       ],
-    'Có ý kiến cho rằng: "Sống có trách nhiệm là biểu hiện của người trưởng thành".':
+    'Có ý kiến cho rằng: "Sống có trách nhiệm là biểu hiện của người trưởng thành". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "nghĩa vụ",
         "trách nhiệm bản thân",
@@ -110,14 +110,14 @@ const WritingMap = () => {
         "cam kết",
         "chấp nhận hậu quả",
       ],
-    'Có ý kiến cho rằng: "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp".': [
+    'Có ý kiến cho rằng: "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': [
       "tri ân",
       "nhớ ơn",
       "ghi nhớ công ơn",
       "trân trọng",
       "đền đáp",
     ],
-    'Có ý kiến cho rằng: "Sự tự tin là bước đầu tiên trên con đường thành công".':
+    'Có ý kiến cho rằng: "Sự tự tin là bước đầu tiên trên con đường thành công". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "tin vào bản thân",
         "khẳng định cá nhân",
@@ -125,7 +125,7 @@ const WritingMap = () => {
         "can đảm thể hiện",
         "vượt qua tự ti",
       ],
-    'Có ý kiến cho rằng: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối".': [
+    'Có ý kiến cho rằng: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': [
       "đoàn kết",
       "hợp tác",
       "cộng đồng",
@@ -133,7 +133,7 @@ const WritingMap = () => {
       "sức mạnh tập thể",
     ],
     // Đề hiện tượng
-    'Có ý kiến cho rằng: "Hiện tượng nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ".':
+    'Có ý kiến cho rằng: "Hiện tượng nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "lãng phí thời gian",
         "sống ảo",
@@ -141,7 +141,7 @@ const WritingMap = () => {
         "sức khỏe tinh thần",
         "tương tác thực",
       ],
-    'Có ý kiến cho rằng: "Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để".':
+    'Có ý kiến cho rằng: "Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "bạo lực thể chất",
         "bắt nạt",
@@ -149,7 +149,7 @@ const WritingMap = () => {
         "môi trường học tập",
         "giáo dục nhân cách",
       ],
-    'Có ý kiến cho rằng: "Hiện tượng gian lận trong thi cử đang làm mất đi giá trị thực sự của giáo dục".':
+    'Có ý kiến cho rằng: "Hiện tượng gian lận trong thi cử đang làm mất đi giá trị thực sự của giáo dục". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "đạo đức học đường",
         "năng lực thực sự",
@@ -157,7 +157,7 @@ const WritingMap = () => {
         "học thực chất",
         "tính liêm chính",
       ],
-    'Có ý kiến cho rằng: "Ô nhiễm môi trường là thách thức lớn nhất mà nhân loại đang phải đối mặt".':
+    'Có ý kiến cho rằng: "Ô nhiễm môi trường là thách thức lớn nhất mà nhân loại đang phải đối mặt". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "ô nhiễm không khí",
         "rác thải",
@@ -165,7 +165,7 @@ const WritingMap = () => {
         "phát triển bền vững",
         "ý thức bảo vệ",
       ],
-    'Có ý kiến cho rằng: "Hiện tượng sống ảo trên mạng xã hội khiến con người đánh mất chính mình".':
+    'Có ý kiến cho rằng: "Hiện tượng sống ảo trên mạng xã hội khiến con người đánh mất chính mình". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "hình ảnh ảo",
         "áp lực so sánh",
@@ -173,7 +173,7 @@ const WritingMap = () => {
         "thực tế cuộc sống",
         "định giá bản thân",
       ],
-    'Có ý kiến cho rằng: "Thói quen đọc sách đang dần bị thay thế bởi các thiết bị điện tử".':
+    'Có ý kiến cho rằng: "Thói quen đọc sách đang dần bị thay thế bởi các thiết bị điện tử". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "văn hóa đọc",
         "kiến thức chiều sâu",
@@ -181,7 +181,7 @@ const WritingMap = () => {
         "sự kiên nhẫn",
         "giải trí lành mạnh",
       ],
-    'Có ý kiến cho rằng: "Hiện tượng lãng phí thực phẩm là vấn đề đáng báo động trong xã hội hiện đại".':
+    'Có ý kiến cho rằng: "Hiện tượng lãng phí thực phẩm là vấn đề đáng báo động trong xã hội hiện đại". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "lãng phí tài nguyên",
         "ý thức cộng đồng",
@@ -189,7 +189,7 @@ const WritingMap = () => {
         "hành vi tiêu dùng",
         "tôn trọng lao động",
       ],
-    'Có ý kiến cho rằng: "Văn hóa ứng xử nơi công cộng đang xuống cấp nghiêm trọng".':
+    'Có ý kiến cho rằng: "Văn hóa ứng xử nơi công cộng đang xuống cấp nghiêm trọng". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "lịch sự văn minh",
         "trật tự công cộng",
@@ -197,7 +197,7 @@ const WritingMap = () => {
         "tôn trọng người khác",
         "chuẩn mực xã hội",
       ],
-    'Có ý kiến cho rằng: "Hiện tượng học sinh thiếu kỹ năng sống là hệ quả của nền giáo dục nặng về lý thuyết".':
+    'Có ý kiến cho rằng: "Hiện tượng học sinh thiếu kỹ năng sống là hệ quả của nền giáo dục nặng về lý thuyết". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "kỹ năng thực hành",
         "giáo dục toàn diện",
@@ -205,7 +205,7 @@ const WritingMap = () => {
         "kỹ năng giao tiếp",
         "tư duy phản biện",
       ],
-    'Có ý kiến cho rằng: "Biến đổi khí hậu đang tác động trực tiếp đến đời sống con người".':
+    'Có ý kiến cho rằng: "Biến đổi khí hậu đang tác động trực tiếp đến đời sống con người". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó':
       [
         "hiệu ứng nhà kính",
         "thiên tai",
