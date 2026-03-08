@@ -22,6 +22,7 @@ const WritingMap = () => {
   });
   const [activeHint, setActiveHint] = useState(null); // Track which hint popup is open (step 1)
   const [activeIdeaHint, setActiveIdeaHint] = useState(null); // Track which hint popup is open (step 2)
+  const [activeTopicHint, setActiveTopicHint] = useState(null); // Track topic-specific hint popup (step 2)
   const [ideaAnswers, setIdeaAnswers] = useState({
     q1: "",
     q2: "",
@@ -227,6 +228,233 @@ const WritingMap = () => {
       ],
   };
 
+  // Mock data: Gợi ý cụ thể theo từng đề bài cho phần Khai phá ý tưởng
+  const topicSpecificHints = {
+    // ===== ĐỀ ĐẠO LÍ =====
+    'Có ý kiến cho rằng: "Lòng hiếu thảo là nền tảng của mọi đức hạnh". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Lòng hiếu thảo',
+      q2: 'Tán thành. Vì hiếu thảo là đức tính tốt đẹp nhất, là gốc rễ của mọi phẩm chất đạo đức.',
+      q3: 'Hiếu thảo là tình cảm yêu thương, kính trọng, biết ơn và chăm sóc cha mẹ. Ý kiến khẳng định hiếu thảo là nền tảng, là cơ sở để phát triển các đức tính tốt đẹp khác.',
+      q4_1: 'Người hiếu thảo biết yêu thương cha mẹ sẽ biết yêu thương mọi người xung quanh',
+      q4_2: 'Hiếu thảo giúp gia đình hạnh phúc, gắn kết, tạo nền tảng vững chắc cho xã hội',
+      q5_1: 'Trong cuộc sống, những người con hiếu thảo như em học sinh giỏi chăm sóc mẹ bệnh vẫn luôn được mọi người yêu quý và tôn trọng',
+      q5_2: 'Bác Hồ - vị lãnh tụ vĩ đại luôn nhớ về quê hương, gia đình, thể hiện lòng hiếu thảo sâu sắc',
+      q6: 'Lòng hiếu thảo thực sự là nền tảng của mọi đức hạnh vì khi biết yêu thương cha mẹ, ta sẽ biết yêu thương con người và sống tốt đẹp hơn.',
+      q7: 'Mỗi chúng ta cần biết vâng lời, chăm ngoan, học giỏi để cha mẹ vui lòng. Bản thân em sẽ luôn giúp đỡ cha mẹ việc nhà và cố gắng học tập thật tốt.',
+    },
+    'Có ý kiến cho rằng: "Trung thực là phẩm chất quý giá nhất của con người". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Trung thực',
+      q2: 'Tán thành. Vì trung thực giúp con người tạo dựng niềm tin và sống đúng với lương tâm.',
+      q3: 'Trung thực là luôn nói thật, làm thật, không gian dối. Ý kiến khẳng định trung thực là phẩm chất quan trọng nhất, là nền tảng để xây dựng các mối quan hệ tốt đẹp.',
+      q4_1: 'Người trung thực được mọi người tin tưởng, tôn trọng và yêu quý',
+      q4_2: 'Trung thực giúp xã hội công bằng, văn minh và phát triển bền vững',
+      q5_1: 'Trong lớp học, những bạn luôn thành thật nhận lỗi khi mắc sai lầm luôn được thầy cô và bạn bè quý mến',
+      q5_2: 'Tổng thống Abraham Lincoln được mệnh danh là "Abe trung thực" vì sự ngay thẳng, nhờ đó ông trở thành vị tổng thống vĩ đại',
+      q6: 'Trung thực quả thực là phẩm chất quý giá nhất vì nó là nền tảng của niềm tin và sự tôn trọng trong mọi mối quan hệ.',
+      q7: 'Học sinh cần rèn luyện tính trung thực từ những điều nhỏ nhất: không quay cóp, thành thật với thầy cô và bạn bè. Bản thân em sẽ luôn nói thật và dám nhận lỗi.',
+    },
+    'Có ý kiến cho rằng: "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Lòng khoan dung',
+      q2: 'Tán thành. Vì biết tha thứ giúp tâm hồn nhẹ nhàng, không bị thù hận chi phối.',
+      q3: 'Khoan dung là biết tha thứ, bao dung với lỗi lầm của người khác. Ý kiến khẳng định rằng khoan dung mang lại sự thanh thản và hạnh phúc cho chính mình.',
+      q4_1: 'Người khoan dung không mang nặng thù hận, tâm hồn luôn nhẹ nhàng và thanh thản',
+      q4_2: 'Khoan dung giúp hàn gắn các mối quan hệ, tạo sự hòa hợp trong cộng đồng',
+      q5_1: 'Trong lớp, khi một bạn lỡ làm hỏng đồ của mình, nếu biết tha thứ thì cả hai vẫn giữ được tình bạn tốt đẹp',
+      q5_2: 'Nelson Mandela sau 27 năm tù đày vẫn tha thứ cho kẻ giam cầm mình, trở thành biểu tượng hòa giải của cả thế giới',
+      q6: 'Lòng khoan dung thực sự giúp con người hạnh phúc hơn vì khi buông bỏ hận thù, ta được sống trong bình yên.',
+      q7: 'Mỗi chúng ta cần học cách tha thứ và bao dung hơn. Bản thân em sẽ cố gắng không giận lâu và sẵn sàng cho bạn bè cơ hội sửa lỗi.',
+    },
+    'Có ý kiến cho rằng: "Sự kiên trì là chìa khóa dẫn đến thành công". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Sự kiên trì',
+      q2: 'Tán thành. Vì không có thành công nào đến dễ dàng nếu thiếu sự kiên trì, bền bỉ.',
+      q3: 'Kiên trì là sự bền bỉ, nhẫn nại theo đuổi mục tiêu dù gặp khó khăn. Ý kiến khẳng định kiên trì là yếu tố quyết định dẫn đến thành công.',
+      q4_1: 'Kiên trì giúp con người vượt qua thất bại, rút ra bài học và tiến gần hơn đến mục tiêu',
+      q4_2: 'Người kiên trì tích lũy được kinh nghiệm, kỹ năng qua thời gian, tạo nền tảng vững chắc cho thành công',
+      q5_1: 'Thomas Edison đã thất bại hàng nghìn lần trước khi phát minh ra bóng đèn điện, ông nói: "Tôi không thất bại, tôi đã tìm ra 10.000 cách không hiệu quả"',
+      q5_2: 'Bản thân em từng kiên trì luyện tập Toán mỗi ngày dù ban đầu rất yếu, sau một học kỳ đã đạt điểm cao',
+      q6: 'Kiên trì chính là chìa khóa thành công vì mọi thành tựu lớn đều cần thời gian và nỗ lực không ngừng nghỉ.',
+      q7: 'Học sinh cần đặt mục tiêu rõ ràng và kiên trì theo đuổi mỗi ngày. Bản thân em sẽ lập kế hoạch học tập và thực hiện đều đặn dù có khó khăn.',
+    },
+    'Có ý kiến cho rằng: "Tình yêu thương là sức mạnh để thay đổi thế giới". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Tình yêu thương',
+      q2: 'Tán thành. Vì yêu thương là sợi dây gắn kết con người, tạo nên sức mạnh to lớn.',
+      q3: 'Tình yêu thương là sự quan tâm, chia sẻ, đồng cảm với mọi người. Ý kiến khẳng định yêu thương có sức mạnh thay đổi thế giới theo hướng tốt đẹp hơn.',
+      q4_1: 'Yêu thương giúp con người xích lại gần nhau, xóa bỏ hận thù và xung đột',
+      q4_2: 'Tình yêu thương tạo động lực để con người làm điều tốt đẹp, giúp đỡ người khó khăn',
+      q5_1: 'Trong đại dịch COVID-19, hàng triệu người Việt Nam đã chung tay quyên góp, chia sẻ thực phẩm cho người khó khăn, thể hiện tình yêu thương lớn lao',
+      q5_2: 'Bác sĩ Đặng Thùy Trâm với tình yêu thương bệnh nhân đã hy sinh tuổi thanh xuân nơi chiến trường, trở thành biểu tượng cao đẹp',
+      q6: 'Tình yêu thương thực sự có sức mạnh thay đổi thế giới vì nó kết nối con người và lan tỏa những điều tốt đẹp.',
+      q7: 'Mỗi chúng ta cần biết yêu thương, quan tâm người xung quanh. Bản thân em sẽ giúp đỡ bạn bè gặp khó khăn và tham gia các hoạt động thiện nguyện.',
+    },
+    'Có ý kiến cho rằng: "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Lòng dũng cảm',
+      q2: 'Tán thành. Vì dũng cảm thực sự là dám đối mặt và vượt qua nỗi sợ chứ không phải không biết sợ.',
+      q3: 'Dũng cảm là dám đối mặt với khó khăn, nguy hiểm. Ý kiến khẳng định bản chất thực sự của dũng cảm là vượt qua nỗi sợ hãi chứ không phải không có nỗi sợ.',
+      q4_1: 'Ai cũng có nỗi sợ, nhưng người dũng cảm biết kiểm soát và hành động đúng đắn dù sợ hãi',
+      q4_2: 'Dũng cảm vượt qua sợ hãi giúp con người trưởng thành, mạnh mẽ và tự tin hơn',
+      q5_1: 'Các chiến sĩ cứu hỏa dù biết nguy hiểm vẫn lao vào đám cháy để cứu người, họ sợ nhưng vẫn hành động',
+      q5_2: 'Bản thân em từng rất sợ phát biểu trước lớp, nhưng đã dũng cảm giơ tay và dần tự tin hơn',
+      q6: 'Lòng dũng cảm đích thực là khả năng vượt qua nỗi sợ hãi để làm điều đúng đắn, đó mới là phẩm chất đáng quý.',
+      q7: 'Học sinh cần rèn luyện lòng dũng cảm bằng cách dám thử thách bản thân. Bản thân em sẽ không ngại nói lên ý kiến và dám nhận lỗi khi sai.',
+    },
+    'Có ý kiến cho rằng: "Sống có trách nhiệm là biểu hiện của người trưởng thành". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Sống có trách nhiệm',
+      q2: 'Tán thành. Vì trách nhiệm là thước đo quan trọng nhất của sự trưởng thành.',
+      q3: 'Trách nhiệm là ý thức về bổn phận, nghĩa vụ với bản thân và cộng đồng. Ý kiến khẳng định sống có trách nhiệm là dấu hiệu cho thấy một người đã thực sự trưởng thành.',
+      q4_1: 'Người có trách nhiệm biết hoàn thành tốt công việc, không đổ lỗi và dám chịu hậu quả',
+      q4_2: 'Trách nhiệm giúp mỗi người đóng góp tích cực cho gia đình và xã hội',
+      q5_1: 'Những bạn học sinh biết tự giác học bài, làm việc nhà không cần nhắc nhở chính là biểu hiện của người có trách nhiệm',
+      q5_2: 'Các bác sĩ trong đại dịch đã làm việc không ngừng nghỉ vì trách nhiệm với bệnh nhân và cộng đồng',
+      q6: 'Sống có trách nhiệm đúng là biểu hiện của sự trưởng thành vì nó cho thấy con người biết đặt bổn phận lên trên sở thích cá nhân.',
+      q7: 'Học sinh cần rèn tính trách nhiệm từ việc nhỏ: đi học đúng giờ, làm bài đầy đủ. Bản thân em sẽ tự giác hoàn thành nhiệm vụ mà không cần ai nhắc nhở.',
+    },
+    'Có ý kiến cho rằng: "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Lòng biết ơn',
+      q2: 'Tán thành. Vì biết ơn thể hiện nhân cách và sự trân trọng những gì mình nhận được.',
+      q3: 'Lòng biết ơn là sự ghi nhớ, trân trọng công lao của người khác. Ý kiến khẳng định biết ơn là biểu hiện của tâm hồn cao đẹp, nhân cách tốt.',
+      q4_1: 'Người biết ơn luôn trân trọng cuộc sống, không sống ích kỷ và biết chia sẻ',
+      q4_2: 'Lòng biết ơn tạo nên mối quan hệ tốt đẹp, lan tỏa giá trị nhân văn trong cộng đồng',
+      q5_1: 'Truyền thống "Uống nước nhớ nguồn" của dân tộc ta - ngày 27/7 hàng năm cả nước tri ân các thương binh liệt sĩ',
+      q5_2: 'Bản thân em luôn gửi lời cảm ơn thầy cô sau mỗi tiết học, đó là cách em thể hiện sự trân trọng',
+      q6: 'Lòng biết ơn thực sự là dấu hiệu của tâm hồn cao đẹp vì nó cho thấy con người biết sống có tình, có nghĩa.',
+      q7: 'Mỗi chúng ta cần luôn nhớ ơn cha mẹ, thầy cô và những người đã giúp đỡ mình. Bản thân em sẽ thể hiện lòng biết ơn bằng hành động cụ thể mỗi ngày.',
+    },
+    'Có ý kiến cho rằng: "Sự tự tin là bước đầu tiên trên con đường thành công". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Sự tự tin',
+      q2: 'Tán thành. Vì tự tin giúp con người dám hành động, dám theo đuổi ước mơ.',
+      q3: 'Tự tin là tin vào năng lực, giá trị của bản thân. Ý kiến khẳng định tự tin là bước khởi đầu quan trọng nhất trên hành trình đạt đến thành công.',
+      q4_1: 'Người tự tin dám đặt mục tiêu cao và nỗ lực thực hiện, không ngại thất bại',
+      q4_2: 'Tự tin giúp con người thể hiện tốt năng lực, tạo ấn tượng và nhận được sự tin tưởng từ người khác',
+      q5_1: 'Jack Ma từng bị từ chối hàng chục lần khi xin việc nhưng vẫn tự tin theo đuổi ước mơ, cuối cùng xây dựng đế chế Alibaba',
+      q5_2: 'Trong lớp, những bạn tự tin phát biểu thường được thầy cô đánh giá cao và tiến bộ nhanh hơn',
+      q6: 'Tự tin đúng là bước đầu tiên trên con đường thành công vì nếu không tin vào bản thân thì không thể bắt đầu bất cứ điều gì.',
+      q7: 'Học sinh cần rèn luyện sự tự tin bằng cách chuẩn bị kỹ bài học và mạnh dạn tham gia hoạt động. Bản thân em sẽ tự tin hơn trong giao tiếp và học tập.',
+    },
+    'Có ý kiến cho rằng: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Đoàn kết',
+      q2: 'Tán thành. Vì khi đoàn kết, sức mạnh tập thể luôn lớn hơn sức mạnh cá nhân.',
+      q3: 'Đoàn kết là sự gắn bó, hợp tác cùng nhau vì mục tiêu chung. Ý kiến khẳng định đoàn kết tạo nên sức mạnh, còn chia rẽ dẫn đến yếu đuối, thất bại.',
+      q4_1: 'Đoàn kết giúp chia sẻ công việc, phát huy thế mạnh của từng người để đạt kết quả tốt nhất',
+      q4_2: 'Khi đoàn kết, mọi người hỗ trợ nhau vượt qua khó khăn mà một cá nhân không thể tự làm được',
+      q5_1: 'Lịch sử Việt Nam cho thấy nhờ đoàn kết toàn dân mà chúng ta đã chiến thắng nhiều kẻ thù xâm lược hùng mạnh',
+      q5_2: 'Trong lớp em, khi cả lớp cùng nhau chuẩn bị cho hội thi văn nghệ, nhờ đoàn kết mà lớp đạt giải nhất',
+      q6: 'Đoàn kết thực sự là sức mạnh vì nó gộp sức mạnh của nhiều người thành một khối vững chắc, không thế lực nào có thể phá vỡ.',
+      q7: 'Mỗi chúng ta cần biết hợp tác, tôn trọng và hỗ trợ lẫn nhau. Bản thân em sẽ luôn đoàn kết với bạn bè, không gây chia rẽ trong lớp.',
+    },
+
+    // ===== ĐỀ HIỆN TƯỢNG =====
+    'Có ý kiến cho rằng: "Hiện tượng nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Nghiện mạng xã hội',
+      q2: 'Tán thành. Vì mạng xã hội đang chiếm quá nhiều thời gian và ảnh hưởng tiêu cực đến học sinh.',
+      q3: 'Nghiện mạng xã hội là tình trạng dành quá nhiều thời gian cho Facebook, TikTok, Instagram... Ý kiến khẳng định đây là vấn đề nghiêm trọng đối với giới trẻ hiện nay.',
+      q4_1: 'Nghiện mạng xã hội khiến học sinh mất tập trung, kết quả học tập sa sút nghiêm trọng',
+      q4_2: 'Sống ảo trên mạng khiến giới trẻ mất kỹ năng giao tiếp thực tế, ảnh hưởng sức khỏe tinh thần',
+      q5_1: 'Theo thống kê, thanh thiếu niên Việt Nam dành trung bình 3-5 giờ/ngày cho mạng xã hội, nhiều bạn thức khuya lướt TikTok ảnh hưởng sức khỏe',
+      q5_2: 'Trong lớp em, có bạn vì nghiện Facebook mà không làm bài tập, điểm số giảm sút rõ rệt',
+      q6: 'Nghiện mạng xã hội thực sự đang ảnh hưởng nghiêm trọng đến giới trẻ, đây là vấn đề cần được quan tâm giải quyết.',
+      q7: 'Học sinh cần tự kiểm soát thời gian sử dụng mạng xã hội, ưu tiên học tập. Bản thân em sẽ giới hạn thời gian lướt mạng mỗi ngày không quá 1 giờ.',
+    },
+    'Có ý kiến cho rằng: "Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Bạo lực học đường',
+      q2: 'Tán thành. Vì bạo lực học đường gây tổn thương nặng nề cho học sinh và cần được xử lý dứt điểm.',
+      q3: 'Bạo lực học đường là hành vi dùng sức mạnh để bắt nạt, đánh đập, xúc phạm bạn bè trong trường. Ý kiến khẳng định đây là vấn đề nhức nhối cần giải quyết triệt để.',
+      q4_1: 'Bạo lực học đường gây tổn thương thể chất và tinh thần nghiêm trọng cho nạn nhân, nhiều em bị trầm cảm',
+      q4_2: 'Bạo lực học đường phá vỡ môi trường giáo dục an toàn, khiến học sinh sợ hãi khi đến trường',
+      q5_1: 'Nhiều vụ bạo lực học đường được đưa lên báo chí, có em học sinh bị đánh hội đồng phải nhập viện, để lại sang chấn tâm lý lâu dài',
+      q5_2: 'Trong trường em, nhà trường đã tổ chức các buổi tuyên truyền chống bạo lực, giúp các bạn hiểu được hậu quả nghiêm trọng',
+      q6: 'Bạo lực học đường thực sự là vấn đề nhức nhối vì nó ảnh hưởng trực tiếp đến sự phát triển và tương lai của học sinh.',
+      q7: 'Mỗi học sinh cần nói không với bạo lực, biết bảo vệ bản thân và báo cho thầy cô khi bị bắt nạt. Bản thân em sẽ luôn đối xử tốt với bạn bè và lên tiếng khi thấy bất công.',
+    },
+    'Có ý kiến cho rằng: "Gian lận trong thi cử là hành vi đáng lên án". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Gian lận trong thi cử',
+      q2: 'Tán thành. Vì gian lận thi cử là hành vi thiếu trung thực, làm mất công bằng trong giáo dục.',
+      q3: 'Gian lận thi cử là hành vi quay cóp, chép bài, sử dụng tài liệu trái phép trong kiểm tra. Ý kiến khẳng định đây là hành vi đáng bị phê phán.',
+      q4_1: 'Gian lận thi cử làm mất đi sự công bằng, người học thật bị thiệt thòi',
+      q4_2: 'Gian lận khiến học sinh không có kiến thức thực, ảnh hưởng đến tương lai',
+      q5_1: 'Nhiều vụ gian lận thi THPT Quốc gia bị phát hiện gây chấn động dư luận, những người liên quan bị xử lý nghiêm',
+      q5_2: 'Trong lớp em, những bạn quay cóp dù được điểm cao nhưng không hiểu bài, khi kiểm tra miệng lại không trả lời được',
+      q6: 'Gian lận thi cử đúng là hành vi đáng lên án vì nó phá hoại sự công bằng và làm mất giá trị thực của giáo dục.',
+      q7: 'Học sinh cần tự giác học bài, trung thực trong kiểm tra. Bản thân em sẽ luôn làm bài bằng năng lực thật của mình và nhắc nhở bạn bè không gian lận.',
+    },
+    'Có ý kiến cho rằng: "Hiện tượng lãng phí thức ăn đang trở thành vấn đề đáng báo động". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Lãng phí thức ăn',
+      q2: 'Tán thành. Vì lãng phí thức ăn không chỉ ảnh hưởng kinh tế mà còn tác động xấu đến môi trường.',
+      q3: 'Lãng phí thức ăn là việc vứt bỏ thực phẩm còn ăn được, mua quá nhiều không dùng hết. Ý kiến khẳng định đây là vấn đề nghiêm trọng cần được quan tâm.',
+      q4_1: 'Lãng phí thức ăn gây thiệt hại kinh tế lớn trong khi nhiều người vẫn đang thiếu ăn',
+      q4_2: 'Thức ăn thừa gây ô nhiễm môi trường, phát thải khí nhà kính khi phân hủy',
+      q5_1: 'Theo FAO, mỗi năm thế giới lãng phí khoảng 1.3 tỷ tấn thức ăn, trong khi hàng triệu người chết vì đói',
+      q5_2: 'Ở căng tin trường em, nhiều bạn lấy nhiều cơm nhưng ăn không hết rồi đổ đi, rất lãng phí',
+      q6: 'Lãng phí thức ăn thực sự là vấn đề đáng báo động vì nó ảnh hưởng đến cả kinh tế, xã hội và môi trường.',
+      q7: 'Mỗi người cần lấy thức ăn vừa đủ, bảo quản thực phẩm đúng cách. Bản thân em sẽ ăn hết phần cơm và nhắc nhở gia đình không mua quá nhiều đồ ăn.',
+    },
+    'Có ý kiến cho rằng: "Đọc sách đang dần bị thay thế bởi các thiết bị điện tử". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Thói quen đọc sách bị thay thế bởi thiết bị điện tử',
+      q2: 'Tán thành. Vì ngày càng nhiều người, đặc biệt là giới trẻ, dành thời gian cho điện thoại thay vì đọc sách.',
+      q3: 'Hiện tượng này là việc sách giấy mất dần vị trí khi con người chuyển sang đọc trên điện thoại, máy tính. Ý kiến cảnh báo về sự suy giảm của văn hóa đọc truyền thống.',
+      q4_1: 'Thiết bị điện tử với nội dung giải trí hấp dẫn khiến giới trẻ không còn kiên nhẫn đọc sách',
+      q4_2: 'Việc bỏ đọc sách khiến khả năng tư duy sâu, vốn từ và trí tưởng tượng của giới trẻ bị hạn chế',
+      q5_1: 'Khảo sát cho thấy người Việt Nam đọc trung bình chưa đến 1 cuốn sách/năm, trong khi dùng điện thoại 3-4 giờ/ngày',
+      q5_2: 'Trong lớp em, rất ít bạn có thói quen đọc sách, đa số dùng giờ rảnh để xem video trên điện thoại',
+      q6: 'Đọc sách đúng là đang bị thay thế bởi thiết bị điện tử, đây là thực trạng đáng lo ngại cần được khắc phục.',
+      q7: 'Học sinh cần dành ít nhất 15-30 phút mỗi ngày để đọc sách. Bản thân em sẽ lập thói quen đọc sách trước khi ngủ và giảm thời gian dùng điện thoại.',
+    },
+    'Có ý kiến cho rằng: "Hiện tượng nói tục chửi thề trong giới trẻ ngày càng phổ biến và đáng lo ngại". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Nói tục chửi thề trong giới trẻ',
+      q2: 'Tán thành. Vì nói tục chửi thề thể hiện sự thiếu văn hóa và đang trở nên đáng báo động.',
+      q3: 'Nói tục chửi thề là sử dụng những lời lẽ thô tục, thiếu văn hóa trong giao tiếp. Ý kiến khẳng định hiện tượng này ngày càng phổ biến và đáng lo ngại.',
+      q4_1: 'Nói tục chửi thề làm xấu đi hình ảnh bản thân, mất đi sự tôn trọng của người khác',
+      q4_2: 'Khi nói tục trở thành thói quen, nó ảnh hưởng đến nhân cách và khả năng giao tiếp văn minh',
+      q5_1: 'Trên mạng xã hội, nhiều video của giới trẻ chứa đầy lời tục tĩu lại được nhiều lượt xem, tạo xu hướng xấu',
+      q5_2: 'Trong sân trường, em thường nghe các bạn nói tục như một thói quen, kể cả trước mặt thầy cô',
+      q6: 'Nói tục chửi thề thực sự là hiện tượng đáng lo ngại vì nó phản ánh sự xuống cấp về văn hóa ứng xử của giới trẻ.',
+      q7: 'Học sinh cần ý thức sử dụng lời nói văn minh, lịch sự. Bản thân em sẽ không nói tục và nhắc nhở bạn bè cùng sử dụng ngôn ngữ đẹp.',
+    },
+    'Có ý kiến cho rằng: "Hiện tượng sống ảo trên mạng xã hội đang làm méo mó giá trị thực của cuộc sống". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Sống ảo trên mạng xã hội',
+      q2: 'Tán thành. Vì sống ảo khiến con người đánh mất giá trị thực và chạy theo những điều không có thật.',
+      q3: 'Sống ảo là tạo hình ảnh không thật về bản thân trên mạng xã hội để nhận được sự ngưỡng mộ. Ý kiến khẳng định hiện tượng này đang làm méo mó giá trị thực.',
+      q4_1: 'Sống ảo khiến con người tốn thời gian, tiền bạc để tạo hình ảnh giả tạo thay vì phát triển bản thân',
+      q4_2: 'Sống ảo tạo áp lực so sánh, khiến nhiều người tự ti, trầm cảm khi thấy cuộc sống người khác "hoàn hảo"',
+      q5_1: 'Nhiều bạn trẻ vay tiền mua đồ hiệu, thuê xe sang chỉ để chụp ảnh đăng mạng xã hội khoe khoang',
+      q5_2: 'Nghiên cứu cho thấy việc thường xuyên so sánh bản thân với hình ảnh hoàn hảo trên Instagram làm tăng tỷ lệ trầm cảm ở giới trẻ',
+      q6: 'Sống ảo thực sự đang làm méo mó giá trị cuộc sống vì nó khiến con người chạy theo hào nhoáng bên ngoài mà quên đi giá trị bên trong.',
+      q7: 'Mỗi người cần sống thật với chính mình, trân trọng giá trị thực. Bản thân em sẽ sử dụng mạng xã hội một cách lành mạnh và không chạy theo lượt like.',
+    },
+    'Có ý kiến cho rằng: "Thói quen xả rác bừa bãi đang hủy hoại môi trường sống". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Xả rác bừa bãi',
+      q2: 'Tán thành. Vì xả rác bừa bãi gây ô nhiễm nghiêm trọng và ảnh hưởng đến sức khỏe con người.',
+      q3: 'Xả rác bừa bãi là vứt rác không đúng nơi quy định, gây mất vệ sinh. Ý kiến khẳng định thói quen này đang hủy hoại môi trường sống của chúng ta.',
+      q4_1: 'Rác thải gây ô nhiễm nguồn nước, đất đai, không khí, ảnh hưởng trực tiếp đến sức khỏe',
+      q4_2: 'Rác nhựa cần hàng trăm năm để phân hủy, gây hại cho động vật và hệ sinh thái',
+      q5_1: 'Nhiều bãi biển đẹp của Việt Nam ngập trong rác sau mỗi kỳ nghỉ lễ, gây phản cảm với du khách quốc tế',
+      q5_2: 'Trong khu phố em, có người xả rác xuống kênh rạch gây tắc nghẽn dòng chảy, mỗi khi mưa là ngập lụt',
+      q6: 'Xả rác bừa bãi thực sự đang hủy hoại môi trường sống và nếu không thay đổi, hậu quả sẽ rất nghiêm trọng.',
+      q7: 'Mỗi người cần bỏ rác đúng nơi quy định, phân loại rác và hạn chế dùng đồ nhựa. Bản thân em sẽ luôn mang theo túi để đựng rác và tham gia dọn vệ sinh khu phố.',
+    },
+    'Có ý kiến cho rằng: "Hiện tượng học sinh thiếu kỹ năng sống đang trở thành vấn đề đáng quan tâm". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Học sinh thiếu kỹ năng sống',
+      q2: 'Tán thành. Vì nhiều học sinh giỏi kiến thức nhưng lại thiếu các kỹ năng cơ bản trong cuộc sống.',
+      q3: 'Thiếu kỹ năng sống là tình trạng học sinh không biết tự chăm sóc bản thân, giao tiếp kém, không biết xử lý tình huống. Ý kiến khẳng định đây là vấn đề cần quan tâm.',
+      q4_1: 'Thiếu kỹ năng sống khiến học sinh khó thích nghi với môi trường mới, dễ bị lôi kéo vào tệ nạn',
+      q4_2: 'Học sinh thiếu kỹ năng sống sẽ gặp khó khăn trong công việc và cuộc sống sau này',
+      q5_1: 'Nhiều sinh viên đại học không biết nấu cơm, giặt đồ hay quản lý chi tiêu khi sống xa gia đình',
+      q5_2: 'Trong lớp em, khi gặp xung đột, nhiều bạn không biết cách giải quyết mà chỉ biết cãi nhau hoặc khóc',
+      q6: 'Thiếu kỹ năng sống thực sự là vấn đề đáng quan tâm vì kỹ năng sống quan trọng không kém kiến thức sách vở.',
+      q7: 'Học sinh cần chủ động rèn luyện kỹ năng sống: tự lập, giao tiếp, làm việc nhóm. Bản thân em sẽ tự giác phụ việc nhà và tham gia hoạt động ngoại khóa.',
+    },
+    'Có ý kiến cho rằng: "Hiện tượng nghiện game online đang ảnh hưởng nghiêm trọng đến học tập và sức khỏe của học sinh". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó': {
+      q1: 'Nghiện game online',
+      q2: 'Tán thành. Vì nghiện game đang khiến nhiều học sinh sa sút học tập và sức khỏe giảm sút.',
+      q3: 'Nghiện game online là tình trạng dành quá nhiều thời gian chơi game, không kiểm soát được bản thân. Ý kiến khẳng định đây là vấn đề ảnh hưởng nghiêm trọng đến học sinh.',
+      q4_1: 'Nghiện game khiến học sinh mất tập trung, bỏ học, kết quả sa sút nghiêm trọng',
+      q4_2: 'Chơi game quá nhiều ảnh hưởng sức khỏe: mắt kém, đau lưng, rối loạn giấc ngủ, béo phì',
+      q5_1: 'Có học sinh chơi game liên tục 48 giờ phải nhập viện vì kiệt sức, nhiều em bỏ ăn bỏ học vì game',
+      q5_2: 'Trong lớp em, có bạn vì nghiện game mà thức khuya, đến lớp ngủ gật, từ học sinh khá xuống yếu',
+      q6: 'Nghiện game online thực sự ảnh hưởng nghiêm trọng đến học sinh vì nó cướp đi thời gian, sức khỏe và tương lai.',
+      q7: 'Học sinh cần tự giới hạn thời gian chơi game, ưu tiên học tập và vận động. Bản thân em sẽ chỉ chơi game tối đa 30 phút/ngày vào cuối tuần sau khi hoàn thành bài tập.',
+    },
+  };
+
   // Random 5 đề từ 10 đề, chỉ random lại khi đổi topicType
   const [randomSeed, setRandomSeed] = useState(0);
 
@@ -350,6 +578,12 @@ const WritingMap = () => {
 
   const toggleIdeaHint = (hintId) => {
     setActiveIdeaHint((prev) => (prev === hintId ? null : hintId));
+    setActiveTopicHint(null); // Close topic hint when opening idea hint
+  };
+
+  const toggleTopicHint = (hintId) => {
+    setActiveTopicHint((prev) => (prev === hintId ? null : hintId));
+    setActiveIdeaHint(null); // Close idea hint when opening topic hint
   };
 
   // Kiểm tra đã hoàn thành phần khai phá ý tưởng chưa
@@ -813,6 +1047,31 @@ const WritingMap = () => {
           );
         };
 
+        // Helper to render a topic-specific hint popup
+        const renderTopicHintPopup = (hintId, content) => {
+          if (activeTopicHint !== hintId) return null;
+          if (!content) return null;
+          return (
+            <div className="absolute right-0 top-10 z-10 w-80 bg-white rounded-xl shadow-xl border border-blue-200 p-4 animate-slide-up">
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-blue-700 text-sm">📘 Gợi ý theo đề bài</span>
+                <button
+                  onClick={() => setActiveTopicHint(null)}
+                  className="p-1 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+              <div className="text-sm text-gray-700">
+                {typeof content === 'string' ? <p>{content}</p> : content}
+              </div>
+            </div>
+          );
+        };
+
+        // Get topic-specific hints for the selected topic
+        const currentTopicHints = topicSpecificHints[selectedTopic] || {};
+
         return (
           <div className="space-y-6">
             {/* Hiển thị lại đề đã chọn */}
@@ -881,7 +1140,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Vấn đề cần bàn luận là gì?
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q1")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -889,9 +1148,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q1")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q1"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q1", (
                         <div className="text-sm text-gray-600 space-y-1">
@@ -899,6 +1169,7 @@ const WritingMap = () => {
                           <p className="italic text-gray-500">VD: Lòng biết ơn, tự học, hiếu thảo, nghiện game, ...</p>
                         </div>
                       ))}
+                      {renderTopicHintPopup("q1", currentTopicHints.q1)}
                     </div>
                   </div>
                   <input
@@ -919,7 +1190,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Nêu suy nghĩ của em về ý kiến được nêu ở đề bài
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q2")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -927,15 +1198,27 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q2")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q2"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q2", (
                         <div className="text-sm text-gray-600 space-y-1">
                           <p>• Tán thành hoặc phản đối</p>
                         </div>
                       ))}
+                      {renderTopicHintPopup("q2", currentTopicHints.q2)}
                     </div>
                   </div>
                   <input
@@ -956,7 +1239,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Hãy giải thích ngắn gọn về ý kiến của đề bài?
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q3")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -964,9 +1247,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q3")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q3"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q3", (
                         <div className="text-sm text-gray-600 space-y-2">
@@ -976,6 +1270,7 @@ const WritingMap = () => {
                           <p className="italic text-gray-500">VD: Khẳng định vai trò của lòng biết ơn, Ý nghĩa của lòng hiếu thảo, ...</p>
                         </div>
                       ))}
+                      {renderTopicHintPopup("q3", currentTopicHints.q3)}
                     </div>
                   </div>
                   <input
@@ -996,7 +1291,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Giải thích vì sao em tán thành hoặc phản đối với ý kiến đó (Nêu ít nhất 2 lí do)
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q4")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -1004,9 +1299,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q4")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q4"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q4", (
                         <div className="text-sm text-gray-600 space-y-1">
@@ -1017,6 +1323,12 @@ const WritingMap = () => {
                             <li>Giúp học tập tốt hơn</li>
                             <li>Giúp rèn luyện ý chí</li>
                           </ul>
+                        </div>
+                      ))}
+                      {renderTopicHintPopup("q4", (
+                        <div className="text-sm text-gray-700 space-y-2">
+                          <p><strong>Lí do 1:</strong> {currentTopicHints.q4_1}</p>
+                          <p><strong>Lí do 2:</strong> {currentTopicHints.q4_2}</p>
                         </div>
                       ))}
                     </div>
@@ -1054,7 +1366,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Dẫn chứng chứng minh cho các lí do
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q5")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -1062,9 +1374,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q5")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q5"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q5", (
                         <div className="text-sm text-gray-600 space-y-1">
@@ -1073,6 +1396,12 @@ const WritingMap = () => {
                             <li>Từ người nổi tiếng</li>
                             <li>Từ bản thân mình</li>
                           </ul>
+                        </div>
+                      ))}
+                      {renderTopicHintPopup("q5", (
+                        <div className="text-sm text-gray-700 space-y-2">
+                          <p><strong>Dẫn chứng 1:</strong> {currentTopicHints.q5_1}</p>
+                          <p><strong>Dẫn chứng 2:</strong> {currentTopicHints.q5_2}</p>
                         </div>
                       ))}
                     </div>
@@ -1114,7 +1443,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Khẳng định lại tính xác đáng của ý kiến
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q6")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -1122,9 +1451,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q6")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q6"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q6", (
                         <div className="text-sm text-gray-600 space-y-1">
@@ -1135,6 +1475,7 @@ const WritingMap = () => {
                           </ul>
                         </div>
                       ))}
+                      {renderTopicHintPopup("q6", currentTopicHints.q6)}
                     </div>
                   </div>
                   <input
@@ -1155,7 +1496,7 @@ const WritingMap = () => {
                     <label className="font-semibold text-gray-800 flex-1">
                       Từ vấn đề đã bàn luận, theo em chúng ta nên làm gì?
                     </label>
-                    <div className="relative">
+                    <div className="relative flex items-center gap-1">
                       <button
                         onClick={() => toggleIdeaHint("q7")}
                         className={`p-1.5 rounded-full transition-all ${
@@ -1163,9 +1504,20 @@ const WritingMap = () => {
                             ? "bg-emerald-500 text-white shadow-md"
                             : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
                         }`}
-                        title="Xem gợi ý"
+                        title="Gợi ý chung"
                       >
                         <Lightbulb className="w-4 h-4" />
+                      </button>
+                      <button
+                        onClick={() => toggleTopicHint("q7")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeTopicHint === "q7"
+                            ? "bg-blue-500 text-white shadow-md"
+                            : "bg-blue-100 text-blue-600 hover:bg-blue-200"
+                        }`}
+                        title="Gợi ý theo đề bài"
+                      >
+                        <BookOpen className="w-4 h-4" />
                       </button>
                       {renderIdeaHintPopup("q7", (
                         <div className="text-sm text-gray-600 space-y-1">
@@ -1176,6 +1528,7 @@ const WritingMap = () => {
                           </ul>
                         </div>
                       ))}
+                      {renderTopicHintPopup("q7", currentTopicHints.q7)}
                     </div>
                   </div>
                   <input
