@@ -20,7 +20,19 @@ const WritingMap = () => {
     issue: "",
     format: "",
   });
-  const [activeHint, setActiveHint] = useState(null); // Track which hint popup is open
+  const [activeHint, setActiveHint] = useState(null); // Track which hint popup is open (step 1)
+  const [activeIdeaHint, setActiveIdeaHint] = useState(null); // Track which hint popup is open (step 2)
+  const [ideaAnswers, setIdeaAnswers] = useState({
+    q1: "",
+    q2: "",
+    q3: "",
+    q4_1: "",
+    q4_2: "",
+    q5_1: "",
+    q5_2: "",
+    q6: "",
+    q7: "",
+  });
   const [formData, setFormData] = useState({
     topicType: "",
     keywords: [],
@@ -332,6 +344,26 @@ const WritingMap = () => {
     setActiveHint((prev) => (prev === hintId ? null : hintId));
   };
 
+  const updateIdeaAnswer = (field, value) => {
+    setIdeaAnswers((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const toggleIdeaHint = (hintId) => {
+    setActiveIdeaHint((prev) => (prev === hintId ? null : hintId));
+  };
+
+  // Kiểm tra đã hoàn thành phần khai phá ý tưởng chưa
+  const isIdeaExplorationComplete =
+    ideaAnswers.q1.trim() !== "" &&
+    ideaAnswers.q2.trim() !== "" &&
+    ideaAnswers.q3.trim() !== "" &&
+    ideaAnswers.q4_1.trim() !== "" &&
+    ideaAnswers.q4_2.trim() !== "" &&
+    ideaAnswers.q5_1.trim() !== "" &&
+    ideaAnswers.q5_2.trim() !== "" &&
+    ideaAnswers.q6.trim() !== "" &&
+    ideaAnswers.q7.trim() !== "";
+
   // Kiểm tra đã hoàn thành phần hiểu đề chưa
   const isUnderstandingComplete =
     understandingAnswers.keyword.trim() !== "" &&
@@ -377,8 +409,18 @@ const WritingMap = () => {
           understandingAnswers.issue.trim() !== "" &&
           understandingAnswers.format.trim() !== ""
         );
-      case 1: // Bước 2: Phải chọn ít nhất 1 dẫn chứng (từ khóa là view-only)
-        return formData.evidence.length > 0;
+      case 1: // Bước 2: Phải hoàn thành phần khai phá ý tưởng
+        return (
+          ideaAnswers.q1.trim() !== "" &&
+          ideaAnswers.q2.trim() !== "" &&
+          ideaAnswers.q3.trim() !== "" &&
+          ideaAnswers.q4_1.trim() !== "" &&
+          ideaAnswers.q4_2.trim() !== "" &&
+          ideaAnswers.q5_1.trim() !== "" &&
+          ideaAnswers.q5_2.trim() !== "" &&
+          ideaAnswers.q6.trim() !== "" &&
+          ideaAnswers.q7.trim() !== ""
+        );
       case 2: // Bước 3: Phải điền ít nhất mở đoạn và thân đoạn
         return (
           formData.essayText.opening.trim() !== "" &&
@@ -752,6 +794,25 @@ const WritingMap = () => {
         const currentBank = keywordBank[selectedTopicType];
         const suggestedKeywords = topicKeywords[selectedTopic] || [];
 
+        // Helper to render a hint popup
+        const renderIdeaHintPopup = (hintId, content) => {
+          if (activeIdeaHint !== hintId) return null;
+          return (
+            <div className="absolute right-0 top-10 z-10 w-80 bg-white rounded-xl shadow-xl border border-emerald-200 p-4 animate-slide-up">
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-bold text-emerald-700 text-sm">💡 Gợi ý</span>
+                <button
+                  onClick={() => setActiveIdeaHint(null)}
+                  className="p-1 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </div>
+              {content}
+            </div>
+          );
+        };
+
         return (
           <div className="space-y-6">
             {/* Hiển thị lại đề đã chọn */}
@@ -796,32 +857,384 @@ const WritingMap = () => {
               </div>
             </div>
 
-            {/* Gợi ý dẫn chứng (vẫn cho chọn) */}
-            <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-4">
-                Gợi ý dẫn chứng phù hợp
-              </h3>
-              <div className="space-y-3">
-                {currentBank.evidenceTemplates.map((template, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => toggleEvidence(template)}
-                    className={`w-full p-4 rounded-xl text-left transition-all border-2 ${
-                      formData.evidence.includes(template)
-                        ? "border-green-500 bg-green-50 shadow-md"
-                        : "border-gray-200 bg-white hover:border-green-300 hover:shadow-sm"
-                    }`}
-                  >
-                    <span className="text-gray-700">{template}</span>
-                  </button>
-                ))}
+            {/* Khai phá ý tưởng */}
+            <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-6 border border-emerald-200">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="bg-emerald-500 p-2 rounded-lg">
+                  <PenTool className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-lg">Khai phá ý tưởng</h4>
+                </div>
               </div>
-              {formData.evidence.length > 0 && (
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
-                  <p className="text-sm text-blue-800">
-                    ✓ Đã chọn <strong>{formData.evidence.length}</strong> loại
-                    dẫn chứng
-                  </p>
+              <p className="text-sm text-gray-500 mb-6">
+                Hãy trả lời các câu hỏi sau để tìm ý cho bài văn nghị luận của em
+              </p>
+
+              <div className="space-y-6">
+                {/* Câu hỏi 1 */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      1
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Vấn đề cần bàn luận là gì?
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q1")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q1"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q1", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <p>Vấn đề là từ khóa chính của đề bài.</p>
+                          <p className="italic text-gray-500">VD: Lòng biết ơn, tự học, hiếu thảo, nghiện game, ...</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={ideaAnswers.q1}
+                    onChange={(e) => updateIdeaAnswer("q1", e.target.value)}
+                    placeholder="Nhập vấn đề cần bàn luận..."
+                    className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                  />
+                </div>
+
+                {/* Câu hỏi 2 */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      2
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Nêu suy nghĩ của em về ý kiến được nêu ở đề bài
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q2")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q2"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q2", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <p>• Tán thành hoặc phản đối</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={ideaAnswers.q2}
+                    onChange={(e) => updateIdeaAnswer("q2", e.target.value)}
+                    placeholder="Nhập suy nghĩ của em..."
+                    className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                  />
+                </div>
+
+                {/* Câu hỏi 3 */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      3
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Hãy giải thích ngắn gọn về ý kiến của đề bài?
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q3")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q3"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q3", (
+                        <div className="text-sm text-gray-600 space-y-2">
+                          <p>• Giải thích từ khóa chính trong ý kiến được nêu ở đề bài</p>
+                          <p className="italic text-gray-500">VD: Lòng biết ơn là ..., Hiếu thảo là ...</p>
+                          <p>• Ý kiến trong đề bài muốn khẳng định điều gì</p>
+                          <p className="italic text-gray-500">VD: Khẳng định vai trò của lòng biết ơn, Ý nghĩa của lòng hiếu thảo, ...</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={ideaAnswers.q3}
+                    onChange={(e) => updateIdeaAnswer("q3", e.target.value)}
+                    placeholder="Nhập giải thích ngắn gọn..."
+                    className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                  />
+                </div>
+
+                {/* Câu hỏi 4 - 2 ô input */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      4
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Giải thích vì sao em tán thành hoặc phản đối với ý kiến đó (Nêu ít nhất 2 lí do)
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q4")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q4"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q4", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <p>Em hãy nghĩ xem vấn đề này mang lại lợi ích hoặc tác hại gì?</p>
+                          <p className="italic text-gray-500">VD:</p>
+                          <ul className="list-disc pl-4 text-gray-500 italic">
+                            <li>Giúp con người tiến bộ</li>
+                            <li>Giúp học tập tốt hơn</li>
+                            <li>Giúp rèn luyện ý chí</li>
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-3 pl-8">
+                    <div>
+                      <label className="text-sm font-medium text-gray-600 mb-1 block">Lí do 1:</label>
+                      <input
+                        type="text"
+                        value={ideaAnswers.q4_1}
+                        onChange={(e) => updateIdeaAnswer("q4_1", e.target.value)}
+                        placeholder="Nhập lí do thứ nhất..."
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-600 mb-1 block">Lí do 2:</label>
+                      <input
+                        type="text"
+                        value={ideaAnswers.q4_2}
+                        onChange={(e) => updateIdeaAnswer("q4_2", e.target.value)}
+                        placeholder="Nhập lí do thứ hai..."
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Câu hỏi 5 - 2 ô input */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      5
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Dẫn chứng chứng minh cho các lí do
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q5")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q5"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q5", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <ul className="list-disc pl-4">
+                            <li>Từ cuộc sống xung quanh</li>
+                            <li>Từ người nổi tiếng</li>
+                            <li>Từ bản thân mình</li>
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="space-y-3 pl-8">
+                    <div>
+                      <label className="text-sm font-medium text-gray-600 mb-1 block">
+                        Dẫn chứng chứng minh lí do 1:
+                      </label>
+                      <input
+                        type="text"
+                        value={ideaAnswers.q5_1}
+                        onChange={(e) => updateIdeaAnswer("q5_1", e.target.value)}
+                        placeholder="Nhập dẫn chứng cho lí do 1..."
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium text-gray-600 mb-1 block">
+                        Dẫn chứng chứng minh lí do 2:
+                      </label>
+                      <input
+                        type="text"
+                        value={ideaAnswers.q5_2}
+                        onChange={(e) => updateIdeaAnswer("q5_2", e.target.value)}
+                        placeholder="Nhập dẫn chứng cho lí do 2..."
+                        className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Câu hỏi 6 */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      6
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Khẳng định lại tính xác đáng của ý kiến
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q6")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q6"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q6", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <ul className="list-disc pl-4">
+                            <li>Điều này rất cần thiết trong cuộc sống vì ...</li>
+                            <li>Ý kiến này đúng vì ...</li>
+                            <li>Vì vậy, có thể thấy rằng ...</li>
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={ideaAnswers.q6}
+                    onChange={(e) => updateIdeaAnswer("q6", e.target.value)}
+                    placeholder="Nhập khẳng định lại ý kiến..."
+                    className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                  />
+                </div>
+
+                {/* Câu hỏi 7 */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="flex-shrink-0 w-6 h-6 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                      7
+                    </span>
+                    <label className="font-semibold text-gray-800 flex-1">
+                      Từ vấn đề đã bàn luận, theo em chúng ta nên làm gì?
+                    </label>
+                    <div className="relative">
+                      <button
+                        onClick={() => toggleIdeaHint("q7")}
+                        className={`p-1.5 rounded-full transition-all ${
+                          activeIdeaHint === "q7"
+                            ? "bg-emerald-500 text-white shadow-md"
+                            : "bg-emerald-100 text-emerald-600 hover:bg-emerald-200"
+                        }`}
+                        title="Xem gợi ý"
+                      >
+                        <Lightbulb className="w-4 h-4" />
+                      </button>
+                      {renderIdeaHintPopup("q7", (
+                        <div className="text-sm text-gray-600 space-y-1">
+                          <ul className="list-disc pl-4">
+                            <li>Vì vậy, mỗi chúng ta cần ...</li>
+                            <li>Học sinh nên ...</li>
+                            <li>Bản thân em sẽ ...</li>
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <input
+                    type="text"
+                    value={ideaAnswers.q7}
+                    onChange={(e) => updateIdeaAnswer("q7", e.target.value)}
+                    placeholder="Nhập hành động cần thực hiện..."
+                    className="w-full p-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none transition-all text-sm"
+                  />
+                </div>
+              </div>
+
+              {/* Kết quả khai phá ý tưởng */}
+              {isIdeaExplorationComplete && (
+                <div className="mt-6 bg-white rounded-xl p-5 border-2 border-green-300 shadow-sm animate-slide-up">
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle className="w-5 h-5 text-green-500" />
+                    <h5 className="font-bold text-gray-900">
+                      Dàn ý bài văn nghị luận của em
+                    </h5>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Vấn đề bàn luận:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q1}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Suy nghĩ:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q2}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Giải thích:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q3}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Lí do 1:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q4_1}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Lí do 2:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q4_2}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Dẫn chứng lí do 1:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q5_1}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Dẫn chứng lí do 2:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q5_2}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Khẳng định:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q6}"</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="font-semibold text-gray-600 min-w-[180px]">📌 Hành động:</span>
+                      <span className="text-gray-800">"{ideaAnswers.q7}"</span>
+                    </div>
+                  </div>
                 </div>
               )}
             </div>
@@ -1167,7 +1580,7 @@ const WritingMap = () => {
                         ? "Vui lòng chọn 1 đề bài cụ thể để tiếp tục"
                         : "Vui lòng trả lời đầy đủ 3 câu hỏi phần Hiểu đề để tiếp tục")}
                   {activeStep === 1 &&
-                    "Vui lòng chọn ít nhất 1 loại dẫn chứng để tiếp tục"}
+                    "Vui lòng trả lời đầy đủ tất cả các câu hỏi trong phần Khai phá ý tưởng để tiếp tục"}
                   {activeStep === 2 &&
                     "Vui lòng điền ít nhất câu mở đoạn và thân đoạn"}
                 </p>
