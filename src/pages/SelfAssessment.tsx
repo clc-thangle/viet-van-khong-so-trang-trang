@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import { CheckCircle, XCircle, AlertCircle } from 'lucide-react';
 
+interface CriterionCategory {
+  id: number;
+  category: string;
+  items: string[];
+}
+
 const SelfAssessment = () => {
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [showResult, setShowResult] = useState(false);
 
-  const criteria = [
+  const criteria: CriterionCategory[] = [
     {
       id: 1,
       category: 'Hiểu đề',
@@ -47,7 +53,7 @@ const SelfAssessment = () => {
     },
   ];
 
-  const handleAnswerChange = (categoryId, itemIndex, value) => {
+  const handleAnswerChange = (categoryId: number, itemIndex: number, value: string) => {
     setAnswers({
       ...answers,
       [`${categoryId}-${itemIndex}`]: value,
@@ -71,7 +77,7 @@ const SelfAssessment = () => {
     };
   };
 
-  const getScoreLevel = (score) => {
+  const getScoreLevel = (score: number) => {
     if (score >= 80) return { level: 'Xuất sắc', color: 'text-green-600', bg: 'bg-green-50' };
     if (score >= 60) return { level: 'Khá', color: 'text-blue-600', bg: 'bg-blue-50' };
     if (score >= 40) return { level: 'Trung bình', color: 'text-yellow-600', bg: 'bg-yellow-50' };

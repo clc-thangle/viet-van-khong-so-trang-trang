@@ -1,6 +1,10 @@
-import { Menu, BookOpen } from 'lucide-react';
+import { Menu, BookOpen } from "lucide-react";
 
-const Header = ({ toggleSidebar }) => {
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
+
+const Header = ({ toggleSidebar }: HeaderProps) => {
   return (
     <header className="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-gray-100">
       <div className="px-4 lg:px-8 py-4">
@@ -23,7 +27,7 @@ const Header = ({ toggleSidebar }) => {
                   VIẾT VĂN KHÔNG SỢ TRẮNG TRANG
                 </h1>
                 <p className="text-xs text-gray-500 hidden sm:block font-medium">
-                  Học liệu số - Ngữ văn THCS (Lớp 7-9)
+                  Học liệu số - Ngữ văn THCS (Lớp 6-9)
                 </p>
               </div>
             </div>

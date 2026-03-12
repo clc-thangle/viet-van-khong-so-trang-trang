@@ -1,13 +1,24 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Map, ClipboardList, Bot, CheckSquare, X } from 'lucide-react';
+import { Home, Map, /* ClipboardList, Bot, CheckSquare, */ X, type LucideIcon } from 'lucide-react';
 
-const Sidebar = ({ isOpen, onClose }) => {
-  const navItems = [
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+interface NavItem {
+  path: string;
+  icon: LucideIcon;
+  label: string;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const navItems: NavItem[] = [
     { path: '/', icon: Home, label: 'Trang chủ' },
     { path: '/writing-map', icon: Map, label: 'Bản đồ viết văn' },
-    { path: '/tasks', icon: ClipboardList, label: 'Thẻ nhiệm vụ' },
-    { path: '/ai-assistant', icon: Bot, label: 'AI trợ lý' },
-    { path: '/self-assessment', icon: CheckSquare, label: 'Tự đánh giá' },
+    // { path: '/tasks', icon: ClipboardList, label: 'Thẻ nhiệm vụ' },
+    // { path: '/ai-assistant', icon: Bot, label: 'AI trợ lý' },
+    // { path: '/self-assessment', icon: CheckSquare, label: 'Tự đánh giá' },
   ];
 
   return (

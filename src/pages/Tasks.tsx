@@ -1,10 +1,26 @@
 import { useState } from 'react';
 import { Target, Star, Flame } from 'lucide-react';
+import { type LucideIcon } from 'lucide-react';
+
+interface Task {
+  id: number;
+  level: string;
+  title: string;
+  description: string;
+  objective: string;
+  estimatedTime: string;
+}
+
+interface Level {
+  value: string;
+  label: string;
+  icon: LucideIcon;
+}
 
 const Tasks = () => {
   const [selectedLevel, setSelectedLevel] = useState('all');
 
-  const tasks = [
+  const tasks: Task[] = [
     {
       id: 1,
       level: 'easy',
@@ -71,7 +87,7 @@ const Tasks = () => {
     },
   ];
 
-  const levels = [
+  const levels: Level[] = [
     { value: 'all', label: 'Tất cả', icon: Target },
     { value: 'easy', label: 'Dễ', icon: Star },
     { value: 'medium', label: 'Trung bình', icon: Target },
@@ -82,7 +98,7 @@ const Tasks = () => {
     ? tasks
     : tasks.filter(task => task.level === selectedLevel);
 
-  const getLevelBadge = (level) => {
+  const getLevelBadge = (level: string) => {
     switch (level) {
       case 'easy':
         return <span className="badge-easy">Dễ</span>;

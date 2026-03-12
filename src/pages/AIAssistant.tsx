@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import { Bot, Send, Sparkles } from 'lucide-react';
 
+interface Message {
+  type: 'user' | 'assistant';
+  content: string;
+}
+
 const AIAssistant = () => {
   const [userInput, setUserInput] = useState('');
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       type: 'assistant',
       content: 'Xin chào! Mình là AI trợ lý viết văn. Mình sẽ giúp em với các gợi ý và hướng dẫn, nhưng không viết thay em nhé. Em cần trợ giúp gì?',
@@ -36,7 +41,7 @@ const AIAssistant = () => {
     setUserInput('');
   };
 
-  const handleSuggestedQuestion = (question) => {
+  const handleSuggestedQuestion = (question: string) => {
     setUserInput(question);
   };
 
