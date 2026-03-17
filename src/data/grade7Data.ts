@@ -11,16 +11,16 @@ import type {
 // ─── 10 đề bài dành cho lớp 7 (nghị luận xã hội – đạo lí) ──────────────────
 
 const topics: string[] = [
-  "Lòng hiếu thảo là nền tảng của mọi đức hạnh",
-  "Trung thực là phẩm chất quý giá nhất của con người",
-  "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn",
-  "Sự kiên trì là chìa khóa dẫn đến thành công",
-  "Tình yêu thương là sức mạnh để thay đổi thế giới",
-  "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi",
-  "Sống có trách nhiệm là biểu hiện của người trưởng thành",
-  "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp",
-  "Sự tự tin là bước đầu tiên trên con đường thành công",
-  "Đoàn kết là sức mạnh, chia rẽ là yếu đuối",
+  "Có ý kiến cho rằng: \"Lòng hiếu thảo là nền tảng của mọi đức hạnh\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Trung thực là phẩm chất quý giá nhất của con người\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Sự kiên trì là chìa khóa dẫn đến thành công\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Tình yêu thương là sức mạnh để thay đổi thế giới\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Sống có trách nhiệm là biểu hiện của người trưởng thành\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Sự tự tin là bước đầu tiên trên con đường thành công\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Đoàn kết là sức mạnh, chia rẽ là yếu đuối\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
 ];
 
 // ─── Dữ liệu trắc nghiệm cho phần Hiểu đề (3 câu hỏi / đề) ─────────────────
@@ -29,8 +29,8 @@ const topicQuizData: Record<string, TopicQuiz> = {
   // 1. Lòng hiếu thảo
   [topics[0]]: {
     q1: {
-      options: ["Hiếu thảo", "Đức hạnh", "Nền tảng"],
-      correct: "Hiếu thảo",
+      options: ["Lòng hiếu thảo", "Đức hạnh", "Nền tảng"],
+      correct: "Lòng hiếu thảo",
     },
     q2: {
       options: [
@@ -41,12 +41,12 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về vai trò của lòng hiếu thảo – nền tảng của mọi đức hạnh trong cuộc sống",
-        "Bàn về cách chăm sóc ông bà, cha mẹ khi già yếu",
-        "Bàn về truyền thống gia đình của người Việt Nam",
+        "Bàn về vai trò của lòng hiếu thảo đối với việc hình thành đạo đức con người",
+        "Bàn về cách thể hiện sự kính trọng với người lớn tuổi",
+        "Bàn về truyền thống gia đình trong xã hội hiện đại",
       ],
       correct:
-        "Bàn về vai trò của lòng hiếu thảo – nền tảng của mọi đức hạnh trong cuộc sống",
+        "Bàn về vai trò của lòng hiếu thảo đối với việc hình thành đạo đức con người",
     },
   },
 
@@ -65,20 +65,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng trung thực là phẩm chất quý giá nhất của con người",
-        "Bàn về tác hại của sự gian dối trong cuộc sống",
-        "Bàn về cách rèn luyện tính trung thực ở học sinh",
+        "Bàn về giá trị và ý nghĩa của tính trung thực trong cuộc sống",
+        "Bàn về cách rèn luyện đạo đức cho học sinh",
+        "Bàn về tầm quan trọng của giáo dục nhân cách",
       ],
       correct:
-        "Bàn về ý kiến cho rằng trung thực là phẩm chất quý giá nhất của con người",
+        "Bàn về giá trị và ý nghĩa của tính trung thực trong cuộc sống",
     },
   },
 
   // 3. Lòng khoan dung
   [topics[2]]: {
     q1: {
-      options: ["Khoan dung", "Thanh thản", "Hạnh phúc"],
-      correct: "Khoan dung",
+      options: ["Lòng khoan dung", "Hạnh phúc", "Thanh thản"],
+      correct: "Lòng khoan dung",
     },
     q2: {
       options: [
@@ -89,20 +89,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn",
-        "Bàn về cách tha thứ cho người khác khi bị xúc phạm",
-        "Bàn về vai trò của sự bao dung trong gia đình",
+        "Bàn về vai trò của lòng khoan dung trong việc mang lại hạnh phúc cho con người",
+        "Bàn về cách sống lạc quan, tích cực",
+        "Bàn về ý nghĩa của sự tha thứ trong tình bạn",
       ],
       correct:
-        "Bàn về ý kiến cho rằng lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn",
+        "Bàn về vai trò của lòng khoan dung trong việc mang lại hạnh phúc cho con người",
     },
   },
 
   // 4. Sự kiên trì
   [topics[3]]: {
     q1: {
-      options: ["Kiên trì", "Thành công", "Chìa khóa"],
-      correct: "Kiên trì",
+      options: ["Sự kiên trì", "Thành công", "Chìa khóa"],
+      correct: "Sự kiên trì",
     },
     q2: {
       options: [
@@ -113,20 +113,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng sự kiên trì là chìa khóa dẫn đến thành công",
-        "Bàn về cách vượt qua khó khăn trong học tập",
-        "Bàn về tầm quan trọng của mục tiêu trong cuộc sống",
+        "Bàn về vai trò của sự kiên trì trên con đường đạt đến thành công",
+        "Bàn về những yếu tố giúp con người thành đạt trong cuộc sống",
+        "Bàn về tầm quan trọng của việc đặt mục tiêu",
       ],
       correct:
-        "Bàn về ý kiến cho rằng sự kiên trì là chìa khóa dẫn đến thành công",
+        "Bàn về vai trò của sự kiên trì trên con đường đạt đến thành công",
     },
   },
 
   // 5. Tình yêu thương
   [topics[4]]: {
     q1: {
-      options: ["Yêu thương", "Sức mạnh", "Thế giới"],
-      correct: "Yêu thương",
+      options: ["Tình yêu thương", "Sức mạnh", "Thế giới"],
+      correct: "Tình yêu thương",
     },
     q2: {
       options: [
@@ -137,20 +137,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng tình yêu thương là sức mạnh để thay đổi thế giới",
-        "Bàn về các hoạt động từ thiện trong cộng đồng",
-        "Bàn về vai trò của tình cảm gia đình đối với trẻ em",
+        "Bàn về sức mạnh và ý nghĩa của tình yêu thương trong việc thay đổi thế giới",
+        "Bàn về cách xây dựng một xã hội văn minh",
+        "Bàn về tầm quan trọng của lòng nhân ái trong gia đình",
       ],
       correct:
-        "Bàn về ý kiến cho rằng tình yêu thương là sức mạnh để thay đổi thế giới",
+        "Bàn về sức mạnh và ý nghĩa của tình yêu thương trong việc thay đổi thế giới",
     },
   },
 
   // 6. Lòng dũng cảm
   [topics[5]]: {
     q1: {
-      options: ["Dũng cảm", "Nỗi sợ hãi", "Vượt qua"],
-      correct: "Dũng cảm",
+      options: ["Lòng dũng cảm", "Nỗi sợ hãi", "Vượt qua"],
+      correct: "Lòng dũng cảm",
     },
     q2: {
       options: [
@@ -161,12 +161,12 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng lòng dũng cảm là vượt qua nỗi sợ hãi chứ không phải không biết sợ",
-        "Bàn về cách rèn luyện sự can đảm ở lứa tuổi học sinh",
+        "Bàn về bản chất thực sự của lòng dũng cảm - vượt qua nỗi sợ hãi",
+        "Bàn về cách rèn luyện ý chí cho học sinh",
         "Bàn về vai trò của sự tự tin trong cuộc sống",
       ],
       correct:
-        "Bàn về ý kiến cho rằng lòng dũng cảm là vượt qua nỗi sợ hãi chứ không phải không biết sợ",
+        "Bàn về bản chất thực sự của lòng dũng cảm - vượt qua nỗi sợ hãi",
     },
   },
 
@@ -185,20 +185,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng sống có trách nhiệm là biểu hiện của người trưởng thành",
-        "Bàn về cách rèn luyện tính kỷ luật ở trường học",
-        "Bàn về vai trò của gia đình trong việc dạy con sống tự lập",
+        "Bàn về mối quan hệ giữa tinh thần trách nhiệm và sự trưởng thành của con người",
+        "Bàn về cách giáo dục thanh niên sống tự lập",
+        "Bàn về vai trò của gia đình trong việc hình thành nhân cách",
       ],
       correct:
-        "Bàn về ý kiến cho rằng sống có trách nhiệm là biểu hiện của người trưởng thành",
+        "Bàn về mối quan hệ giữa tinh thần trách nhiệm và sự trưởng thành của con người",
     },
   },
 
   // 8. Lòng biết ơn
   [topics[7]]: {
     q1: {
-      options: ["Biết ơn", "Tâm hồn cao đẹp", "Dấu hiệu"],
-      correct: "Biết ơn",
+      options: ["Lòng biết ơn", "Tâm hồn", "Cao đẹp"],
+      correct: "Lòng biết ơn",
     },
     q2: {
       options: [
@@ -209,20 +209,20 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp",
+        "Bàn về ý nghĩa của lòng biết ơn đối với nhân cách con người",
         "Bàn về truyền thống uống nước nhớ nguồn của dân tộc",
-        "Bàn về cách thể hiện lòng biết ơn với thầy cô giáo",
+        "Bàn về cách thể hiện tình cảm với thầy cô giáo",
       ],
       correct:
-        "Bàn về ý kiến cho rằng lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp",
+        "Bàn về ý nghĩa của lòng biết ơn đối với nhân cách con người",
     },
   },
 
   // 9. Sự tự tin
   [topics[8]]: {
     q1: {
-      options: ["Tự tin", "Thành công", "Bước đầu tiên"],
-      correct: "Tự tin",
+      options: ["Sự tự tin", "Bước đầu tiên", "Thành công"],
+      correct: "Sự tự tin",
     },
     q2: {
       options: [
@@ -233,12 +233,12 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng sự tự tin là bước đầu tiên trên con đường thành công",
-        "Bàn về cách khắc phục tính nhút nhát ở học sinh",
-        "Bàn về vai trò của kỹ năng giao tiếp trong cuộc sống",
+        "Bàn về vai trò của sự tự tin như điều kiện khởi đầu để đạt thành công",
+        "Bàn về những bí quyết để thành công trong học tập",
+        "Bàn về cách vượt qua sự tự ti ở tuổi học trò",
       ],
       correct:
-        "Bàn về ý kiến cho rằng sự tự tin là bước đầu tiên trên con đường thành công",
+        "Bàn về vai trò của sự tự tin như điều kiện khởi đầu để đạt thành công",
     },
   },
 
@@ -257,12 +257,12 @@ const topicQuizData: Record<string, TopicQuiz> = {
     },
     q3: {
       options: [
-        "Bàn về ý kiến cho rằng đoàn kết là sức mạnh, chia rẽ là yếu đuối",
+        "Bàn về vai trò của đoàn kết trong việc tạo nên sức mạnh tập thể",
         "Bàn về cách xây dựng tinh thần đồng đội trong lớp học",
-        "Bàn về vai trò của sự hợp tác trong công việc nhóm",
+        "Bàn về tầm quan trọng của hợp tác quốc tế",
       ],
       correct:
-        "Bàn về ý kiến cho rằng đoàn kết là sức mạnh, chia rẽ là yếu đuối",
+        "Bàn về vai trò của đoàn kết trong việc tạo nên sức mạnh tập thể",
     },
   },
 };
@@ -270,16 +270,16 @@ const topicQuizData: Record<string, TopicQuiz> = {
 // ─── Từ khóa cho mỗi đề (5 từ khóa / đề) ─────────────────────────────────────
 
 const topicKeywords: Record<string, string[]> = {
-  [topics[0]]: ["hiếu thảo", "đức hạnh", "cha mẹ", "gia đình", "kính trọng"],
-  [topics[1]]: ["trung thực", "phẩm chất", "lòng tin", "chân thành", "đạo đức"],
-  [topics[2]]: ["khoan dung", "tha thứ", "thanh thản", "hạnh phúc", "bao dung"],
-  [topics[3]]: ["kiên trì", "thành công", "nỗ lực", "bền bỉ", "quyết tâm"],
-  [topics[4]]: ["yêu thương", "sức mạnh", "sẻ chia", "đồng cảm", "nhân ái"],
-  [topics[5]]: ["dũng cảm", "nỗi sợ", "vượt qua", "can đảm", "nghị lực"],
-  [topics[6]]: ["trách nhiệm", "trưởng thành", "bổn phận", "tự giác", "đáng tin"],
-  [topics[7]]: ["biết ơn", "tâm hồn", "tri ân", "nhớ ơn", "cao đẹp"],
-  [topics[8]]: ["tự tin", "thành công", "bản lĩnh", "dám làm", "tin tưởng"],
-  [topics[9]]: ["đoàn kết", "sức mạnh", "chia rẽ", "hợp tác", "tập thể"],
+  [topics[0]]: ["bổn phận con cái", "tôn kính cha mẹ", "chăm sóc phụng dưỡng", "truyền thống gia đình", "cội nguồn tổ tiên"],
+  [topics[1]]: ["thành thật", "ngay thẳng", "tín nhiệm", "liêm khiết", "đáng tin cậy"],
+  [topics[2]]: ["bao dung", "tha thứ", "vị tha", "cảm thông", "tâm hồn rộng mở"],
+  [topics[3]]: ["nhẫn nại", "bền bỉ", "không bỏ cuộc", "vượt khó khăn", "ý chí bền vững"],
+  [topics[4]]: ["yêu thương", "chăm sóc", "chia sẻ", "gắn kết", "đồng cảm"],
+  [topics[5]]: ["can đảm", "vượt khó", "dám hành động", "khẳng định bản thân", "đối mặt thực tại"],
+  [topics[6]]: ["nghĩa vụ", "trách nhiệm bản thân", "trách nhiệm xã hội", "cam kết", "chấp nhận hậu quả"],
+  [topics[7]]: ["tri ân", "nhớ ơn", "ghi nhớ công ơn", "trân trọng", "đền đáp"],
+  [topics[8]]: ["tin vào bản thân", "khẳng định cá nhân", "tự lực tự chủ", "can đảm thể hiện", "vượt qua tự ti"],
+  [topics[9]]: ["đoàn kết", "hợp tác", "cộng đồng", "tương trợ", "sức mạnh tập thể"],
 };
 
 // ─── 8 câu hỏi Tìm ý ──────────────────────────────────────────────────────────
@@ -338,162 +338,162 @@ const timYQuestions: TimYQuestion[] = [
 const topicSpecificHints: Record<string, Record<string, string>> = {
   // 1. Lòng hiếu thảo
   [topics[0]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là vai trò của lòng hiếu thảo trong việc hình thành nhân cách con người.",
+    q1: "Lòng hiếu thảo",
     q2: "Ý kiến: \"Lòng hiếu thảo là nền tảng của mọi đức hạnh\". Em tán thành ý kiến này.",
-    q3: "Em hoàn toàn đồng ý vì người biết hiếu thảo với cha mẹ thì cũng sẽ biết yêu thương, kính trọng mọi người xung quanh.",
-    q4: "Lòng hiếu thảo là tình cảm yêu thương, kính trọng, biết ơn và chăm sóc cha mẹ, ông bà. Đức hạnh là những phẩm chất tốt đẹp của con người. Ý kiến khẳng định: hiếu thảo là gốc rễ, là cơ sở để phát triển mọi phẩm chất tốt đẹp khác.",
-    q5_1: "Người có lòng hiếu thảo biết yêu thương cha mẹ thì cũng biết yêu thương, tôn trọng mọi người xung quanh. Từ tình yêu gia đình mà mở rộng ra tình yêu xã hội.",
-    q5_2: "Hiếu thảo giúp con người biết sống có trách nhiệm. Khi biết ơn công lao sinh thành, dưỡng dục của cha mẹ, ta sẽ tự giác sống tốt, học hành chăm chỉ để không phụ lòng cha mẹ.",
-    q5_3: "Lòng hiếu thảo là truyền thống quý báu của dân tộc Việt Nam, được truyền từ đời này sang đời khác, góp phần giữ gìn nền tảng đạo đức xã hội.",
-    q6_1: "Trong truyện cổ tích Việt Nam, chàng Thạch Sanh dù nghèo khó vẫn luôn hiếu thảo, nhờ đó mà được trời đất phù hộ, cuối cùng trở thành vua hiền.",
-    q6_2: "Bạn lớp trưởng lớp em rất hiếu thảo, luôn giúp mẹ việc nhà và chăm sóc em nhỏ. Bạn ấy cũng rất hòa đồng, giúp đỡ bạn bè và được mọi người yêu quý.",
-    q6_3: "Ngược lại, có người bất hiếu với cha mẹ thì thường cũng bạc bẽo với bạn bè, đồng nghiệp. Điều đó chứng tỏ hiếu thảo chính là nền tảng của mọi đức hạnh.",
-    q7: "Từ những phân tích trên, em khẳng định lòng hiếu thảo thực sự là nền tảng vững chắc để xây dựng mọi đức hạnh tốt đẹp trong con người.",
-    q8: "Việc tán thành ý kiến này nhắc nhở mỗi người hãy luôn giữ gìn lòng hiếu thảo, vì đó chính là bước đầu tiên để trở thành người có nhân cách tốt đẹp.",
+    q3: "Em đồng ý vì hiếu thảo là đức tính tốt đẹp nhất, là gốc rễ của mọi phẩm chất đạo đức.",
+    q4: "Hiếu thảo là tình cảm yêu thương, kính trọng, biết ơn và chăm sóc cha mẹ. Ý kiến khẳng định hiếu thảo là nền tảng, là cơ sở để phát triển các đức tính tốt đẹp khác.",
+    q5_1: "Người hiếu thảo biết yêu thương cha mẹ sẽ biết yêu thương mọi người xung quanh.",
+    q5_2: "Hiếu thảo giúp gia đình hạnh phúc, gắn kết, tạo nền tảng vững chắc cho xã hội.",
+    q5_3: "Lòng hiếu thảo là truyền thống quý báu của dân tộc, giúp duy trì nền tảng đạo đức xã hội qua nhiều thế hệ.",
+    q6_1: "Trong cuộc sống, những người con hiếu thảo như em học sinh giỏi chăm sóc mẹ bệnh vẫn luôn được mọi người yêu quý và tôn trọng.",
+    q6_2: "Bác Hồ - vị lãnh tụ vĩ đại luôn nhớ về quê hương, gia đình, thể hiện lòng hiếu thảo sâu sắc.",
+    q6_3: "Ngược lại, những người bất hiếu thường bị xã hội lên án và gặp nhiều bất hạnh trong cuộc sống.",
+    q7: "Lòng hiếu thảo thực sự là nền tảng của mọi đức hạnh vì khi biết yêu thương cha mẹ, ta sẽ biết yêu thương con người và sống tốt đẹp hơn.",
+    q8: "Mỗi chúng ta cần biết vâng lời, chăm ngoan, học giỏi để cha mẹ vui lòng. Bản thân em sẽ luôn giúp đỡ cha mẹ việc nhà và cố gắng học tập thật tốt.",
   },
 
   // 2. Trung thực
   [topics[1]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là giá trị của đức tính trung thực đối với con người trong cuộc sống.",
+    q1: "Trung thực",
     q2: "Ý kiến: \"Trung thực là phẩm chất quý giá nhất của con người\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì trung thực giúp con người xây dựng được lòng tin, sự tôn trọng từ mọi người và sống thanh thản với chính mình.",
-    q4: "Trung thực là luôn nói đúng sự thật, không gian dối, không làm sai lệch sự việc. Ý kiến khẳng định rằng trong tất cả các phẩm chất tốt đẹp, trung thực là phẩm chất quý giá nhất, đáng trân trọng nhất.",
-    q5_1: "Trung thực giúp con người xây dựng lòng tin với mọi người. Khi ta luôn nói thật, người khác sẽ tin tưởng, tôn trọng và sẵn sàng hợp tác với ta.",
-    q5_2: "Người trung thực sống thanh thản, không phải lo lắng che giấu sự thật. Sự gian dối có thể đem lại lợi ích trước mắt nhưng sẽ gây hậu quả lâu dài.",
-    q5_3: "Trung thực là nền tảng của mọi mối quan hệ tốt đẹp: tình bạn, tình thầy trò, tình gia đình. Không có trung thực, mọi mối quan hệ đều dễ đổ vỡ.",
-    q6_1: "Tấm gương Bác Hồ luôn sống trung thực, giản dị. Nhờ đức tính trung thực, Bác được nhân dân cả nước và bạn bè quốc tế kính trọng, tin yêu.",
-    q6_2: "Trong lớp em, có bạn luôn thành thật khi làm bài kiểm tra, không quay cóp. Dù đôi khi điểm không cao bằng bạn khác, nhưng bạn ấy được cô giáo và các bạn rất tin tưởng.",
-    q6_3: "Ngược lại, có bạn hay gian lận khi thi. Khi bị phát hiện, bạn ấy mất uy tín, các bạn trong lớp không ai muốn làm nhóm cùng nữa.",
-    q7: "Từ những phân tích trên, em khẳng định trung thực thực sự là phẩm chất quý giá nhất, là nền tảng để con người xây dựng cuộc sống tốt đẹp.",
-    q8: "Việc tán thành ý kiến này giúp mỗi người ý thức rèn luyện tính trung thực hằng ngày, từ những việc nhỏ nhất, để trở thành người đáng tin cậy.",
+    q3: "Em đồng ý vì trung thực giúp xây dựng lòng tin, là nền tảng của mọi mối quan hệ tốt đẹp.",
+    q4: "Trung thực là luôn nói đúng sự thật, không gian dối, sống ngay thẳng. Ý kiến khẳng định trong tất cả phẩm chất, trung thực là quý giá nhất vì nó tạo nên giá trị đích thực của con người.",
+    q5_1: "Người trung thực được mọi người tin tưởng, tôn trọng, dễ dàng xây dựng các mối quan hệ bền vững.",
+    q5_2: "Trung thực giúp con người sống thanh thản, không phải lo lắng che giấu sự thật hay sợ bị phát hiện.",
+    q5_3: "Xã hội mà mọi người đều trung thực sẽ trở nên công bằng, văn minh và đáng sống hơn.",
+    q6_1: "Bác Hồ sống cả cuộc đời trung thực, giản dị, nhờ đó được nhân dân và bạn bè quốc tế kính trọng, tin yêu.",
+    q6_2: "Trong lớp em, bạn luôn thành thật khi làm bài, dù điểm không cao nhưng được cô giáo và các bạn rất tin tưởng.",
+    q6_3: "Ngược lại, những người gian dối khi bị phát hiện sẽ mất uy tín, mất lòng tin của mọi người xung quanh.",
+    q7: "Trung thực thực sự là phẩm chất quý giá nhất vì nó là nền tảng để xây dựng mọi giá trị tốt đẹp khác trong cuộc sống.",
+    q8: "Mỗi người cần rèn luyện tính trung thực trong học tập và cuộc sống. Bản thân em sẽ luôn nói thật, làm thật và sống thật với chính mình.",
   },
 
   // 3. Lòng khoan dung
   [topics[2]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là vai trò của lòng khoan dung đối với hạnh phúc và sự thanh thản trong cuộc sống con người.",
+    q1: "Lòng khoan dung",
     q2: "Ý kiến: \"Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì khi biết tha thứ và bao dung, tâm hồn ta sẽ nhẹ nhàng, không bị oán hận làm nặng nề.",
-    q4: "Lòng khoan dung là biết tha thứ, bao dung với lỗi lầm của người khác, không chấp nhặt hay thù hận. Ý kiến khẳng định rằng nhờ có lòng khoan dung, con người sẽ tìm được sự thanh thản trong tâm hồn và hạnh phúc trong cuộc sống.",
-    q5_1: "Khi biết tha thứ, tâm hồn ta sẽ nhẹ nhàng, không bị oán giận, hận thù đè nặng. Ta sẽ cảm thấy vui vẻ, bình yên hơn trong cuộc sống hằng ngày.",
-    q5_2: "Lòng khoan dung giúp giữ gìn và hàn gắn các mối quan hệ. Ai cũng có lúc sai lầm, nếu biết tha thứ cho nhau thì tình bạn, tình thân sẽ bền chặt hơn.",
-    q5_3: "Người khoan dung thường được mọi người yêu quý và kính trọng. Sự bao dung lan tỏa điều tích cực, tạo nên môi trường sống hòa hợp, ấm áp.",
-    q6_1: "Đức Phật dạy rằng: \"Ôm giữ sự giận dữ giống như nắm than hồng, người bị bỏng chính là bạn\". Tha thứ chính là buông bỏ hòn than nóng để tay mình không bị đau.",
-    q6_2: "Trong lớp em, có lần hai bạn cãi nhau rất nặng lời. Nhưng sau đó bạn Mai đã chủ động xin lỗi và bạn Hoa đã tha thứ. Từ đó hai bạn chơi thân hơn trước.",
-    q6_3: "Nelson Mandela từng bị tù 27 năm nhưng khi được tự do, ông không hề thù hận mà tha thứ cho những người đã giam giữ mình, nhờ đó ông mang lại hòa bình cho cả đất nước.",
-    q7: "Từ những phân tích trên, em khẳng định lòng khoan dung thực sự giúp con người sống thanh thản, hạnh phúc hơn và xây dựng cuộc sống tốt đẹp hơn.",
-    q8: "Việc tán thành ý kiến này nhắc nhở mỗi người hãy mở rộng tấm lòng, biết tha thứ để tâm hồn luôn nhẹ nhàng và cuộc sống tràn đầy niềm vui.",
+    q3: "Em đồng ý vì khi biết tha thứ, bao dung, con người sẽ không bị oán hận làm nặng lòng.",
+    q4: "Khoan dung là biết tha thứ, bao dung, không chấp nhặt lỗi lầm của người khác. Ý kiến khẳng định rằng khoan dung mang lại sự thanh thản và hạnh phúc cho chính người biết tha thứ.",
+    q5_1: "Khi tha thứ cho người khác, ta giải thoát chính mình khỏi sự oán giận, tâm hồn nhẹ nhàng, thanh thản hơn.",
+    q5_2: "Khoan dung giúp hàn gắn các mối quan hệ bị rạn nứt, mang lại hạnh phúc cho cả hai bên.",
+    q5_3: "Người khoan dung luôn được mọi người yêu quý, kính trọng, từ đó cuộc sống thêm ý nghĩa và hạnh phúc.",
+    q6_1: "Trong truyện cổ tích, những nhân vật biết tha thứ như Tấm luôn được phù hộ và có kết cục hạnh phúc.",
+    q6_2: "Bạn em từng giận bạn cùng bàn vì hiểu lầm, nhưng khi tha thứ, hai bạn lại thân thiết hơn trước.",
+    q6_3: "Ngược lại, những người mãi ôm hận thù thường sống trong đau khổ, cô đơn và bất hạnh.",
+    q7: "Lòng khoan dung thực sự giúp con người sống thanh thản và hạnh phúc hơn vì nó giải phóng tâm hồn khỏi oán hận.",
+    q8: "Mỗi người cần rèn luyện lòng khoan dung, biết tha thứ và bao dung. Bản thân em sẽ không chấp nhặt lỗi nhỏ của bạn bè và luôn sẵn lòng tha thứ.",
   },
 
   // 4. Sự kiên trì
   [topics[3]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là vai trò của sự kiên trì đối với thành công trong cuộc sống.",
+    q1: "Sự kiên trì",
     q2: "Ý kiến: \"Sự kiên trì là chìa khóa dẫn đến thành công\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì không có thành công nào đạt được mà không cần sự kiên trì, bền bỉ vượt qua khó khăn.",
-    q4: "Kiên trì là sự bền bỉ, nhẫn nại theo đuổi mục tiêu dù gặp nhiều khó khăn, trở ngại. Ý kiến khẳng định rằng kiên trì chính là yếu tố quan trọng nhất, giống như chiếc chìa khóa mở cánh cửa thành công.",
-    q5_1: "Kiên trì giúp con người vượt qua mọi khó khăn, thử thách. Bất kỳ việc gì, dù khó đến mấy, nếu kiên trì theo đuổi thì cuối cùng sẽ đạt được kết quả.",
-    q5_2: "Người kiên trì sẽ tích lũy được kiến thức và kinh nghiệm theo thời gian. Mỗi lần thất bại là một bài học, giúp ta tiến gần hơn đến thành công.",
-    q5_3: "Kiên trì rèn luyện cho con người ý chí mạnh mẽ, không dễ bỏ cuộc. Đây là phẩm chất cần thiết để thành công trong bất kỳ lĩnh vực nào.",
-    q6_1: "Thomas Edison đã thất bại hàng nghìn lần trước khi phát minh ra bóng đèn điện. Ông nói: \"Tôi không thất bại, tôi chỉ tìm ra mười nghìn cách không hiệu quả\". Nhờ kiên trì, ông đã thay đổi cả thế giới.",
-    q6_2: "Bạn em học Toán không giỏi, nhưng bạn ấy kiên trì luyện tập mỗi ngày. Sau một năm, bạn ấy đã đạt giải ba trong kỳ thi Toán cấp huyện, khiến cả lớp ngưỡng mộ.",
-    q6_3: "Câu tục ngữ \"Có công mài sắt, có ngày nên kim\" chứng minh rằng ông cha ta từ xưa đã hiểu rõ giá trị của sự kiên trì trong cuộc sống.",
-    q7: "Từ những phân tích trên, em khẳng định sự kiên trì thực sự là chìa khóa quan trọng nhất để mở cánh cửa thành công trong cuộc sống.",
-    q8: "Việc tán thành ý kiến này giúp mỗi người có thêm động lực để kiên trì theo đuổi ước mơ, không nản lòng trước khó khăn, thử thách.",
+    q3: "Em đồng ý vì không có thành công nào đến dễ dàng, chỉ có kiên trì mới giúp ta vượt qua khó khăn.",
+    q4: "Kiên trì là sự bền bỉ, nhẫn nại, không bỏ cuộc trước khó khăn, thử thách. Ý kiến khẳng định kiên trì chính là yếu tố quan trọng nhất, là chìa khóa mở cánh cửa thành công.",
+    q5_1: "Kiên trì giúp con người vượt qua thất bại, biến khó khăn thành động lực để cố gắng hơn.",
+    q5_2: "Người kiên trì tích lũy kinh nghiệm qua từng lần thử, dần hoàn thiện bản thân đến khi đạt mục tiêu.",
+    q5_3: "Không có tài năng bẩm sinh nào thay thế được sự kiên trì, vì tài năng mà thiếu kiên trì cũng sẽ lãng phí.",
+    q6_1: "Edison đã thất bại hàng nghìn lần trước khi phát minh ra bóng đèn, nhờ kiên trì mà ông thành công.",
+    q6_2: "Trong lớp em, bạn từng yếu Toán nhưng kiên trì luyện tập mỗi ngày, cuối năm đạt học sinh giỏi.",
+    q6_3: "Ngược lại, nhiều người tài giỏi nhưng thiếu kiên trì, nửa chừng bỏ cuộc nên không bao giờ thành công.",
+    q7: "Sự kiên trì thực sự là chìa khóa dẫn đến thành công vì nó giúp con người không bỏ cuộc cho đến khi đạt được mục tiêu.",
+    q8: "Mỗi người cần rèn luyện tính kiên trì trong học tập và cuộc sống. Bản thân em sẽ kiên trì luyện tập mỗi ngày và không bỏ cuộc khi gặp khó khăn.",
   },
 
   // 5. Tình yêu thương
   [topics[4]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là sức mạnh của tình yêu thương trong việc thay đổi thế giới và cuộc sống con người.",
+    q1: "Tình yêu thương",
     q2: "Ý kiến: \"Tình yêu thương là sức mạnh để thay đổi thế giới\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì tình yêu thương có thể làm mềm lòng người cứng rắn nhất, kết nối con người và tạo nên những điều kỳ diệu.",
-    q4: "Tình yêu thương là tình cảm chân thành, sự quan tâm, sẻ chia giữa con người với nhau. Ý kiến khẳng định rằng yêu thương không chỉ là cảm xúc mà còn là sức mạnh to lớn, có khả năng thay đổi cả thế giới theo hướng tốt đẹp hơn.",
-    q5_1: "Tình yêu thương giúp con người xích lại gần nhau, xóa bỏ hận thù và bất đồng. Khi có yêu thương, con người sẵn sàng giúp đỡ nhau vượt qua mọi khó khăn.",
-    q5_2: "Yêu thương tạo nên sức mạnh cộng đồng. Khi mọi người cùng yêu thương, sẻ chia thì xã hội sẽ trở nên tốt đẹp, công bằng và nhân ái hơn.",
-    q5_3: "Tình yêu thương giúp con người sống có ý nghĩa hơn. Khi biết yêu thương, ta sẽ sống không chỉ vì bản thân mà còn vì người khác, vì cộng đồng.",
-    q6_1: "Trong đại dịch Covid-19, tình yêu thương thể hiện qua những chuyến xe chở lương thực miễn phí, những \"ATM gạo\" giúp đỡ người nghèo. Nhờ yêu thương, mọi người cùng vượt qua giai đoạn khó khăn.",
-    q6_2: "Cô giáo vùng cao bỏ thành phố lên núi dạy chữ cho trẻ em nghèo. Tình yêu thương của cô đã thay đổi cuộc đời nhiều em nhỏ, giúp các em có cơ hội học tập, thoát nghèo.",
-    q6_3: "Mẹ Teresa suốt đời giúp đỡ người nghèo khổ ở Ấn Độ. Tình yêu thương của bà đã truyền cảm hứng cho hàng triệu người trên khắp thế giới cùng làm điều tốt.",
-    q7: "Từ những phân tích trên, em khẳng định tình yêu thương thực sự là sức mạnh vĩ đại nhất có thể thay đổi thế giới theo hướng tốt đẹp hơn.",
-    q8: "Việc tán thành ý kiến này nhắc nhở mỗi người hãy gieo mầm yêu thương trong cuộc sống hằng ngày, vì mỗi hành động nhỏ đều có thể tạo nên thay đổi lớn.",
+    q3: "Em đồng ý vì yêu thương có thể cảm hóa con người, xóa bỏ hận thù và xây dựng một thế giới tốt đẹp hơn.",
+    q4: "Tình yêu thương là tình cảm quan tâm, chăm sóc, sẻ chia giữa con người với nhau. Ý kiến khẳng định yêu thương không chỉ là tình cảm mà còn là sức mạnh có thể thay đổi cả thế giới.",
+    q5_1: "Yêu thương có sức mạnh cảm hóa, biến kẻ thù thành bạn, biến hận thù thành hòa bình.",
+    q5_2: "Khi được yêu thương, con người sẽ tốt đẹp hơn, sẵn sàng lan tỏa yêu thương đến người khác.",
+    q5_3: "Tình yêu thương là động lực thúc đẩy con người hành động vì cộng đồng, vì những điều tốt đẹp.",
+    q6_1: "Mẹ Teresa dành cả đời chăm sóc người nghèo, người bệnh, tình yêu thương của bà đã thay đổi cuộc đời hàng triệu người.",
+    q6_2: "Trong lớp em, khi bạn gặp khó khăn, cả lớp cùng giúp đỡ, tình yêu thương đó giúp bạn vượt qua và học tốt hơn.",
+    q6_3: "Các phong trào thiện nguyện, quyên góp giúp đỡ đồng bào vùng lũ cho thấy sức mạnh to lớn của tình yêu thương.",
+    q7: "Tình yêu thương thực sự là sức mạnh vĩ đại có thể thay đổi thế giới vì nó kết nối con người và lan tỏa những điều tốt đẹp.",
+    q8: "Mỗi người cần biết yêu thương, sẻ chia với mọi người xung quanh. Bản thân em sẽ luôn quan tâm, giúp đỡ bạn bè và tham gia các hoạt động thiện nguyện.",
   },
 
   // 6. Lòng dũng cảm
   [topics[5]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là bản chất thực sự của lòng dũng cảm trong cuộc sống con người.",
+    q1: "Lòng dũng cảm",
     q2: "Ý kiến: \"Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì ai cũng có lúc sợ hãi, nhưng dũng cảm là khi ta dám đối mặt và vượt qua nỗi sợ đó để làm điều đúng đắn.",
-    q4: "Dũng cảm không có nghĩa là liều lĩnh hay không biết sợ. Dũng cảm thực sự là khi biết sợ nhưng vẫn dám đối mặt, vẫn dám hành động vì lẽ phải. Ý kiến giúp ta hiểu đúng về bản chất của lòng dũng cảm.",
-    q5_1: "Ai cũng có nỗi sợ, đó là phản ứng tự nhiên của con người. Người dũng cảm không phải không sợ gì cả mà là người biết kiểm soát nỗi sợ để hành động đúng đắn.",
-    q5_2: "Dũng cảm đối mặt với nỗi sợ giúp con người trưởng thành hơn. Mỗi lần vượt qua nỗi sợ, ta sẽ mạnh mẽ hơn và tự tin hơn trong cuộc sống.",
-    q5_3: "Lòng dũng cảm giúp con người bảo vệ lẽ phải, bảo vệ người yếu hơn mình. Nhờ có những người dũng cảm mà xã hội trở nên công bằng hơn.",
-    q6_1: "Anh hùng Võ Thị Sáu dù còn rất trẻ, dù biết sợ nhưng vẫn dũng cảm chiến đấu vì Tổ quốc. Trước khi bị xử bắn, chị vẫn hát vang, thể hiện tinh thần bất khuất.",
-    q6_2: "Bạn em dù rất sợ nước nhưng vẫn dũng cảm tham gia lớp học bơi vì biết đó là kỹ năng cần thiết. Sau ba tháng, bạn ấy đã bơi giỏi và rất tự hào về bản thân.",
-    q6_3: "Trong lớp, có bạn dũng cảm đứng lên bảo vệ bạn bị bắt nạt dù bản thân cũng sợ. Hành động ấy khiến cả lớp kính phục và từ đó không ai bắt nạt ai nữa.",
-    q7: "Từ những phân tích trên, em khẳng định lòng dũng cảm thực sự không phải là không biết sợ mà là dám đối mặt và vượt qua nỗi sợ hãi.",
-    q8: "Việc tán thành ý kiến này giúp mỗi người hiểu đúng về dũng cảm, từ đó dám đối mặt với khó khăn thay vì trốn tránh trong cuộc sống.",
+    q3: "Em đồng ý vì ai cũng có lúc sợ hãi, nhưng người dũng cảm là người dám đối mặt và vượt qua nỗi sợ đó.",
+    q4: "Dũng cảm không phải là liều lĩnh hay không biết sợ. Dũng cảm thực sự là khi biết sợ nhưng vẫn dám hành động, dám đối mặt với khó khăn, nguy hiểm vì điều đúng đắn.",
+    q5_1: "Mọi người đều có nỗi sợ, nhưng người dũng cảm không để nỗi sợ ngăn cản mình làm điều đúng đắn.",
+    q5_2: "Dũng cảm vượt qua sợ hãi giúp con người trưởng thành, mạnh mẽ và tự tin hơn trong cuộc sống.",
+    q5_3: "Lòng dũng cảm truyền cảm hứng cho những người xung quanh, tạo nên sức mạnh lan tỏa trong cộng đồng.",
+    q6_1: "Những chiến sĩ cứu hỏa dù biết nguy hiểm vẫn lao vào đám cháy để cứu người, đó mới thực sự là dũng cảm.",
+    q6_2: "Bạn em tuy sợ nước nhưng vẫn dũng cảm học bơi, cuối cùng bạn ấy bơi giỏi và tự tin hơn rất nhiều.",
+    q6_3: "Ngược lại, người liều lĩnh hành động mà không suy nghĩ không phải là dũng cảm mà là thiếu suy xét.",
+    q7: "Lòng dũng cảm thực sự nằm ở việc vượt qua nỗi sợ hãi chứ không phải không biết sợ, vì đó mới là phẩm chất đáng quý.",
+    q8: "Mỗi người cần rèn luyện lòng dũng cảm, dám đối mặt với khó khăn. Bản thân em sẽ dũng cảm nhận lỗi khi sai và dám bảo vệ lẽ phải.",
   },
 
   // 7. Sống có trách nhiệm
   [topics[6]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là mối liên hệ giữa tinh thần trách nhiệm và sự trưởng thành của con người.",
+    q1: "Sống có trách nhiệm",
     q2: "Ý kiến: \"Sống có trách nhiệm là biểu hiện của người trưởng thành\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì người trưởng thành thực sự không chỉ lớn về tuổi tác mà còn biết chịu trách nhiệm với lời nói, hành động của mình.",
-    q4: "Sống có trách nhiệm là biết nhận và hoàn thành tốt các nhiệm vụ, bổn phận của mình; dám chịu trách nhiệm với hành động và lời nói của bản thân. Ý kiến khẳng định rằng đây chính là dấu hiệu quan trọng nhất cho thấy một người đã thực sự trưởng thành.",
-    q5_1: "Người có trách nhiệm luôn hoàn thành tốt công việc được giao, không đổ lỗi cho người khác. Đó là biểu hiện của sự trưởng thành trong suy nghĩ và hành động.",
-    q5_2: "Sống có trách nhiệm giúp con người được tin tưởng và tôn trọng. Người lớn hay bạn bè đều muốn hợp tác với người biết chịu trách nhiệm.",
-    q5_3: "Trách nhiệm không chỉ với bản thân mà còn với gia đình, bạn bè và cộng đồng. Biết nghĩ đến người khác là biểu hiện của sự trưởng thành thực sự.",
-    q6_1: "Lớp trưởng lớp em luôn đến sớm dọn lớp, nhắc nhở các bạn giữ trật tự. Dù bận học nhưng bạn ấy không bao giờ thoái thác nhiệm vụ. Mọi người đều nói bạn ấy rất trưởng thành.",
-    q6_2: "Có bạn trong lớp khi làm sai đã dũng cảm nhận lỗi trước thầy cô thay vì đổ lỗi cho bạn khác. Thầy cô rất khen bạn ấy vì biết chịu trách nhiệm.",
-    q6_3: "Ngược lại, có người dù đã lớn tuổi nhưng luôn trốn tránh trách nhiệm, đổ lỗi cho hoàn cảnh. Người ấy dù già nhưng chưa thực sự trưởng thành.",
-    q7: "Từ những phân tích trên, em khẳng định sống có trách nhiệm thực sự là biểu hiện rõ ràng nhất của sự trưởng thành trong mỗi con người.",
-    q8: "Việc tán thành ý kiến này giúp mỗi người, đặc biệt là học sinh, ý thức rèn luyện tinh thần trách nhiệm từ nhỏ để trở thành người trưởng thành thực sự.",
+    q3: "Em đồng ý vì người trưởng thành thực sự là người biết chịu trách nhiệm với lời nói, hành động của mình.",
+    q4: "Sống có trách nhiệm là biết bổn phận, nghĩa vụ của mình và hoàn thành tốt. Ý kiến khẳng định rằng trách nhiệm là thước đo quan trọng nhất của sự trưởng thành, không phải tuổi tác.",
+    q5_1: "Người có trách nhiệm luôn hoàn thành tốt công việc, không đổ lỗi cho hoàn cảnh hay người khác.",
+    q5_2: "Sống có trách nhiệm giúp con người được tin tưởng, tôn trọng, tạo nên giá trị bản thân trong xã hội.",
+    q5_3: "Trách nhiệm với bản thân, gia đình và xã hội là biểu hiện rõ ràng nhất của sự trưởng thành về nhân cách.",
+    q6_1: "Nhiều bạn trẻ tuy còn nhỏ tuổi nhưng biết chăm sóc gia đình, học tập chăm chỉ - đó là biểu hiện của sự trưởng thành.",
+    q6_2: "Trong lớp em, bạn lớp trưởng luôn hoàn thành tốt nhiệm vụ, chịu trách nhiệm trước tập thể, được mọi người tin tưởng.",
+    q6_3: "Ngược lại, người vô trách nhiệm dù lớn tuổi vẫn bị coi là chưa trưởng thành, thiếu đáng tin cậy.",
+    q7: "Sống có trách nhiệm thực sự là biểu hiện quan trọng nhất của sự trưởng thành vì nó thể hiện nhân cách và giá trị con người.",
+    q8: "Mỗi người cần rèn luyện tinh thần trách nhiệm từ những việc nhỏ. Bản thân em sẽ hoàn thành tốt bài tập, giữ lời hứa và chịu trách nhiệm với hành động của mình.",
   },
 
   // 8. Lòng biết ơn
   [topics[7]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là giá trị của lòng biết ơn trong việc thể hiện vẻ đẹp tâm hồn con người.",
+    q1: "Lòng biết ơn",
     q2: "Ý kiến: \"Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì người biết ơn là người hiểu được giá trị của những gì mình nhận được, từ đó sống tốt hơn và nhân ái hơn.",
-    q4: "Lòng biết ơn là sự ghi nhớ, trân trọng những điều tốt đẹp mà người khác đã làm cho mình. Tâm hồn cao đẹp là tâm hồn giàu tình cảm, biết sống vì người khác. Ý kiến khẳng định rằng biết ơn chính là biểu hiện cho thấy con người có tâm hồn đẹp đẽ, cao quý.",
-    q5_1: "Người biết ơn là người biết trân trọng công sức, tình cảm của người khác. Đó là biểu hiện của một tâm hồn tinh tế, nhạy cảm và giàu tình cảm.",
-    q5_2: "Lòng biết ơn giúp con người sống khiêm tốn, không kiêu ngạo. Khi biết ơn, ta hiểu rằng thành công của mình có sự đóng góp của nhiều người.",
-    q5_3: "Biết ơn thúc đẩy con người sống tốt hơn, muốn đền đáp và giúp đỡ người khác. Từ biết ơn mà lan tỏa yêu thương ra cộng đồng.",
-    q6_1: "Dân tộc ta có truyền thống \"Uống nước nhớ nguồn\", \"Ăn quả nhớ kẻ trồng cây\". Mỗi dịp lễ Tết, con cháu về thắp hương tưởng nhớ tổ tiên, thể hiện lòng biết ơn sâu sắc.",
-    q6_2: "Bạn em luôn viết thiệp cảm ơn thầy cô nhân ngày Nhà giáo Việt Nam. Bạn ấy nói: \"Thầy cô đã dạy em biết bao điều hay, em phải biết ơn\". Hành động nhỏ nhưng thể hiện tâm hồn đẹp.",
-    q6_3: "Ngược lại, có người được giúp đỡ nhưng không biết ơn, thậm chí còn quên ơn. Người như vậy bị mọi người xa lánh vì tâm hồn thiếu đi vẻ đẹp của lòng biết ơn.",
-    q7: "Từ những phân tích trên, em khẳng định lòng biết ơn thực sự là dấu hiệu cho thấy một con người có tâm hồn cao đẹp, đáng trân trọng.",
-    q8: "Việc tán thành ý kiến này nhắc nhở mỗi người hãy luôn ghi nhớ và biết ơn những điều tốt đẹp mà mình nhận được, để tâm hồn luôn đẹp và cuộc sống ý nghĩa hơn.",
+    q3: "Em đồng ý vì người biết ơn là người biết trân trọng, không vô ơn, thể hiện tâm hồn đẹp.",
+    q4: "Biết ơn là ghi nhớ, trân trọng công lao, tình cảm mà người khác dành cho mình. Ý kiến khẳng định rằng biết ơn là phẩm chất phản ánh vẻ đẹp tâm hồn con người.",
+    q5_1: "Người biết ơn là người biết trân trọng những gì mình nhận được, không coi đó là điều hiển nhiên.",
+    q5_2: "Biết ơn giúp con người sống khiêm tốn, nhận ra mình luôn cần sự giúp đỡ của người khác.",
+    q5_3: "Lòng biết ơn thúc đẩy con người sống tốt hơn, muốn đền đáp và lan tỏa yêu thương ra cộng đồng.",
+    q6_1: "Dân tộc ta có truyền thống \"Uống nước nhớ nguồn\", mỗi dịp lễ Tết con cháu thắp hương tưởng nhớ tổ tiên.",
+    q6_2: "Bạn em luôn viết thiệp cảm ơn thầy cô nhân ngày Nhà giáo, hành động nhỏ nhưng thể hiện tâm hồn đẹp.",
+    q6_3: "Ngược lại, người vô ơn, quên ơn người đã giúp đỡ mình thường bị xã hội xa lánh và lên án.",
+    q7: "Lòng biết ơn thực sự là dấu hiệu của tâm hồn cao đẹp vì nó cho thấy con người biết trân trọng cuộc sống và tình cảm của mọi người.",
+    q8: "Mỗi người cần ghi nhớ và biết ơn những điều tốt đẹp mình nhận được. Bản thân em sẽ luôn cảm ơn cha mẹ, thầy cô và bạn bè đã giúp đỡ mình.",
   },
 
   // 9. Sự tự tin
   [topics[8]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là vai trò của sự tự tin trên con đường đạt đến thành công.",
+    q1: "Sự tự tin",
     q2: "Ý kiến: \"Sự tự tin là bước đầu tiên trên con đường thành công\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì nếu không tin vào bản thân mình, ta sẽ không dám bắt đầu bất cứ điều gì, và không bắt đầu thì không thể thành công.",
-    q4: "Tự tin là tin vào khả năng, giá trị của bản thân mình, dám nghĩ, dám làm, dám thể hiện. Ý kiến khẳng định rằng tự tin chính là bước khởi đầu quan trọng nhất, là điều kiện tiên quyết để đạt được thành công.",
-    q5_1: "Tự tin giúp con người dám bắt đầu, dám thử sức với những điều mới. Nếu không tự tin, ta sẽ do dự, bỏ lỡ nhiều cơ hội quý giá trong cuộc sống.",
-    q5_2: "Người tự tin sẽ truyền cảm hứng và sự tin tưởng cho người khác. Khi ta tin vào bản thân, mọi người xung quanh cũng sẽ tin tưởng vào ta.",
-    q5_3: "Tự tin giúp con người bình tĩnh đối mặt với khó khăn, không dễ nản lòng. Khi tin rằng mình làm được, ta sẽ nỗ lực hết sức để đạt mục tiêu.",
-    q6_1: "Nick Vujicic sinh ra không có tay chân nhưng nhờ sự tự tin, anh đã trở thành diễn giả nổi tiếng thế giới, truyền cảm hứng cho hàng triệu người.",
-    q6_2: "Bạn em trước đây rất nhút nhát, không dám phát biểu. Nhưng khi bạn ấy tự tin giơ tay lần đầu tiên và được cô khen, từ đó bạn ấy tích cực phát biểu và kết quả học tập tiến bộ rõ rệt.",
-    q6_3: "Trong cuộc thi hùng biện cấp trường, bạn không giỏi nhất nhưng tự tin nhất đã giành giải cao. Vì sự tự tin giúp bạn ấy trình bày lưu loát, thuyết phục ban giám khảo.",
-    q7: "Từ những phân tích trên, em khẳng định sự tự tin thực sự là bước đầu tiên, là nền tảng vững chắc trên con đường dẫn đến thành công.",
-    q8: "Việc tán thành ý kiến này giúp mỗi người, đặc biệt là học sinh, tự tin hơn vào bản thân, dám ước mơ và dám hành động để biến ước mơ thành hiện thực.",
+    q3: "Em đồng ý vì tự tin giúp con người dám hành động, dám theo đuổi ước mơ.",
+    q4: "Tự tin là tin vào năng lực, giá trị của bản thân. Ý kiến khẳng định tự tin là bước khởi đầu quan trọng nhất trên hành trình đạt đến thành công.",
+    q5_1: "Người tự tin dám đặt mục tiêu cao và nỗ lực thực hiện, không ngại thất bại.",
+    q5_2: "Tự tin giúp con người thể hiện tốt năng lực, tạo ấn tượng và nhận được sự tin tưởng từ người khác.",
+    q5_3: "Tự tin là nền tảng để phát triển các phẩm chất khác như kiên trì, dũng cảm và sáng tạo.",
+    q6_1: "Jack Ma từng bị từ chối hàng chục lần khi xin việc nhưng vẫn tự tin theo đuổi ước mơ, cuối cùng xây dựng đế chế Alibaba.",
+    q6_2: "Trong lớp, những bạn tự tin phát biểu thường được thầy cô đánh giá cao và tiến bộ nhanh hơn.",
+    q6_3: "Ngược lại, nhiều người tài giỏi nhưng thiếu tự tin nên không dám thể hiện, bỏ lỡ nhiều cơ hội.",
+    q7: "Tự tin đúng là bước đầu tiên trên con đường thành công vì nếu không tin vào bản thân thì không thể bắt đầu bất cứ điều gì.",
+    q8: "Học sinh cần rèn luyện sự tự tin bằng cách chuẩn bị kỹ bài học và mạnh dạn tham gia hoạt động. Bản thân em sẽ tự tin hơn trong giao tiếp và học tập.",
   },
 
   // 10. Đoàn kết
   [topics[9]]: {
-    q1: "Vấn đề đạo lí cần bàn luận là vai trò của tinh thần đoàn kết và tác hại của sự chia rẽ trong cuộc sống.",
+    q1: "Đoàn kết",
     q2: "Ý kiến: \"Đoàn kết là sức mạnh, chia rẽ là yếu đuối\". Em tán thành ý kiến này.",
-    q3: "Em đồng ý vì khi đoàn kết, con người sẽ tạo nên sức mạnh to lớn để vượt qua mọi khó khăn, còn chia rẽ chỉ khiến tất cả yếu đi.",
-    q4: "Đoàn kết là cùng nhau chung sức, chung lòng vì mục tiêu chung. Chia rẽ là tách rời, mâu thuẫn, mỗi người một hướng. Ý kiến khẳng định rằng khi đoàn kết, con người sẽ mạnh mẽ; khi chia rẽ, con người sẽ trở nên yếu đuối.",
-    q5_1: "Khi đoàn kết, mỗi người đóng góp sức mình sẽ tạo nên sức mạnh tổng hợp lớn hơn rất nhiều so với từng cá nhân đơn lẻ. Một cây làm chẳng nên non, ba cây chụm lại nên hòn núi cao.",
-    q5_2: "Đoàn kết giúp mọi người hỗ trợ nhau, bù đắp điểm yếu của nhau. Trong tập thể đoàn kết, ai cũng được phát huy thế mạnh và được giúp đỡ khi khó khăn.",
-    q5_3: "Chia rẽ khiến sức mạnh bị phân tán, dễ bị kẻ xấu lợi dụng. Khi không đoàn kết, tập thể sẽ suy yếu và không thể đạt được mục tiêu chung nào.",
-    q6_1: "Trong lịch sử Việt Nam, nhờ tinh thần đoàn kết toàn dân, ông cha ta đã chiến thắng nhiều kẻ thù xâm lược hùng mạnh gấp nhiều lần, từ giặc Nguyên Mông đến thực dân Pháp.",
-    q6_2: "Lớp em từng thua cuộc thi kéo co vì các bạn không đồng lòng. Nhưng khi cả lớp đoàn kết tập luyện, hô vang cùng nhịp, lớp em đã giành chiến thắng ở lần thi sau.",
-    q6_3: "Câu chuyện \"Bó đũa\" kể rằng mỗi chiếc đũa riêng lẻ dễ bẻ gãy, nhưng cả bó đũa thì không ai bẻ nổi. Đó là bài học về sức mạnh đoàn kết.",
-    q7: "Từ những phân tích trên, em khẳng định đoàn kết thực sự tạo nên sức mạnh vô cùng to lớn, còn chia rẽ chỉ dẫn đến sự yếu đuối và thất bại.",
-    q8: "Việc tán thành ý kiến này nhắc nhở mỗi người hãy luôn giữ gìn tinh thần đoàn kết trong gia đình, lớp học và cộng đồng để cùng nhau vươn lên.",
+    q3: "Em đồng ý vì khi đoàn kết, sức mạnh tập thể luôn lớn hơn sức mạnh cá nhân.",
+    q4: "Đoàn kết là sự gắn bó, hợp tác cùng nhau vì mục tiêu chung. Ý kiến khẳng định đoàn kết tạo nên sức mạnh, còn chia rẽ dẫn đến yếu đuối, thất bại.",
+    q5_1: "Đoàn kết giúp chia sẻ công việc, phát huy thế mạnh của từng người để đạt kết quả tốt nhất.",
+    q5_2: "Khi đoàn kết, mọi người hỗ trợ nhau vượt qua khó khăn mà một cá nhân không thể tự làm được.",
+    q5_3: "Chia rẽ khiến sức mạnh bị phân tán, dễ bị kẻ xấu lợi dụng, dẫn đến thất bại.",
+    q6_1: "Lịch sử Việt Nam cho thấy nhờ đoàn kết toàn dân mà chúng ta đã chiến thắng nhiều kẻ thù xâm lược hùng mạnh.",
+    q6_2: "Trong lớp em, khi cả lớp cùng nhau chuẩn bị cho hội thi văn nghệ, nhờ đoàn kết mà lớp đạt giải nhất.",
+    q6_3: "Câu chuyện \"Bó đũa\" dạy rằng mỗi chiếc đũa riêng lẻ dễ bẻ gãy, nhưng cả bó đũa thì không ai bẻ nổi.",
+    q7: "Đoàn kết thực sự là sức mạnh vì nó gộp sức mạnh của nhiều người thành một khối vững chắc, không thế lực nào có thể phá vỡ.",
+    q8: "Mỗi chúng ta cần biết hợp tác, tôn trọng và hỗ trợ lẫn nhau. Bản thân em sẽ luôn đoàn kết với bạn bè, không gây chia rẽ trong lớp.",
   },
 };
 

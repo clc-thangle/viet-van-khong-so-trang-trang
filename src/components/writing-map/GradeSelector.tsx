@@ -22,7 +22,8 @@ const gradeInfo = [
     label: "Lớp 7",
     essayType: "Viết bài văn nghị luận – Trình bày ý kiến tán thành/phản đối",
     wordCount: "~400 chữ",
-    description: "Nghị luận về một vấn đề đời sống, thể hiện quan điểm tán thành hoặc phản đối",
+    description:
+      "Nghị luận về một vấn đề đời sống, thể hiện quan điểm tán thành hoặc phản đối",
     color: "from-emerald-500 to-green-500",
     bgLight: "from-emerald-50 to-green-50",
     borderColor: "border-emerald-300",
@@ -33,8 +34,9 @@ const gradeInfo = [
     grade: 8,
     label: "Lớp 8",
     essayType: "Viết bài văn nghị luận – Con người với cộng đồng, đất nước",
-    wordCount: "~500 chữ",
-    description: "Nghị luận về mối quan hệ giữa con người với cộng đồng và đất nước",
+    wordCount: "~400 chữ",
+    description:
+      "Nghị luận về mối quan hệ giữa con người với cộng đồng và đất nước",
     color: "from-purple-500 to-violet-500",
     bgLight: "from-purple-50 to-violet-50",
     borderColor: "border-purple-300",
@@ -46,7 +48,8 @@ const gradeInfo = [
     label: "Lớp 9",
     essayType: "Viết bài văn nghị luận – Đề xuất giải pháp cho vấn đề",
     wordCount: "~600 chữ",
-    description: "Nghị luận đề xuất các giải pháp khả thi cho một vấn đề cần giải quyết",
+    description:
+      "Nghị luận đề xuất các giải pháp khả thi cho một vấn đề cần giải quyết",
     color: "from-orange-500 to-red-500",
     bgLight: "from-orange-50 to-red-50",
     borderColor: "border-orange-300",
@@ -67,7 +70,8 @@ const GradeSelector = ({ onSelectGrade }: GradeSelectorProps) => {
           Em đang học lớp mấy?
         </h2>
         <p className="text-gray-500 text-sm md:text-base max-w-md mx-auto">
-          Chọn lớp để hiển thị đề bài và hướng dẫn phù hợp với chương trình học của em
+          Chọn lớp để hiển thị đề bài và hướng dẫn phù hợp với chương trình học
+          của em
         </p>
       </div>
 
@@ -83,7 +87,9 @@ const GradeSelector = ({ onSelectGrade }: GradeSelectorProps) => {
             <Sparkles className="absolute top-3 right-3 w-4 h-4 text-gray-300 group-hover:text-yellow-400 transition-colors" />
 
             <div className="flex items-start gap-4">
-              <div className={`flex-shrink-0 w-12 h-12 ${info.iconBg} rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
+              <div
+                className={`flex-shrink-0 w-12 h-12 ${info.iconBg} rounded-xl flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}
+              >
                 <BookOpen className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1 min-w-0">
@@ -91,7 +97,9 @@ const GradeSelector = ({ onSelectGrade }: GradeSelectorProps) => {
                   <h3 className="text-lg font-bold text-gray-900">
                     {info.label}
                   </h3>
-                  <span className={`text-xs px-2 py-0.5 bg-gradient-to-r ${info.color} text-white rounded-full font-medium`}>
+                  <span
+                    className={`text-xs px-2 py-0.5 bg-gradient-to-r ${info.color} text-white rounded-full font-medium`}
+                  >
                     {info.wordCount}
                   </span>
                 </div>

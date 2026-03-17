@@ -11,30 +11,30 @@ import { STEPS_CONFIG } from "./writingMapConstants";
 // ============================================
 // GRADE 8 DATA
 // Nghị luận về một vấn đề đời sống
-// (Con người trong mối quan hệ với cộng đồng, đất nước)
+// (Hiện tượng đời sống)
 // ============================================
 
 const GRADE = 8;
 const LABEL = "Lớp 8";
 const ESSAY_TYPE =
-  "VIẾT MỘT BÀI VĂN NGHỊ LUẬN VỀ MỘT VẤN ĐỀ ĐỜI SỐNG (CON NGƯỜI TRONG MỐI QUAN HỆ VỚI CỘNG ĐỒNG, ĐẤT NƯỚC)";
+  "VIẾT MỘT BÀI VĂN NGHỊ LUẬN VỀ MỘT VẤN ĐỀ ĐỜI SỐNG (HIỆN TƯỢNG ĐỜI SỐNG)";
 const WORD_COUNT = 500;
 
 // ============================================
-// 10 TOPICS
+// 10 TOPICS (Hiện tượng đời sống)
 // ============================================
 
 const topics: string[] = [
-  "Tinh thần tình nguyện của thanh niên là động lực phát triển cộng đồng",
-  "Mỗi người dân đều có trách nhiệm bảo vệ môi trường sống",
-  "Lòng yêu nước được thể hiện qua những hành động nhỏ hằng ngày",
-  "Sự đoàn kết trong cộng đồng giúp vượt qua mọi khó khăn",
-  "Giữ gìn bản sắc văn hóa dân tộc trong thời kì hội nhập",
-  "Vai trò của thế hệ trẻ trong việc xây dựng đất nước",
-  "Tinh thần tương thân tương ái là truyền thống quý báu của dân tộc Việt Nam",
-  "Ý thức chấp hành pháp luật là biểu hiện của công dân có trách nhiệm",
-  "Sự sẻ chia trong cộng đồng giúp xã hội trở nên tốt đẹp hơn",
-  "Bảo vệ chủ quyền lãnh thổ là trách nhiệm thiêng liêng của mỗi công dân",
+  "Có ý kiến cho rằng: \"Nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Gian lận trong thi cử là hành vi đáng lên án\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Lãng phí thức ăn đang trở thành vấn đề đáng báo động\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Thói quen đọc sách đang dần bị thay thế bởi các thiết bị điện tử\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Nói tục chửi thề trong giới trẻ ngày càng phổ biến và đáng lo ngại\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Sống ảo trên mạng xã hội đang làm méo mó giá trị thực của cuộc sống\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Xả rác bừa bãi đang hủy hoại môi trường sống\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Học sinh thiếu kỹ năng sống là vấn đề đáng quan tâm\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  "Có ý kiến cho rằng: \"Nghiện game online ảnh hưởng nghiêm trọng đến học tập và sức khỏe của học sinh\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
 ];
 
 // ============================================
@@ -83,392 +83,261 @@ const timYQuestions: TimYQuestion[] = [
 // ============================================
 
 const topicQuizData: Record<string, TopicQuiz> = {
-  // Topic 1: Tinh thần tình nguyện
-  "Tinh thần tình nguyện của thanh niên là động lực phát triển cộng đồng": {
+  // 1. Nghiện mạng xã hội
+  [topics[0]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Nghị luận văn học",
-        "Kể chuyện sáng tạo",
-        "Tả cảnh sinh hoạt",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Nghiện mạng xã hội", "Giới trẻ", "Ảnh hưởng"],
+      correct: "Nghiện mạng xã hội",
     },
     q2: {
       options: [
-        "Vai trò của tinh thần tình nguyện đối với sự phát triển cộng đồng",
-        "Kể về một chuyến đi tình nguyện",
-        "Miêu tả hoạt động tình nguyện",
-        "Hướng dẫn cách tổ chức hoạt động tình nguyện",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Vai trò của tinh thần tình nguyện đối với sự phát triển cộng đồng",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh, bàn luận về tinh thần tình nguyện",
-        "Kể lại các hoạt động tình nguyện",
-        "Nêu cảm xúc khi tham gia tình nguyện",
-        "Liệt kê các tổ chức tình nguyện",
+        "Bàn về tác hại của việc nghiện mạng xã hội đối với thế hệ trẻ",
+        "Bàn về lợi ích của công nghệ trong đời sống",
+        "Bàn về cách sử dụng internet hiệu quả",
       ],
-      correct: "Giải thích, chứng minh, bàn luận về tinh thần tình nguyện",
+      correct: "Bàn về tác hại của việc nghiện mạng xã hội đối với thế hệ trẻ",
     },
   },
 
-  // Topic 2: Bảo vệ môi trường sống
-  "Mỗi người dân đều có trách nhiệm bảo vệ môi trường sống": {
+  // 2. Bạo lực học đường
+  [topics[1]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Nghị luận văn học",
-        "Thuyết minh",
-        "Biểu cảm",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Bạo lực học đường", "Nhức nhối", "Giải quyết"],
+      correct: "Bạo lực học đường",
     },
     q2: {
       options: [
-        "Trách nhiệm bảo vệ môi trường của mỗi công dân",
-        "Kể về một lần dọn dẹp vệ sinh",
-        "Mô tả tình trạng ô nhiễm môi trường",
-        "Hướng dẫn cách phân loại rác thải",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Trách nhiệm bảo vệ môi trường của mỗi công dân",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh trách nhiệm bảo vệ môi trường của mỗi người",
-        "Kể lại việc trồng cây xanh",
-        "Mô tả cảnh thiên nhiên đẹp",
-        "Nêu cảm xúc về thiên nhiên",
+        "Bàn về mức độ nghiêm trọng của bạo lực học đường và sự cần thiết phải giải quyết triệt để",
+        "Bàn về cách xây dựng trường học thân thiện",
+        "Bàn về vai trò của giáo viên trong việc quản lý lớp học",
       ],
-      correct: "Giải thích, chứng minh trách nhiệm bảo vệ môi trường của mỗi người",
+      correct:
+        "Bàn về mức độ nghiêm trọng của bạo lực học đường và sự cần thiết phải giải quyết triệt để",
     },
   },
 
-  // Topic 3: Lòng yêu nước
-  "Lòng yêu nước được thể hiện qua những hành động nhỏ hằng ngày": {
+  // 3. Gian lận thi cử
+  [topics[2]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Tự sự",
-        "Miêu tả",
-        "Thuyết minh",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Gian lận thi cử", "Giáo dục", "Giá trị thực sự"],
+      correct: "Gian lận thi cử",
     },
     q2: {
       options: [
-        "Lòng yêu nước được thể hiện qua hành động nhỏ hằng ngày",
-        "Kể về một vị anh hùng dân tộc",
-        "Mô tả vẻ đẹp quê hương",
-        "Giới thiệu lịch sử đất nước",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Lòng yêu nước được thể hiện qua hành động nhỏ hằng ngày",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích và chứng minh lòng yêu nước thể hiện qua hành động nhỏ",
-        "Kể lại câu chuyện lịch sử",
-        "Miêu tả cảnh đẹp đất nước",
-        "Bày tỏ tình cảm với quê hương",
+        "Bàn về tác hại của gian lận thi cử đối với giá trị đích thực của giáo dục",
+        "Bàn về cách cải cách hệ thống thi cử ở Việt Nam",
+        "Bàn về tầm quan trọng của việc đánh giá học sinh",
       ],
-      correct: "Giải thích và chứng minh lòng yêu nước thể hiện qua hành động nhỏ",
+      correct:
+        "Bàn về tác hại của gian lận thi cử đối với giá trị đích thực của giáo dục",
     },
   },
 
-  // Topic 4: Sự đoàn kết trong cộng đồng
-  "Sự đoàn kết trong cộng đồng giúp vượt qua mọi khó khăn": {
+  // 4. Lãng phí thức ăn
+  [topics[3]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Nghị luận văn học",
-        "Kể chuyện",
-        "Biểu cảm",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Lãng phí thức ăn", "Xã hội hiện đại", "Đáng báo động"],
+      correct: "Lãng phí thức ăn",
     },
     q2: {
       options: [
-        "Vai trò của sự đoàn kết giúp cộng đồng vượt qua khó khăn",
-        "Kể về một lần giúp đỡ hàng xóm",
-        "Mô tả không khí ngày hội",
-        "Nêu cảm nghĩ về tình làng xóm",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Vai trò của sự đoàn kết giúp cộng đồng vượt qua khó khăn",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh sức mạnh đoàn kết trong cộng đồng",
-        "Kể lại một sự kiện cộng đồng",
-        "Mô tả lễ hội truyền thống",
-        "Bày tỏ niềm vui khi giúp đỡ người khác",
+        "Bàn về mức độ nghiêm trọng của hiện tượng lãng phí thức ăn trong xã hội ngày nay",
+        "Bàn về cách tiết kiệm chi tiêu trong gia đình",
+        "Bàn về vấn đề an toàn vệ sinh thực phẩm",
       ],
-      correct: "Giải thích, chứng minh sức mạnh đoàn kết trong cộng đồng",
+      correct:
+        "Bàn về mức độ nghiêm trọng của hiện tượng lãng phí thức ăn trong xã hội ngày nay",
     },
   },
 
-  // Topic 5: Giữ gìn bản sắc văn hóa
-  "Giữ gìn bản sắc văn hóa dân tộc trong thời kì hội nhập": {
+  // 5. Đọc sách bị thay thế
+  [topics[4]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Thuyết minh",
-        "Miêu tả",
-        "Tự sự",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Đọc sách", "Thiết bị điện tử", "Thói quen"],
+      correct: "Đọc sách",
     },
     q2: {
       options: [
-        "Tầm quan trọng của việc giữ gìn bản sắc văn hóa dân tộc khi hội nhập",
-        "Giới thiệu một lễ hội truyền thống",
-        "Kể về phong tục tập quán",
-        "Mô tả trang phục dân tộc",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Tầm quan trọng của việc giữ gìn bản sắc văn hóa dân tộc khi hội nhập",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích và bàn luận về việc giữ gìn bản sắc văn hóa trong hội nhập",
-        "Liệt kê các di sản văn hóa",
-        "Kể lại trải nghiệm tại lễ hội",
-        "Mô tả một làng nghề truyền thống",
+        "Bàn về thực trạng thói quen đọc sách đang suy giảm do sự phát triển của thiết bị điện tử",
+        "Bàn về lợi ích của việc học trực tuyến",
+        "Bàn về cách phát triển văn hóa đọc cho học sinh",
       ],
-      correct: "Giải thích và bàn luận về việc giữ gìn bản sắc văn hóa trong hội nhập",
+      correct:
+        "Bàn về thực trạng thói quen đọc sách đang suy giảm do sự phát triển của thiết bị điện tử",
     },
   },
 
-  // Topic 6: Vai trò thế hệ trẻ
-  "Vai trò của thế hệ trẻ trong việc xây dựng đất nước": {
+  // 6. Nói tục chửi thề
+  [topics[5]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Nghị luận văn học",
-        "Biểu cảm",
-        "Thuyết minh",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Nói tục chửi thề", "Giới trẻ", "Văn hóa ứng xử"],
+      correct: "Nói tục chửi thề",
     },
     q2: {
       options: [
-        "Vai trò quan trọng của thế hệ trẻ đối với sự phát triển đất nước",
-        "Kể về ước mơ của em",
-        "Miêu tả hình ảnh tuổi trẻ",
-        "Giới thiệu các ngành nghề cho thanh niên",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Vai trò quan trọng của thế hệ trẻ đối với sự phát triển đất nước",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh vai trò của thế hệ trẻ trong xây dựng đất nước",
-        "Kể về một tấm gương thanh niên",
-        "Mô tả các hoạt động thanh niên",
-        "Nêu cảm xúc về tuổi trẻ",
+        "Bàn về thực trạng nói tục chửi thề trong giới trẻ và tác hại của nó",
+        "Bàn về cách giáo dục nếp sống văn minh cho học sinh",
+        "Bàn về vai trò của ngôn ngữ trong giao tiếp hằng ngày",
       ],
-      correct: "Giải thích, chứng minh vai trò của thế hệ trẻ trong xây dựng đất nước",
+      correct:
+        "Bàn về thực trạng nói tục chửi thề trong giới trẻ và tác hại của nó",
     },
   },
 
-  // Topic 7: Tương thân tương ái
-  "Tinh thần tương thân tương ái là truyền thống quý báu của dân tộc Việt Nam": {
+  // 7. Sống ảo
+  [topics[6]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Kể chuyện sáng tạo",
-        "Tả cảnh sinh hoạt",
-        "Thuyết minh",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Sống ảo", "Mạng xã hội", "Đánh mất chính mình"],
+      correct: "Sống ảo",
     },
     q2: {
       options: [
-        "Tinh thần tương thân tương ái là truyền thống quý báu cần gìn giữ",
-        "Kể về một lần giúp đỡ người khác",
-        "Mô tả hoạt động từ thiện",
-        "Giới thiệu các tổ chức nhân đạo",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Tinh thần tương thân tương ái là truyền thống quý báu cần gìn giữ",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh giá trị truyền thống tương thân tương ái",
-        "Kể lại câu chuyện cảm động",
-        "Miêu tả cảnh giúp đỡ nhau",
-        "Nêu cảm xúc khi được giúp đỡ",
+        "Bàn về tác hại của lối sống ảo trên mạng xã hội khiến con người mất đi giá trị thật",
+        "Bàn về cách xây dựng hình ảnh cá nhân trên mạng",
+        "Bàn về ảnh hưởng của truyền thông đến giới trẻ",
       ],
-      correct: "Giải thích, chứng minh giá trị truyền thống tương thân tương ái",
+      correct:
+        "Bàn về tác hại của lối sống ảo trên mạng xã hội khiến con người mất đi giá trị thật",
     },
   },
 
-  // Topic 8: Ý thức chấp hành pháp luật
-  "Ý thức chấp hành pháp luật là biểu hiện của công dân có trách nhiệm": {
+  // 8. Xả rác bừa bãi
+  [topics[7]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Thuyết minh",
-        "Biểu cảm",
-        "Tự sự",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Xả rác bừa bãi", "Môi trường", "Ô nhiễm"],
+      correct: "Xả rác bừa bãi",
     },
     q2: {
       options: [
-        "Ý thức chấp hành pháp luật thể hiện trách nhiệm công dân",
-        "Kể về một vụ vi phạm pháp luật",
-        "Giới thiệu các điều luật cơ bản",
-        "Mô tả hoạt động tuyên truyền pháp luật",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Ý thức chấp hành pháp luật thể hiện trách nhiệm công dân",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh ý thức chấp hành pháp luật là biểu hiện trách nhiệm",
-        "Liệt kê các hình phạt vi phạm",
-        "Kể lại vụ xử án",
-        "Hướng dẫn cách tìm hiểu pháp luật",
+        "Bàn về tác hại của thói quen xả rác bừa bãi đối với môi trường sống",
+        "Bàn về cách phát triển năng lượng tái tạo",
+        "Bàn về trách nhiệm của doanh nghiệp đối với môi trường",
       ],
-      correct: "Giải thích, chứng minh ý thức chấp hành pháp luật là biểu hiện trách nhiệm",
+      correct:
+        "Bàn về tác hại của thói quen xả rác bừa bãi đối với môi trường sống",
     },
   },
 
-  // Topic 9: Sự sẻ chia trong cộng đồng
-  "Sự sẻ chia trong cộng đồng giúp xã hội trở nên tốt đẹp hơn": {
+  // 9. Thiếu kỹ năng sống
+  [topics[8]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Nghị luận văn học",
-        "Miêu tả",
-        "Tự sự",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Thiếu kỹ năng sống", "Giáo dục", "Lý thuyết"],
+      correct: "Thiếu kỹ năng sống",
     },
     q2: {
       options: [
-        "Vai trò của sự sẻ chia trong việc xây dựng xã hội tốt đẹp",
-        "Kể về một lần chia sẻ với bạn",
-        "Mô tả hoạt động quyên góp",
-        "Hướng dẫn cách tổ chức từ thiện",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Vai trò của sự sẻ chia trong việc xây dựng xã hội tốt đẹp",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh sự sẻ chia giúp xã hội tốt đẹp hơn",
-        "Kể lại chuyến đi từ thiện",
-        "Miêu tả niềm vui khi cho đi",
-        "Nêu cảm xúc khi được giúp đỡ",
+        "Bàn về mối liên hệ giữa việc học sinh thiếu kỹ năng sống và nền giáo dục thiên về lý thuyết",
+        "Bàn về cách cải cách chương trình học ở trường phổ thông",
+        "Bàn về tầm quan trọng của hoạt động ngoại khóa",
       ],
-      correct: "Giải thích, chứng minh sự sẻ chia giúp xã hội tốt đẹp hơn",
+      correct:
+        "Bàn về mối liên hệ giữa việc học sinh thiếu kỹ năng sống và nền giáo dục thiên về lý thuyết",
     },
   },
 
-  // Topic 10: Bảo vệ chủ quyền lãnh thổ
-  "Bảo vệ chủ quyền lãnh thổ là trách nhiệm thiêng liêng của mỗi công dân": {
+  // 10. Nghiện game online
+  [topics[9]]: {
     q1: {
-      options: [
-        "Nghị luận về một vấn đề đời sống",
-        "Tự sự",
-        "Miêu tả",
-        "Thuyết minh",
-      ],
-      correct: "Nghị luận về một vấn đề đời sống",
+      options: ["Nghiện game online", "Học tập", "Sức khỏe"],
+      correct: "Nghiện game online",
     },
     q2: {
       options: [
-        "Trách nhiệm thiêng liêng của công dân trong bảo vệ chủ quyền lãnh thổ",
-        "Kể về cuộc đời một chiến sĩ biên phòng",
-        "Mô tả vẻ đẹp biển đảo Việt Nam",
-        "Giới thiệu lịch sử bảo vệ đất nước",
+        "Trình bày ý kiến tán thành",
+        "Trình bày ý kiến phản đối",
       ],
-      correct: "Trách nhiệm thiêng liêng của công dân trong bảo vệ chủ quyền lãnh thổ",
+      correct: "Trình bày ý kiến tán thành",
     },
     q3: {
       options: [
-        "Giải thích, chứng minh bảo vệ chủ quyền là trách nhiệm thiêng liêng",
-        "Kể lại sự kiện lịch sử",
-        "Miêu tả cảnh biên giới",
-        "Bày tỏ tình yêu biển đảo",
+        "Bàn về tác hại của việc nghiện game online đối với học tập và sức khỏe của học sinh",
+        "Bàn về lợi ích của trò chơi điện tử đối với trí tuệ",
+        "Bàn về cách quản lý thời gian hiệu quả cho học sinh",
       ],
-      correct: "Giải thích, chứng minh bảo vệ chủ quyền là trách nhiệm thiêng liêng",
+      correct:
+        "Bàn về tác hại của việc nghiện game online đối với học tập và sức khỏe của học sinh",
     },
   },
 };
 
 // ============================================
-// TOPIC KEYWORDS (5 per topic)
+// TOPIC KEYWORDS
 // ============================================
 
 const topicKeywords: Record<string, string[]> = {
-  "Tinh thần tình nguyện của thanh niên là động lực phát triển cộng đồng": [
-    "tình nguyện",
-    "thanh niên",
-    "cộng đồng",
-    "phát triển",
-    "đóng góp",
-  ],
-  "Mỗi người dân đều có trách nhiệm bảo vệ môi trường sống": [
-    "trách nhiệm",
-    "môi trường",
-    "bảo vệ",
-    "ý thức",
-    "hành động",
-  ],
-  "Lòng yêu nước được thể hiện qua những hành động nhỏ hằng ngày": [
-    "yêu nước",
-    "hành động",
-    "hằng ngày",
-    "thể hiện",
-    "trách nhiệm",
-  ],
-  "Sự đoàn kết trong cộng đồng giúp vượt qua mọi khó khăn": [
-    "đoàn kết",
-    "cộng đồng",
-    "khó khăn",
-    "sức mạnh",
-    "tương trợ",
-  ],
-  "Giữ gìn bản sắc văn hóa dân tộc trong thời kì hội nhập": [
-    "bản sắc",
-    "văn hóa",
-    "dân tộc",
-    "hội nhập",
-    "giữ gìn",
-  ],
-  "Vai trò của thế hệ trẻ trong việc xây dựng đất nước": [
-    "thế hệ trẻ",
-    "xây dựng",
-    "đất nước",
-    "vai trò",
-    "cống hiến",
-  ],
-  "Tinh thần tương thân tương ái là truyền thống quý báu của dân tộc Việt Nam": [
-    "tương thân tương ái",
-    "truyền thống",
-    "dân tộc",
-    "yêu thương",
-    "giúp đỡ",
-  ],
-  "Ý thức chấp hành pháp luật là biểu hiện của công dân có trách nhiệm": [
-    "pháp luật",
-    "chấp hành",
-    "công dân",
-    "trách nhiệm",
-    "ý thức",
-  ],
-  "Sự sẻ chia trong cộng đồng giúp xã hội trở nên tốt đẹp hơn": [
-    "sẻ chia",
-    "cộng đồng",
-    "xã hội",
-    "tốt đẹp",
-    "yêu thương",
-  ],
-  "Bảo vệ chủ quyền lãnh thổ là trách nhiệm thiêng liêng của mỗi công dân": [
-    "chủ quyền",
-    "lãnh thổ",
-    "bảo vệ",
-    "thiêng liêng",
-    "công dân",
-  ],
+  [topics[0]]: ["lãng phí thời gian", "sống ảo", "ảnh hưởng học tập", "sức khỏe tinh thần", "tương tác thực"],
+  [topics[1]]: ["bạo lực thể chất", "bắt nạt", "tổn thương tâm lý", "môi trường học tập", "giáo dục nhân cách"],
+  [topics[2]]: ["đạo đức học đường", "năng lực thực sự", "công bằng thi cử", "học thực chất", "tính liêm chính"],
+  [topics[3]]: ["lãng phí tài nguyên", "ý thức cộng đồng", "an ninh lương thực", "hành vi tiêu dùng", "tôn trọng lao động"],
+  [topics[4]]: ["văn hóa đọc", "kiến thức chiều sâu", "tư duy phân tích", "sự kiên nhẫn", "giải trí lành mạnh"],
+  [topics[5]]: ["lịch sự văn minh", "ngôn ngữ đẹp", "ý thức giao tiếp", "văn hóa ứng xử", "nhân cách con người"],
+  [topics[6]]: ["hình ảnh ảo", "áp lực so sánh", "bản sắc cá nhân", "thực tế cuộc sống", "định giá bản thân"],
+  [topics[7]]: ["ô nhiễm môi trường", "rác thải", "ý thức công dân", "sức khỏe cộng đồng", "hệ sinh thái"],
+  [topics[8]]: ["kỹ năng tự lập", "giao tiếp xã hội", "xử lý tình huống", "giáo dục thực hành", "phát triển toàn diện"],
+  [topics[9]]: ["mất tập trung", "sa sút học tập", "sức khỏe giảm sút", "nghiện điện tử", "quản lý thời gian"],
 };
 
 // ============================================
@@ -477,194 +346,194 @@ const topicKeywords: Record<string, string[]> = {
 // ============================================
 
 const topicSpecificHints: Record<string, Record<string, string>> = {
-  // ---- Topic 1 ----
-  "Tinh thần tình nguyện của thanh niên là động lực phát triển cộng đồng": {
-    q1: "Vấn đề bàn luận: vai trò của tinh thần tình nguyện của thanh niên đối với sự phát triển cộng đồng.",
-    q2: "Tinh thần tình nguyện của thanh niên thực sự là động lực quan trọng thúc đẩy sự phát triển của cộng đồng.",
-    q3: "Tinh thần tình nguyện là sự tự nguyện đóng góp sức lực, thời gian, trí tuệ cho cộng đồng mà không vì lợi ích cá nhân.",
-    q4: "Khẳng định thanh niên với tinh thần tình nguyện chính là lực lượng nòng cốt tạo nên sự thay đổi tích cực cho cộng đồng.",
-    q5_1: "Thanh niên là lực lượng trẻ, khỏe, năng động, sáng tạo, có khả năng lan tỏa năng lượng tích cực đến mọi người.",
-    q5_2: "Hoạt động tình nguyện giúp giải quyết nhiều vấn đề xã hội mà chính quyền chưa thể bao quát hết.",
-    q6_1: "Khi thanh niên tình nguyện, họ mang đến sức trẻ, ý tưởng mới và nhiệt huyết giúp cộng đồng phát triển bền vững hơn.",
-    q6_2: "Tinh thần tình nguyện tạo ra hiệu ứng lan tỏa, khích lệ nhiều người cùng hành động vì cộng đồng.",
-    q7_1: "Các chiến dịch Mùa hè xanh của sinh viên giúp xây cầu, làm đường, dạy học ở vùng sâu vùng xa.",
-    q7_2: "Đội thanh niên tình nguyện giúp đỡ người dân vùng lũ lụt miền Trung, quyên góp và phân phát nhu yếu phẩm.",
-    q7_3: "Nhóm tình nguyện dạy tiếng Anh miễn phí cho trẻ em nông thôn, giúp các em có thêm cơ hội học tập.",
-    q8: "Có người cho rằng hoạt động tình nguyện chỉ mang tính hình thức, nhưng thực tế nhiều chương trình đã tạo ra thay đổi lâu dài và thực chất cho cộng đồng.",
-    q9: "Tinh thần tình nguyện không chỉ giúp cộng đồng phát triển mà còn rèn luyện nhân cách, kĩ năng cho chính người tham gia.",
-    q10_1: "Tích cực tham gia các hoạt động tình nguyện tại trường và địa phương.",
-    q10_2: "Lan tỏa tinh thần tình nguyện bằng cách rủ bạn bè, người thân cùng tham gia các chương trình vì cộng đồng.",
+  // ---- 1. Nghiện mạng xã hội ----
+  [topics[0]]: {
+    q1: "Hiện tượng nghiện mạng xã hội trong giới trẻ hiện nay.",
+    q2: "Tán thành. Vì mạng xã hội đang chiếm quá nhiều thời gian và ảnh hưởng tiêu cực đến học sinh.",
+    q3: "Nghiện mạng xã hội là tình trạng dành quá nhiều thời gian cho Facebook, TikTok, Instagram... không kiểm soát được bản thân. Ý kiến khẳng định đây là vấn đề nghiêm trọng đối với giới trẻ hiện nay.",
+    q4: "Khẳng định rằng nghiện mạng xã hội đang gây ra những hệ lụy nghiêm trọng cho sự phát triển toàn diện của giới trẻ.",
+    q5_1: "Nghiện mạng xã hội khiến học sinh mất tập trung, kết quả học tập sa sút nghiêm trọng.",
+    q5_2: "Sống ảo trên mạng khiến giới trẻ mất kỹ năng giao tiếp thực tế, ảnh hưởng sức khỏe tinh thần.",
+    q6_1: "Khi dành quá nhiều thời gian lướt mạng, học sinh không còn thời gian cho việc học, vận động thể chất và các hoạt động bổ ích khác.",
+    q6_2: "Các thuật toán của mạng xã hội được thiết kế để gây nghiện, khiến người dùng trẻ tuổi khó tự kiểm soát thời gian sử dụng.",
+    q7_1: "Theo thống kê, thanh thiếu niên Việt Nam dành trung bình 3-5 giờ/ngày cho mạng xã hội, nhiều bạn thức khuya lướt TikTok ảnh hưởng sức khỏe.",
+    q7_2: "Trong lớp em, có bạn vì nghiện Facebook mà không làm bài tập, điểm số giảm sút rõ rệt.",
+    q7_3: "Nhiều vụ việc đáng tiếc xảy ra khi giới trẻ bắt chước các trào lưu nguy hiểm trên mạng xã hội.",
+    q8: "Có người cho rằng mạng xã hội cũng có nhiều lợi ích như kết nối, học hỏi, nhưng vấn đề nằm ở việc sử dụng quá mức, mất kiểm soát mới thực sự nguy hại.",
+    q9: "Nghiện mạng xã hội thực sự đang ảnh hưởng nghiêm trọng đến giới trẻ, đây là vấn đề cần được quan tâm giải quyết.",
+    q10_1: "Tự đặt giới hạn thời gian sử dụng mạng xã hội, ưu tiên học tập và vận động ngoài trời.",
+    q10_2: "Học sinh cần tìm hiểu và tham gia các hoạt động ngoại khóa bổ ích thay vì lướt mạng cả ngày.",
   },
 
-  // ---- Topic 2 ----
-  "Mỗi người dân đều có trách nhiệm bảo vệ môi trường sống": {
-    q1: "Vấn đề bàn luận: trách nhiệm bảo vệ môi trường sống của mỗi người dân.",
-    q2: "Bảo vệ môi trường không phải việc của riêng ai mà là trách nhiệm chung của mỗi công dân.",
-    q3: "Bảo vệ môi trường sống là giữ gìn sự trong sạch của không khí, nguồn nước, đất đai và hệ sinh thái quanh ta.",
-    q4: "Khẳng định mỗi người dân đều phải có ý thức và hành động cụ thể để bảo vệ môi trường sống.",
-    q5_1: "Môi trường sống ảnh hưởng trực tiếp đến sức khỏe, chất lượng cuộc sống của mỗi người và cả cộng đồng.",
-    q5_2: "Ô nhiễm môi trường ngày càng nghiêm trọng, nếu không hành động sớm sẽ gây hậu quả khôn lường cho thế hệ sau.",
-    q6_1: "Mỗi hành động nhỏ như không xả rác, tiết kiệm nước, trồng cây đều góp phần tạo nên sự thay đổi lớn cho môi trường.",
-    q6_2: "Khi mỗi người dân có ý thức, cộng đồng sẽ tạo thành sức mạnh tập thể to lớn trong việc bảo vệ môi trường.",
-    q7_1: "Phong trào \"Ngày Chủ nhật xanh\" ở nhiều thành phố, người dân cùng nhau dọn rác, trồng cây xanh.",
-    q7_2: "Nhiều trường học tổ chức hoạt động phân loại rác, tái chế đồ dùng, giáo dục ý thức bảo vệ môi trường cho học sinh.",
-    q7_3: "Thảm họa ô nhiễm biển do xả thải công nghiệp ở Formosa (2016) cho thấy hậu quả khi con người không bảo vệ môi trường.",
-    q8: "Có người cho rằng bảo vệ môi trường là việc của nhà nước, nhưng thực tế mỗi cá nhân đều có vai trò quan trọng trong việc này.",
-    q9: "Bảo vệ môi trường là bảo vệ chính cuộc sống của chúng ta và tương lai của con cháu mai sau.",
-    q10_1: "Thực hiện các thói quen xanh hằng ngày: tiết kiệm điện nước, phân loại rác, hạn chế đồ nhựa.",
-    q10_2: "Tuyên truyền, vận động gia đình và bạn bè cùng chung tay bảo vệ môi trường.",
+  // ---- 2. Bạo lực học đường ----
+  [topics[1]]: {
+    q1: "Hiện tượng bạo lực học đường trong trường học hiện nay.",
+    q2: "Tán thành. Vì bạo lực học đường gây tổn thương nặng nề cho học sinh và cần được xử lý dứt điểm.",
+    q3: "Bạo lực học đường là hành vi dùng sức mạnh để bắt nạt, đánh đập, xúc phạm bạn bè trong trường. Ý kiến khẳng định đây là vấn đề nhức nhối cần giải quyết triệt để.",
+    q4: "Khẳng định bạo lực học đường là hiện tượng nguy hiểm, cần sự vào cuộc của cả gia đình, nhà trường và xã hội.",
+    q5_1: "Bạo lực học đường gây tổn thương thể chất và tinh thần nghiêm trọng cho nạn nhân, nhiều em bị trầm cảm.",
+    q5_2: "Bạo lực học đường phá vỡ môi trường giáo dục an toàn, khiến học sinh sợ hãi khi đến trường.",
+    q6_1: "Nạn nhân bạo lực học đường có thể bị sang chấn tâm lý kéo dài, ảnh hưởng đến sự phát triển nhân cách và tương lai.",
+    q6_2: "Người gây bạo lực nếu không được uốn nắn kịp thời có thể hình thành tính cách hung hãn, dễ vi phạm pháp luật sau này.",
+    q7_1: "Nhiều vụ bạo lực học đường được đưa lên báo chí, có em học sinh bị đánh hội đồng phải nhập viện, để lại sang chấn tâm lý lâu dài.",
+    q7_2: "Trong trường em, nhà trường đã tổ chức các buổi tuyên truyền chống bạo lực, giúp các bạn hiểu được hậu quả nghiêm trọng.",
+    q7_3: "Nhiều quốc gia đã ban hành luật chống bắt nạt học đường, cho thấy đây là vấn đề toàn cầu cần giải quyết quyết liệt.",
+    q8: "Có người cho rằng bạo lực học đường chỉ là chuyện trẻ con, nhưng thực tế hậu quả của nó rất nghiêm trọng và lâu dài đối với cả nạn nhân lẫn người gây bạo lực.",
+    q9: "Bạo lực học đường thực sự là vấn đề nhức nhối vì nó ảnh hưởng trực tiếp đến sự phát triển và tương lai của học sinh.",
+    q10_1: "Mỗi học sinh cần nói không với bạo lực, biết bảo vệ bản thân và báo cho thầy cô khi bị bắt nạt.",
+    q10_2: "Luôn đối xử tốt với bạn bè, lên tiếng khi thấy bất công và tham gia các hoạt động phòng chống bạo lực học đường.",
   },
 
-  // ---- Topic 3 ----
-  "Lòng yêu nước được thể hiện qua những hành động nhỏ hằng ngày": {
-    q1: "Vấn đề bàn luận: lòng yêu nước không chỉ thể hiện ở những việc lớn lao mà còn qua hành động nhỏ hằng ngày.",
-    q2: "Lòng yêu nước hoàn toàn có thể được thể hiện qua những hành động nhỏ, bình dị trong cuộc sống hằng ngày.",
-    q3: "Lòng yêu nước là tình cảm gắn bó, yêu thương, tự hào và sẵn sàng cống hiến cho quê hương, đất nước.",
-    q4: "Khẳng định yêu nước không phải khái niệm xa vời mà rất gần gũi, thiết thực trong đời sống hằng ngày.",
-    q5_1: "Yêu nước ở thời bình không cần phải ra chiến trường mà thể hiện qua trách nhiệm với cộng đồng, xã hội mỗi ngày.",
-    q5_2: "Những hành động nhỏ khi được tích lũy sẽ tạo nên sức mạnh lớn, góp phần xây dựng đất nước giàu mạnh.",
-    q6_1: "Học tập chăm chỉ, lao động cần cù chính là cách xây dựng bản thân, đóng góp cho sự phát triển của đất nước.",
-    q6_2: "Giữ gìn vệ sinh nơi công cộng, tôn trọng pháp luật, sống có trách nhiệm đều là biểu hiện của lòng yêu nước.",
-    q7_1: "Học sinh chăm chỉ học tập, đạt thành tích cao trong các kì thi quốc tế, mang vinh quang về cho Tổ quốc.",
-    q7_2: "Người nông dân cần cù lao động, sản xuất nông sản chất lượng, góp phần phát triển kinh tế đất nước.",
-    q7_3: "Mỗi người ý thức giữ gìn vệ sinh đường phố, không xả rác bừa bãi, góp phần xây dựng hình ảnh đẹp của đất nước.",
-    q8: "Có người cho rằng yêu nước phải là những hành động lớn lao, nhưng thực tế mỗi hành động nhỏ đều có giá trị khi xuất phát từ tấm lòng chân thành.",
-    q9: "Khi mỗi người thể hiện lòng yêu nước qua hành động cụ thể, đất nước sẽ ngày càng phát triển, văn minh hơn.",
-    q10_1: "Học tập tốt, rèn luyện đạo đức, sống có trách nhiệm với bản thân và cộng đồng.",
-    q10_2: "Tìm hiểu và giữ gìn truyền thống, văn hóa dân tộc, lan tỏa hình ảnh đẹp của Việt Nam.",
+  // ---- 3. Gian lận thi cử ----
+  [topics[2]]: {
+    q1: "Hiện tượng gian lận trong thi cử ở trường học hiện nay.",
+    q2: "Tán thành. Vì gian lận thi cử là hành vi thiếu trung thực, làm mất công bằng trong giáo dục.",
+    q3: "Gian lận thi cử là hành vi quay cóp, chép bài, sử dụng tài liệu trái phép trong kiểm tra. Ý kiến khẳng định đây là hành vi đáng bị phê phán.",
+    q4: "Khẳng định gian lận thi cử là hành vi vi phạm đạo đức, phá hoại sự công bằng và giá trị thực của giáo dục.",
+    q5_1: "Gian lận thi cử làm mất đi sự công bằng, người học thật bị thiệt thòi.",
+    q5_2: "Gian lận khiến học sinh không có kiến thức thực, ảnh hưởng đến tương lai.",
+    q6_1: "Khi gian lận trở thành thói quen, học sinh sẽ mất dần năng lực tự học và khả năng tư duy sáng tạo.",
+    q6_2: "Nếu xã hội chấp nhận gian lận, giá trị của bằng cấp sẽ bị giảm sút, ảnh hưởng đến chất lượng nguồn nhân lực.",
+    q7_1: "Nhiều vụ gian lận thi THPT Quốc gia bị phát hiện gây chấn động dư luận, những người liên quan bị xử lý nghiêm.",
+    q7_2: "Trong lớp em, những bạn quay cóp dù được điểm cao nhưng không hiểu bài, khi kiểm tra miệng lại không trả lời được.",
+    q7_3: "Nhiều nước trên thế giới xử lý rất nghiêm hành vi gian lận thi cử, thậm chí cấm thi vĩnh viễn.",
+    q8: "Có người cho rằng gian lận chỉ là lỗi nhỏ, ai cũng có thể mắc phải, nhưng thực tế nó phản ánh sự thiếu trung thực trong nhân cách và gây hậu quả lâu dài.",
+    q9: "Gian lận thi cử đúng là hành vi đáng lên án vì nó phá hoại sự công bằng và làm mất giá trị thực của giáo dục.",
+    q10_1: "Học sinh cần tự giác học bài, trung thực trong kiểm tra, làm bài bằng năng lực thật của mình.",
+    q10_2: "Nhắc nhở bạn bè không gian lận và ủng hộ các biện pháp chống gian lận của nhà trường.",
   },
 
-  // ---- Topic 4 ----
-  "Sự đoàn kết trong cộng đồng giúp vượt qua mọi khó khăn": {
-    q1: "Vấn đề bàn luận: sức mạnh của sự đoàn kết trong cộng đồng khi đối mặt với khó khăn.",
-    q2: "Sự đoàn kết chính là sức mạnh to lớn giúp cộng đồng vượt qua mọi thử thách, khó khăn trong cuộc sống.",
-    q3: "Đoàn kết là sự gắn bó, đồng lòng, chung sức của mọi người trong cộng đồng cùng hướng tới mục tiêu chung.",
-    q4: "Khẳng định đoàn kết là sức mạnh vô địch, là yếu tố quyết định giúp cộng đồng vượt qua nghịch cảnh.",
-    q5_1: "Khi đoàn kết, mỗi cá nhân đều đóng góp một phần sức lực, tạo nên nguồn lực lớn gấp nhiều lần.",
-    q5_2: "Tinh thần đoàn kết tạo niềm tin, sự động viên lẫn nhau, giúp mọi người không nản chí trước khó khăn.",
-    q6_1: "Một cá nhân đơn lẻ khó vượt qua thử thách lớn, nhưng khi cả cộng đồng chung tay, không khó khăn nào là không thể vượt qua.",
-    q6_2: "Lịch sử dân tộc Việt Nam đã chứng minh đoàn kết là truyền thống quý báu giúp đất nước chiến thắng mọi kẻ thù.",
-    q7_1: "Người dân miền Trung đoàn kết giúp nhau vượt qua bão lũ, chia sẻ lương thực, nơi ở trong những ngày gian khó.",
-    q7_2: "Trong đại dịch COVID-19, cả nước đồng lòng thực hiện giãn cách, quyên góp cho quỹ vaccine, hỗ trợ tuyến đầu chống dịch.",
-    q7_3: "Cây ATM gạo, siêu thị 0 đồng ra đời trong mùa dịch, thể hiện tinh thần đoàn kết, sẻ chia của cộng đồng.",
-    q8: "Có người cho rằng trong xã hội hiện đại, mỗi người tự lo cho mình là đủ, nhưng thực tế cho thấy không ai có thể sống tách biệt khỏi cộng đồng.",
-    q9: "Đoàn kết không chỉ giúp vượt qua khó khăn mà còn tạo nên sức mạnh xây dựng cộng đồng phát triển bền vững.",
-    q10_1: "Tích cực tham gia các hoạt động tập thể, sẵn sàng giúp đỡ những người xung quanh khi gặp khó khăn.",
-    q10_2: "Xây dựng tinh thần đoàn kết ngay từ trong gia đình, lớp học, khu phố bằng sự tôn trọng và yêu thương lẫn nhau.",
+  // ---- 4. Lãng phí thức ăn ----
+  [topics[3]]: {
+    q1: "Hiện tượng lãng phí thức ăn trong xã hội hiện nay.",
+    q2: "Tán thành. Vì lãng phí thức ăn không chỉ ảnh hưởng kinh tế mà còn tác động xấu đến môi trường.",
+    q3: "Lãng phí thức ăn là việc vứt bỏ thực phẩm còn ăn được, mua quá nhiều không dùng hết. Ý kiến khẳng định đây là vấn đề nghiêm trọng cần được quan tâm.",
+    q4: "Khẳng định lãng phí thức ăn là vấn đề đáng báo động, ảnh hưởng đến kinh tế, xã hội và môi trường.",
+    q5_1: "Lãng phí thức ăn gây thiệt hại kinh tế lớn trong khi nhiều người vẫn đang thiếu ăn.",
+    q5_2: "Thức ăn thừa gây ô nhiễm môi trường, phát thải khí nhà kính khi phân hủy.",
+    q6_1: "Sản xuất thực phẩm tiêu tốn rất nhiều tài nguyên (nước, đất, năng lượng), lãng phí thức ăn tức là lãng phí tất cả những tài nguyên đó.",
+    q6_2: "Khi lãng phí thức ăn trở thành thói quen, con người mất đi ý thức trân trọng giá trị lao động và tài nguyên thiên nhiên.",
+    q7_1: "Theo FAO, mỗi năm thế giới lãng phí khoảng 1.3 tỷ tấn thức ăn, trong khi hàng triệu người chết vì đói.",
+    q7_2: "Ở căng tin trường em, nhiều bạn lấy nhiều cơm nhưng ăn không hết rồi đổ đi, rất lãng phí.",
+    q7_3: "Nhiều nhà hàng, tiệc cưới ở Việt Nam thường thừa rất nhiều thức ăn, phần lớn bị vứt bỏ.",
+    q8: "Có người cho rằng lãng phí thức ăn là chuyện nhỏ, nhưng khi nhìn vào con số thống kê toàn cầu, đây thực sự là vấn đề rất nghiêm trọng.",
+    q9: "Lãng phí thức ăn thực sự là vấn đề đáng báo động vì nó ảnh hưởng đến cả kinh tế, xã hội và môi trường.",
+    q10_1: "Mỗi người cần lấy thức ăn vừa đủ, bảo quản thực phẩm đúng cách, ăn hết phần cơm của mình.",
+    q10_2: "Nhắc nhở gia đình không mua quá nhiều đồ ăn và tham gia các chương trình chia sẻ thực phẩm cho người nghèo.",
   },
 
-  // ---- Topic 5 ----
-  "Giữ gìn bản sắc văn hóa dân tộc trong thời kì hội nhập": {
-    q1: "Vấn đề bàn luận: tầm quan trọng của việc giữ gìn bản sắc văn hóa dân tộc trong bối cảnh hội nhập quốc tế.",
-    q2: "Giữ gìn bản sắc văn hóa dân tộc là điều vô cùng cần thiết, nhất là trong thời kì hội nhập toàn cầu.",
-    q3: "Bản sắc văn hóa dân tộc là những giá trị đặc trưng về phong tục, tập quán, ngôn ngữ, nghệ thuật, lối sống riêng của mỗi dân tộc.",
-    q4: "Khẳng định bản sắc văn hóa là linh hồn của dân tộc, mất bản sắc là mất đi chính mình.",
-    q5_1: "Bản sắc văn hóa là nền tảng tinh thần, là sợi dây gắn kết các thế hệ và tạo nên sức mạnh nội sinh cho dân tộc.",
-    q5_2: "Trong hội nhập, nếu không giữ gìn bản sắc, ta dễ bị hòa tan, đánh mất những giá trị truyền thống quý báu.",
-    q6_1: "Văn hóa dân tộc là \"căn cước\" để thế giới nhận biết và tôn trọng mỗi quốc gia, mỗi dân tộc.",
-    q6_2: "Giữ gìn bản sắc không có nghĩa là đóng cửa mà là tiếp thu có chọn lọc tinh hoa văn hóa nhân loại trên nền tảng truyền thống.",
-    q7_1: "Áo dài Việt Nam được thế giới yêu thích và ngưỡng mộ, trở thành biểu tượng văn hóa đặc trưng của Việt Nam.",
-    q7_2: "Nhiều bạn trẻ tự hào quảng bá ẩm thực Việt Nam ra thế giới như phở, bánh mì, bún chả.",
-    q7_3: "Lễ hội truyền thống như Tết Nguyên đán, Hội Gióng, Lễ hội đền Hùng vẫn được duy trì và phát huy giá trị.",
-    q8: "Có người cho rằng hội nhập thì cần hiện đại hóa hoàn toàn, nhưng một quốc gia mạnh phải biết kết hợp hài hòa giữa truyền thống và hiện đại.",
-    q9: "Giữ gìn bản sắc văn hóa là gìn giữ cội nguồn, tạo nền tảng vững chắc cho sự phát triển bền vững của đất nước.",
-    q10_1: "Tìm hiểu, học hỏi về phong tục, tập quán, lịch sử, văn hóa dân tộc qua sách vở, bảo tàng, di tích.",
-    q10_2: "Tích cực tham gia và quảng bá các hoạt động văn hóa truyền thống tại trường học và địa phương.",
+  // ---- 5. Đọc sách bị thay thế ----
+  [topics[4]]: {
+    q1: "Hiện tượng thói quen đọc sách đang bị thay thế bởi thiết bị điện tử.",
+    q2: "Tán thành. Vì ngày càng nhiều người, đặc biệt là giới trẻ, dành thời gian cho điện thoại thay vì đọc sách.",
+    q3: "Hiện tượng này là việc sách giấy mất dần vị trí khi con người chuyển sang đọc trên điện thoại, máy tính. Ý kiến cảnh báo về sự suy giảm của văn hóa đọc truyền thống.",
+    q4: "Khẳng định thói quen đọc sách đang bị đe dọa nghiêm trọng bởi sự phát triển của thiết bị điện tử.",
+    q5_1: "Thiết bị điện tử với nội dung giải trí hấp dẫn khiến giới trẻ không còn kiên nhẫn đọc sách.",
+    q5_2: "Việc bỏ đọc sách khiến khả năng tư duy sâu, vốn từ và trí tưởng tượng của giới trẻ bị hạn chế.",
+    q6_1: "Đọc sách rèn luyện khả năng tập trung và tư duy logic, trong khi lướt mạng chỉ cung cấp thông tin rời rạc, nông cạn.",
+    q6_2: "Sách mang lại kiến thức có hệ thống, chiều sâu, giúp phát triển nhân cách và trí tuệ toàn diện hơn các nội dung số.",
+    q7_1: "Khảo sát cho thấy người Việt Nam đọc trung bình chưa đến 1 cuốn sách/năm, trong khi dùng điện thoại 3-4 giờ/ngày.",
+    q7_2: "Trong lớp em, rất ít bạn có thói quen đọc sách, đa số dùng giờ rảnh để xem video trên điện thoại.",
+    q7_3: "Nhiều quốc gia phát triển như Nhật Bản, Hàn Quốc có chương trình khuyến đọc mạnh mẽ vì họ hiểu giá trị của việc đọc sách.",
+    q8: "Có người cho rằng sách điện tử cũng là đọc sách, nhưng vấn đề là giới trẻ dùng thiết bị điện tử chủ yếu để giải trí, mạng xã hội chứ không phải đọc sách.",
+    q9: "Đọc sách đúng là đang bị thay thế bởi thiết bị điện tử, đây là thực trạng đáng lo ngại cần được khắc phục.",
+    q10_1: "Học sinh cần dành ít nhất 15-30 phút mỗi ngày để đọc sách, xây dựng thói quen đọc trước khi ngủ.",
+    q10_2: "Giảm thời gian dùng điện thoại cho giải trí và tham gia các câu lạc bộ đọc sách tại trường.",
   },
 
-  // ---- Topic 6 ----
-  "Vai trò của thế hệ trẻ trong việc xây dựng đất nước": {
-    q1: "Vấn đề bàn luận: vai trò quan trọng của thế hệ trẻ trong sự nghiệp xây dựng và phát triển đất nước.",
-    q2: "Thế hệ trẻ đóng vai trò vô cùng quan trọng, là lực lượng nòng cốt trong việc xây dựng đất nước.",
-    q3: "Thế hệ trẻ là những người trẻ tuổi, đang trong độ tuổi học tập, lao động, có sức khỏe, tri thức và khát vọng cống hiến.",
-    q4: "Khẳng định thế hệ trẻ là tương lai của đất nước, là nhân tố quyết định vận mệnh và sự phát triển của dân tộc.",
-    q5_1: "Thế hệ trẻ có sức khỏe, trí tuệ, sự năng động và khả năng tiếp thu nhanh những kiến thức, công nghệ mới.",
-    q5_2: "Đất nước đang trong thời kì đổi mới và hội nhập, cần sức trẻ để đưa đất nước phát triển ngang tầm quốc tế.",
-    q6_1: "Thanh niên là người tiếp nối sự nghiệp của các thế hệ đi trước, nắm trong tay tương lai của đất nước.",
-    q6_2: "Với tri thức và công nghệ, thế hệ trẻ có thể tạo ra những đột phá trong kinh tế, khoa học, văn hóa, xã hội.",
-    q7_1: "Nhiều bạn trẻ Việt Nam đạt giải cao tại các kì thi Olympic quốc tế về Toán, Vật lí, Tin học.",
-    q7_2: "Các bạn trẻ khởi nghiệp thành công, tạo ra sản phẩm công nghệ \"Made in Vietnam\" vươn ra thế giới.",
-    q7_3: "Chủ tịch Hồ Chí Minh từng nói: \"Non sông Việt Nam có trở nên tươi đẹp hay không, dân tộc Việt Nam có bước tới đài vinh quang để sánh vai với các cường quốc năm châu được hay không, chính là nhờ một phần lớn ở công học tập của các em.\"",
-    q8: "Có người cho rằng thế hệ trẻ ngày nay chỉ biết hưởng thụ, nhưng thực tế có rất nhiều bạn trẻ tài năng, tâm huyết đang cống hiến cho đất nước.",
-    q9: "Nhận thức vai trò của mình, thế hệ trẻ sẽ có ý thức hơn trong học tập, rèn luyện để trở thành công dân có ích.",
-    q10_1: "Ra sức học tập, rèn luyện đạo đức, bồi dưỡng tài năng để trở thành người có ích cho xã hội.",
-    q10_2: "Tham gia các hoạt động xã hội, đoàn thể, sẵn sàng đóng góp sức trẻ cho sự phát triển của đất nước.",
+  // ---- 6. Nói tục chửi thề ----
+  [topics[5]]: {
+    q1: "Hiện tượng nói tục chửi thề trong giới trẻ hiện nay.",
+    q2: "Tán thành. Vì nói tục chửi thề thể hiện sự thiếu văn hóa và đang trở nên đáng báo động.",
+    q3: "Nói tục chửi thề là sử dụng những lời lẽ thô tục, thiếu văn hóa trong giao tiếp. Ý kiến khẳng định hiện tượng này ngày càng phổ biến và đáng lo ngại.",
+    q4: "Khẳng định nói tục chửi thề đang trở thành thói quen xấu phổ biến trong giới trẻ, ảnh hưởng đến văn hóa ứng xử.",
+    q5_1: "Nói tục chửi thề làm xấu đi hình ảnh bản thân, mất đi sự tôn trọng của người khác.",
+    q5_2: "Khi nói tục trở thành thói quen, nó ảnh hưởng đến nhân cách và khả năng giao tiếp văn minh.",
+    q6_1: "Ngôn ngữ phản ánh trình độ văn hóa và nhân cách con người, nói tục chửi thề cho thấy sự xuống cấp về đạo đức.",
+    q6_2: "Thói quen nói tục dễ lây lan trong tập thể, tạo môi trường giao tiếp thiếu lành mạnh, ảnh hưởng đến mọi người xung quanh.",
+    q7_1: "Trên mạng xã hội, nhiều video của giới trẻ chứa đầy lời tục tĩu lại được nhiều lượt xem, tạo xu hướng xấu.",
+    q7_2: "Trong sân trường, em thường nghe các bạn nói tục như một thói quen, kể cả trước mặt thầy cô.",
+    q7_3: "Nhiều công ty từ chối tuyển dụng ứng viên có cách nói chuyện thiếu lịch sự, cho thấy tác hại lâu dài của thói quen này.",
+    q8: "Có người cho rằng nói tục chỉ là cách thể hiện cảm xúc, nhưng thực tế có rất nhiều cách diễn đạt văn minh hơn mà không cần dùng lời tục.",
+    q9: "Nói tục chửi thề thực sự là hiện tượng đáng lo ngại vì nó phản ánh sự xuống cấp về văn hóa ứng xử của giới trẻ.",
+    q10_1: "Học sinh cần ý thức sử dụng lời nói văn minh, lịch sự trong mọi tình huống giao tiếp.",
+    q10_2: "Không nói tục và nhắc nhở bạn bè cùng sử dụng ngôn ngữ đẹp, tham gia các hoạt động rèn luyện kỹ năng giao tiếp.",
   },
 
-  // ---- Topic 7 ----
-  "Tinh thần tương thân tương ái là truyền thống quý báu của dân tộc Việt Nam": {
-    q1: "Vấn đề bàn luận: giá trị truyền thống tương thân tương ái của dân tộc Việt Nam.",
-    q2: "Tương thân tương ái là truyền thống vô cùng quý báu, cần được gìn giữ và phát huy trong đời sống.",
-    q3: "Tương thân tương ái là tinh thần yêu thương, đùm bọc, giúp đỡ lẫn nhau, nhất là trong lúc khó khăn, hoạn nạn.",
-    q4: "Khẳng định tương thân tương ái là truyền thống tốt đẹp, là sức mạnh tinh thần to lớn của dân tộc Việt Nam.",
-    q5_1: "Truyền thống này được hình thành từ lịch sử hàng nghìn năm đấu tranh với thiên tai, địch họa của dân tộc ta.",
-    q5_2: "Tương thân tương ái giúp gắn kết cộng đồng, tạo nên sức mạnh đoàn kết vượt qua mọi gian khó.",
-    q6_1: "Con người không thể sống một mình, tinh thần giúp đỡ lẫn nhau giúp xã hội ấm áp, nhân văn hơn.",
-    q6_2: "Khi giúp đỡ người khác, bản thân ta cũng nhận được niềm vui, sự thanh thản và ý nghĩa cuộc sống.",
-    q7_1: "Ca dao \"Lá lành đùm lá rách\" phản ánh truyền thống giúp đỡ nhau từ xa xưa của người Việt Nam.",
-    q7_2: "Phong trào \"Tết vì người nghèo\" mỗi dịp Tết Nguyên đán quyên góp hàng tỉ đồng giúp đỡ những hoàn cảnh khó khăn.",
-    q7_3: "Trong đại dịch COVID-19, hàng triệu suất cơm miễn phí, ATM gạo, siêu thị 0 đồng đã giúp đỡ người lao động nghèo.",
-    q8: "Có người lợi dụng lòng tốt để trục lợi, nhưng điều đó không làm mất đi giá trị cao đẹp của truyền thống tương thân tương ái.",
-    q9: "Tương thân tương ái giúp xã hội bớt đi nỗi đau, thêm niềm vui, xây dựng một cộng đồng nhân ái, văn minh.",
-    q10_1: "Sẵn sàng giúp đỡ bạn bè, người thân và những người xung quanh khi họ gặp khó khăn.",
-    q10_2: "Tham gia các hoạt động từ thiện, quyên góp ủng hộ đồng bào vùng thiên tai, người có hoàn cảnh khó khăn.",
+  // ---- 7. Sống ảo ----
+  [topics[6]]: {
+    q1: "Hiện tượng sống ảo trên mạng xã hội trong giới trẻ hiện nay.",
+    q2: "Tán thành. Vì sống ảo khiến con người đánh mất giá trị thực và chạy theo những điều không có thật.",
+    q3: "Sống ảo là tạo hình ảnh không thật về bản thân trên mạng xã hội để nhận được sự ngưỡng mộ. Ý kiến khẳng định hiện tượng này đang làm méo mó giá trị thực.",
+    q4: "Khẳng định sống ảo đang khiến con người đánh mất bản thân, chạy theo hào nhoáng bên ngoài thay vì phát triển giá trị thực.",
+    q5_1: "Sống ảo khiến con người tốn thời gian, tiền bạc để tạo hình ảnh giả tạo thay vì phát triển bản thân.",
+    q5_2: "Sống ảo tạo áp lực so sánh, khiến nhiều người tự ti, trầm cảm khi thấy cuộc sống người khác \"hoàn hảo\".",
+    q6_1: "Khi chạy theo lượt like và follow, con người dần đánh mất bản sắc cá nhân, sống theo kỳ vọng của người khác.",
+    q6_2: "Sống ảo tạo ra một thế giới giả tạo, khiến con người không còn biết trân trọng những giá trị thực của cuộc sống.",
+    q7_1: "Nhiều bạn trẻ vay tiền mua đồ hiệu, thuê xe sang chỉ để chụp ảnh đăng mạng xã hội khoe khoang.",
+    q7_2: "Nghiên cứu cho thấy việc thường xuyên so sánh bản thân với hình ảnh hoàn hảo trên Instagram làm tăng tỷ lệ trầm cảm ở giới trẻ.",
+    q7_3: "Nhiều \"influencer\" bị phanh phui cuộc sống sang chảnh trên mạng chỉ là dàn dựng, gây mất niềm tin trong cộng đồng.",
+    q8: "Có người cho rằng mạng xã hội là nơi thể hiện cá tính, nhưng thể hiện cá tính thật khác với tạo dựng hình ảnh giả tạo để đánh lừa người khác.",
+    q9: "Sống ảo thực sự đang làm méo mó giá trị cuộc sống vì nó khiến con người chạy theo hào nhoáng bên ngoài mà quên đi giá trị bên trong.",
+    q10_1: "Mỗi người cần sống thật với chính mình, trân trọng giá trị thực và không chạy theo lượt like.",
+    q10_2: "Sử dụng mạng xã hội một cách lành mạnh, chia sẻ những điều tích cực và phát triển bản thân trong đời thực.",
   },
 
-  // ---- Topic 8 ----
-  "Ý thức chấp hành pháp luật là biểu hiện của công dân có trách nhiệm": {
-    q1: "Vấn đề bàn luận: mối quan hệ giữa ý thức chấp hành pháp luật và trách nhiệm công dân.",
-    q2: "Chấp hành pháp luật là biểu hiện rõ ràng nhất của một công dân có ý thức, có trách nhiệm với cộng đồng và đất nước.",
-    q3: "Ý thức chấp hành pháp luật là sự tự giác tuân thủ các quy định của pháp luật trong mọi hoạt động, mọi lĩnh vực đời sống.",
-    q4: "Khẳng định người có ý thức chấp hành pháp luật là người biết sống có trách nhiệm, góp phần xây dựng xã hội trật tự, công bằng.",
-    q5_1: "Pháp luật là công cụ bảo vệ quyền lợi chính đáng của mỗi người, chấp hành pháp luật chính là bảo vệ quyền lợi của bản thân.",
-    q5_2: "Khi mọi người đều chấp hành pháp luật, xã hội sẽ có trật tự, kỉ cương, tạo môi trường sống an toàn, lành mạnh.",
-    q6_1: "Pháp luật được xây dựng trên nền tảng đạo đức và lợi ích chung, nên chấp hành pháp luật cũng là hành động đúng đắn về mặt đạo đức.",
-    q6_2: "Nếu mỗi người đều tự ý làm theo ý mình, bất chấp pháp luật, xã hội sẽ rối loạn, mất trật tự, ai cũng bị ảnh hưởng.",
-    q7_1: "Chấp hành luật giao thông: đội mũ bảo hiểm, dừng đèn đỏ giúp giảm tai nạn, bảo vệ tính mạng con người.",
-    q7_2: "Việc nộp thuế đầy đủ, đúng hạn giúp nhà nước có ngân sách đầu tư cho giáo dục, y tế, an sinh xã hội.",
-    q7_3: "Nhiều bạn trẻ vi phạm luật an toàn giao thông (phóng nhanh, vượt ẩu) đã gây ra hậu quả đau lòng cho bản thân và gia đình.",
-    q8: "Có người cho rằng pháp luật quá cứng nhắc, hạn chế tự do, nhưng thực tế pháp luật bảo vệ tự do chính đáng và giữ gìn trật tự xã hội.",
-    q9: "Ý thức chấp hành pháp luật giúp xây dựng xã hội công bằng, văn minh, nơi mọi người được bảo vệ quyền lợi chính đáng.",
-    q10_1: "Chủ động tìm hiểu các quy định pháp luật liên quan đến đời sống hằng ngày, nhất là luật giao thông, an ninh mạng.",
-    q10_2: "Gương mẫu chấp hành pháp luật và nhắc nhở người thân, bạn bè cùng thực hiện.",
+  // ---- 8. Xả rác bừa bãi ----
+  [topics[7]]: {
+    q1: "Hiện tượng xả rác bừa bãi gây ô nhiễm môi trường sống.",
+    q2: "Tán thành. Vì xả rác bừa bãi gây ô nhiễm nghiêm trọng và ảnh hưởng đến sức khỏe con người.",
+    q3: "Xả rác bừa bãi là vứt rác không đúng nơi quy định, gây mất vệ sinh. Ý kiến khẳng định thói quen này đang hủy hoại môi trường sống của chúng ta.",
+    q4: "Khẳng định xả rác bừa bãi là thói quen xấu cần phải loại bỏ, vì nó đang hủy hoại môi trường sống của con người.",
+    q5_1: "Rác thải gây ô nhiễm nguồn nước, đất đai, không khí, ảnh hưởng trực tiếp đến sức khỏe.",
+    q5_2: "Rác nhựa cần hàng trăm năm để phân hủy, gây hại cho động vật và hệ sinh thái.",
+    q6_1: "Xả rác bừa bãi gây ngập úng khi tắc cống thoát nước, tạo điều kiện cho muỗi và côn trùng gây bệnh phát triển.",
+    q6_2: "Khi mỗi người đều xả rác bừa bãi, hậu quả tích tụ sẽ tạo ra ô nhiễm trên diện rộng, ảnh hưởng đến toàn cộng đồng.",
+    q7_1: "Nhiều bãi biển đẹp của Việt Nam ngập trong rác sau mỗi kỳ nghỉ lễ, gây phản cảm với du khách quốc tế.",
+    q7_2: "Trong khu phố em, có người xả rác xuống kênh rạch gây tắc nghẽn dòng chảy, mỗi khi mưa là ngập lụt.",
+    q7_3: "Hình ảnh rùa biển chết vì nuốt phải túi nilon, cá voi mắc kẹt trong rác thải nhựa gây chấn động thế giới.",
+    q8: "Có người cho rằng xả rác chỉ là hành vi nhỏ, không ảnh hưởng gì, nhưng thực tế nếu triệu người cùng xả rác, hậu quả sẽ vô cùng nghiêm trọng.",
+    q9: "Xả rác bừa bãi thực sự đang hủy hoại môi trường sống và nếu không thay đổi, hậu quả sẽ rất nghiêm trọng.",
+    q10_1: "Mỗi người cần bỏ rác đúng nơi quy định, phân loại rác và hạn chế dùng đồ nhựa.",
+    q10_2: "Luôn mang theo túi để đựng rác, tham gia dọn vệ sinh khu phố và tuyên truyền ý thức bảo vệ môi trường.",
   },
 
-  // ---- Topic 9 ----
-  "Sự sẻ chia trong cộng đồng giúp xã hội trở nên tốt đẹp hơn": {
-    q1: "Vấn đề bàn luận: vai trò của sự sẻ chia trong cộng đồng đối với việc xây dựng xã hội tốt đẹp.",
-    q2: "Sự sẻ chia trong cộng đồng thực sự là yếu tố quan trọng giúp xã hội ngày càng tốt đẹp, nhân văn hơn.",
-    q3: "Sẻ chia là biết quan tâm, giúp đỡ, đồng cảm với người khác, sẵn sàng cho đi cả về vật chất lẫn tinh thần.",
-    q4: "Khẳng định sự sẻ chia là chất keo gắn kết cộng đồng, giúp mọi người sống gần nhau hơn và xã hội tốt đẹp hơn.",
-    q5_1: "Khi sẻ chia, nỗi đau được chia bớt, niềm vui được nhân lên, cuộc sống trở nên có ý nghĩa hơn.",
-    q5_2: "Xã hội có sự sẻ chia sẽ giảm bớt bất bình đẳng, khoảng cách giàu nghèo, tạo nên sự hòa thuận, ấm áp.",
-    q6_1: "Con người là sinh vật xã hội, ai cũng cần sự quan tâm, giúp đỡ, nên sẻ chia là nhu cầu tất yếu của cuộc sống.",
-    q6_2: "Một xã hội thiếu sự sẻ chia sẽ trở nên lạnh lẽo, vô cảm, con người sống cô đơn và bất hạnh.",
-    q7_1: "Phong trào hiến máu nhân đạo \"Lễ hội Xuân hồng\" thu hút hàng triệu người tham gia, cứu sống nhiều bệnh nhân.",
-    q7_2: "Các quỹ học bổng dành cho học sinh nghèo hiếu học giúp nhiều em có cơ hội tiếp tục con đường học tập.",
-    q7_3: "Cộng đồng mạng quyên góp giúp đỡ những hoàn cảnh éo le, bệnh tật, thể hiện tinh thần sẻ chia mạnh mẽ.",
-    q8: "Có người cho rằng sẻ chia chỉ là cho đi, sẽ bị thiệt thòi, nhưng thực tế khi cho đi ta nhận lại niềm vui, sự kính trọng và tình yêu thương.",
-    q9: "Sự sẻ chia giúp xóa bỏ sự vô cảm, xây dựng một cộng đồng đầy tình người và sự nhân ái.",
-    q10_1: "Bắt đầu sẻ chia từ những điều nhỏ nhất: một lời động viên, một cử chỉ quan tâm với người xung quanh.",
-    q10_2: "Tham gia các hoạt động thiện nguyện, quyên góp, giúp đỡ cộng đồng do nhà trường và địa phương tổ chức.",
+  // ---- 9. Thiếu kỹ năng sống ----
+  [topics[8]]: {
+    q1: "Hiện tượng học sinh thiếu kỹ năng sống trong xã hội hiện nay.",
+    q2: "Tán thành. Vì nhiều học sinh giỏi kiến thức nhưng lại thiếu các kỹ năng cơ bản trong cuộc sống.",
+    q3: "Thiếu kỹ năng sống là tình trạng học sinh không biết tự chăm sóc bản thân, giao tiếp kém, không biết xử lý tình huống. Ý kiến khẳng định đây là vấn đề cần quan tâm.",
+    q4: "Khẳng định việc học sinh thiếu kỹ năng sống là hệ quả của nền giáo dục nặng về lý thuyết, cần được khắc phục.",
+    q5_1: "Thiếu kỹ năng sống khiến học sinh khó thích nghi với môi trường mới, dễ bị lôi kéo vào tệ nạn.",
+    q5_2: "Học sinh thiếu kỹ năng sống sẽ gặp khó khăn trong công việc và cuộc sống sau này.",
+    q6_1: "Nền giáo dục hiện tại quá tập trung vào điểm số, thi cử mà chưa chú trọng dạy kỹ năng sống cho học sinh.",
+    q6_2: "Nhiều phụ huynh bao bọc con quá mức, không cho con tự làm, khiến trẻ mất đi cơ hội rèn luyện kỹ năng.",
+    q7_1: "Nhiều sinh viên đại học không biết nấu cơm, giặt đồ hay quản lý chi tiêu khi sống xa gia đình.",
+    q7_2: "Trong lớp em, khi gặp xung đột, nhiều bạn không biết cách giải quyết mà chỉ biết cãi nhau hoặc khóc.",
+    q7_3: "Một số học sinh không biết cách tự bảo vệ bản thân trước những tình huống nguy hiểm như đuối nước, cháy nổ.",
+    q8: "Có người cho rằng kỹ năng sống sẽ tự có khi lớn lên, nhưng thực tế nếu không được rèn luyện từ nhỏ, nhiều kỹ năng sẽ rất khó hình thành.",
+    q9: "Thiếu kỹ năng sống thực sự là vấn đề đáng quan tâm vì kỹ năng sống quan trọng không kém kiến thức sách vở.",
+    q10_1: "Học sinh cần chủ động rèn luyện kỹ năng sống: tự lập, giao tiếp, làm việc nhóm, xử lý tình huống.",
+    q10_2: "Tự giác phụ việc nhà, tham gia hoạt động ngoại khóa và các khóa học kỹ năng sống do nhà trường tổ chức.",
   },
 
-  // ---- Topic 10 ----
-  "Bảo vệ chủ quyền lãnh thổ là trách nhiệm thiêng liêng của mỗi công dân": {
-    q1: "Vấn đề bàn luận: trách nhiệm thiêng liêng của mỗi công dân trong việc bảo vệ chủ quyền lãnh thổ.",
-    q2: "Bảo vệ chủ quyền lãnh thổ là trách nhiệm cao cả, thiêng liêng mà mỗi công dân Việt Nam cần ý thức và thực hiện.",
-    q3: "Chủ quyền lãnh thổ là quyền tối cao của một quốc gia đối với vùng đất, vùng biển, vùng trời thuộc về mình.",
-    q4: "Khẳng định bảo vệ chủ quyền lãnh thổ không chỉ là nhiệm vụ của quân đội mà là trách nhiệm của mỗi công dân.",
-    q5_1: "Lãnh thổ là nơi sinh sống, là quê hương, là Tổ quốc mà cha ông ta đã đổ xương máu để gìn giữ qua hàng nghìn năm.",
-    q5_2: "Trong bối cảnh quốc tế phức tạp, chủ quyền lãnh thổ luôn bị đe dọa, đòi hỏi mỗi công dân phải có ý thức bảo vệ.",
-    q6_1: "Mỗi tấc đất, mỗi vùng biển đều mang giá trị lịch sử, kinh tế, văn hóa và tâm linh của cả dân tộc.",
-    q6_2: "Khi mỗi công dân đều có ý thức bảo vệ chủ quyền, đất nước sẽ có sức mạnh tổng hợp to lớn trước mọi thách thức.",
-    q7_1: "Các chiến sĩ hải quân ngày đêm canh giữ biển đảo Trường Sa, Hoàng Sa, bảo vệ chủ quyền thiêng liêng của Tổ quốc.",
-    q7_2: "Ngư dân Việt Nam kiên cường bám biển, vừa mưu sinh vừa góp phần khẳng định chủ quyền biển đảo.",
-    q7_3: "Chương trình \"Vì Trường Sa thân yêu\" quyên góp hàng tỉ đồng hỗ trợ chiến sĩ và nhân dân trên các đảo tiền tiêu.",
-    q8: "Có người cho rằng bảo vệ chủ quyền chỉ là việc của nhà nước và quân đội, nhưng thực tế mỗi công dân đều có thể đóng góp bằng nhiều cách khác nhau.",
-    q9: "Ý thức bảo vệ chủ quyền lãnh thổ là thể hiện lòng yêu nước, giữ gìn thành quả mà cha ông đã gây dựng.",
-    q10_1: "Tìm hiểu lịch sử, pháp lí về chủ quyền biển đảo của Việt Nam; nắm vững kiến thức quốc phòng an ninh.",
-    q10_2: "Lan tỏa tình yêu biển đảo, quê hương qua các hoạt động tuyên truyền và ủng hộ lực lượng bảo vệ Tổ quốc.",
+  // ---- 10. Nghiện game online ----
+  [topics[9]]: {
+    q1: "Hiện tượng nghiện game online trong học sinh hiện nay.",
+    q2: "Tán thành. Vì nghiện game đang khiến nhiều học sinh sa sút học tập và sức khỏe giảm sút.",
+    q3: "Nghiện game online là tình trạng dành quá nhiều thời gian chơi game, không kiểm soát được bản thân. Ý kiến khẳng định đây là vấn đề ảnh hưởng nghiêm trọng đến học sinh.",
+    q4: "Khẳng định nghiện game online đang gây ra nhiều hệ lụy nghiêm trọng cho học tập, sức khỏe và tương lai của học sinh.",
+    q5_1: "Nghiện game khiến học sinh mất tập trung, bỏ học, kết quả sa sút nghiêm trọng.",
+    q5_2: "Chơi game quá nhiều ảnh hưởng sức khỏe: mắt kém, đau lưng, rối loạn giấc ngủ, béo phì.",
+    q6_1: "Game online được thiết kế để gây nghiện với hệ thống phần thưởng liên tục, khiến người chơi khó dừng lại.",
+    q6_2: "Nghiện game có thể dẫn đến bạo lực, vì nhiều game có nội dung đánh nhau, bắn giết ảnh hưởng đến tâm lý.",
+    q7_1: "Có học sinh chơi game liên tục 48 giờ phải nhập viện vì kiệt sức, nhiều em bỏ ăn bỏ học vì game.",
+    q7_2: "Trong lớp em, có bạn vì nghiện game mà thức khuya, đến lớp ngủ gật, từ học sinh khá xuống yếu.",
+    q7_3: "Nhiều gia đình tan vỡ hạnh phúc vì con cái nghiện game, trộm tiền cha mẹ để nạp game.",
+    q8: "Có người cho rằng game cũng rèn luyện trí tuệ, nhưng vấn đề nằm ở chỗ nghiện - tức là mất kiểm soát, dành quá nhiều thời gian cho game mà bỏ bê mọi thứ khác.",
+    q9: "Nghiện game online thực sự ảnh hưởng nghiêm trọng đến học sinh vì nó cướp đi thời gian, sức khỏe và tương lai.",
+    q10_1: "Học sinh cần tự giới hạn thời gian chơi game, ưu tiên học tập và vận động thể thao.",
+    q10_2: "Chỉ chơi game tối đa 30 phút/ngày vào cuối tuần sau khi hoàn thành bài tập, tìm kiếm các hoạt động giải trí lành mạnh thay thế.",
   },
 };
 
@@ -674,20 +543,20 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
 
 const generalHints: Record<string, string[]> = {
   moBai: [
-    "Giới thiệu vấn đề cần bàn luận một cách tự nhiên, hấp dẫn.",
-    "Nêu rõ ý kiến, quan điểm của bản thân về vấn đề.",
-    "Có thể mở bài bằng một câu danh ngôn, ca dao hoặc tình huống thực tế.",
+    "Giới thiệu vấn đề/hiện tượng đời sống cần bàn luận một cách tự nhiên, hấp dẫn.",
+    "Nêu rõ ý kiến, quan điểm của bản thân về hiện tượng đó.",
+    "Có thể mở bài bằng một câu hỏi, số liệu thống kê hoặc tình huống thực tế.",
     "Mở bài nên ngắn gọn, súc tích, khoảng 3-4 câu.",
   ],
   thanBai: [
-    "Giải thích rõ ràng thực chất của vấn đề được bàn luận.",
+    "Giải thích rõ ràng thực chất của hiện tượng đời sống được bàn luận.",
     "Nêu khẳng định và lí lẽ thuyết phục, có dẫn chứng cụ thể minh họa.",
     "Đưa ra ít nhất 2-3 ví dụ thực tế để chứng minh cho lập luận.",
     "Phản biện ý kiến trái chiều để bài viết thêm sâu sắc, toàn diện.",
     "Sắp xếp các luận điểm theo trình tự logic, mạch lạc.",
   ],
   ketBai: [
-    "Khẳng định lại ý nghĩa, giá trị của vấn đề đã bàn luận.",
+    "Khẳng định lại ý nghĩa, tác động của hiện tượng đã bàn luận.",
     "Nêu phương hướng hành động cụ thể, thiết thực cho bản thân và mọi người.",
     "Kết bài nên có sức gợi, để lại ấn tượng cho người đọc.",
     "Kết bài khoảng 3-4 câu, tránh lặp lại nguyên văn mở bài.",
@@ -786,7 +655,7 @@ function getWritingSections(slots: Record<string, string>): WritingSection[] {
       title: "MỞ BÀI",
       color: "blue",
       prompt:
-        "Viết phần mở bài: giới thiệu vấn đề cần bàn luận và nêu ý kiến của bản thân (khoảng 3-4 câu).",
+        "Viết phần mở bài: giới thiệu hiện tượng đời sống cần bàn luận và nêu ý kiến của bản thân (khoảng 3-4 câu).",
       hints: generalHints.moBai,
       outlineItems: [
         { label: "Giới thiệu vấn đề", value: slots.gioiThieu || "" },
@@ -798,7 +667,7 @@ function getWritingSections(slots: Record<string, string>): WritingSection[] {
       title: "THÂN BÀI – Giải thích & Khẳng định",
       color: "purple",
       prompt:
-        "Viết phần giải thích vấn đề và nêu khẳng định. Giải thích rõ các khái niệm, nội dung cốt lõi của vấn đề.",
+        "Viết phần giải thích hiện tượng và nêu khẳng định. Giải thích rõ các khái niệm, nội dung cốt lõi của vấn đề.",
       hints: [generalHints.thanBai[0], generalHints.thanBai[1]],
       outlineItems: [
         { label: "Giải thích", value: slots.giaiThich || "" },
