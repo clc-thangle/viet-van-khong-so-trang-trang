@@ -1,5 +1,5 @@
 import { Lightbulb } from "lucide-react";
-import { getWritingSections } from "../../../data/writingMapConstants";
+import type { WritingSection } from "../../../data/writingMapConstants";
 
 interface StepThreeViewProps {
   essayParagraphs: Record<string, string>;
@@ -9,7 +9,7 @@ interface StepThreeViewProps {
   updateParagraph: (key: string, value: string) => void;
   toggleWritingHint: (hintId: string) => void;
   getWordCount: (text: string) => number;
-  outlineSlots: Record<string, string>;
+  writingSections: WritingSection[];
 }
 
 const StepThreeView = ({
@@ -20,9 +20,8 @@ const StepThreeView = ({
   updateParagraph,
   toggleWritingHint,
   getWordCount,
-  outlineSlots,
+  writingSections,
 }: StepThreeViewProps) => {
-  const writingSections = getWritingSections(outlineSlots);
   const writingProgress = (filledParagraphs / totalParagraphs) * 100;
 
   return (
@@ -48,7 +47,7 @@ const StepThreeView = ({
       <div className="bg-amber-50 rounded-xl p-4 border border-amber-200">
         <p className="text-sm text-amber-800">
           <strong>💡 Hướng dẫn:</strong> Viết từng đoạn dựa vào dàn ý em
-          đã lập ở Bước 3. Mỗi đoạn hiển thị dàn ý tương ứng để em tham
+          đã lập ở bước trước. Mỗi đoạn hiển thị dàn ý tương ứng để em tham
           khảo.
         </p>
       </div>
@@ -79,7 +78,7 @@ const StepThreeView = ({
                 ? "bg-purple-50"
                 : "bg-orange-50";
 
-          const hasContent = essayParagraphs[section.key].trim() !== "";
+          const hasContent = (essayParagraphs[section.key] || "").trim() !== "";
 
           return (
             <div
@@ -155,7 +154,7 @@ const StepThreeView = ({
 
                 {/* Textarea */}
                 <textarea
-                  value={essayParagraphs[section.key]}
+                  value={essayParagraphs[section.key] || ""}
                   onChange={(e) =>
                     updateParagraph(section.key, e.target.value)
                   }
@@ -164,7 +163,7 @@ const StepThreeView = ({
                 />
 
                 {/* Word count */}
-                {essayParagraphs[section.key].trim() && (
+                {(essayParagraphs[section.key] || "").trim() && (
                   <p className="text-xs text-gray-400 text-right">
                     {getWordCount(essayParagraphs[section.key])} từ
                   </p>
@@ -182,30 +181,12 @@ const StepThreeView = ({
             📄 Xem trước bài viết
           </h4>
           <div className="bg-white rounded-lg p-4 border border-pink-100 prose prose-sm max-w-none">
-            {essayParagraphs.moBai.trim() && (
-              <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-                {essayParagraphs.moBai}
-              </p>
-            )}
-            {essayParagraphs.thanBai1.trim() && (
-              <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-                {essayParagraphs.thanBai1}
-              </p>
-            )}
-            {essayParagraphs.thanBai2.trim() && (
-              <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-                {essayParagraphs.thanBai2}
-              </p>
-            )}
-            {essayParagraphs.thanBai3.trim() && (
-              <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-                {essayParagraphs.thanBai3}
-              </p>
-            )}
-            {essayParagraphs.ketBai.trim() && (
-              <p className="text-gray-700 leading-relaxed indent-8">
-                {essayParagraphs.ketBai}
-              </p>
+            {writingSections.map((section) =>
+              (essayParagraphs[section.key] || "").trim() ? (
+                <p key={section.key} className="text-gray-700 leading-relaxed mb-3 indent-8">
+                  {essayParagraphs[section.key]}
+                </p>
+              ) : null
             )}
           </div>
           {filledParagraphs === totalParagraphs && (

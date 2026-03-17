@@ -59,7 +59,8 @@ const Home = () => {
 
         <div className="relative">
           <h1 className="text-3xl lg:text-5xl leading-normal font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100 animate-slide-up">
-            VIẾT VĂN KHÔNG SỢ TRẮNG TRANG
+            BẢN ĐỒ VIẾT BÀI VĂN SỐ - CÔNG CỤ HỖ TRỢ HỌC SINH THCS VIẾT VĂN KHÔNG
+            CÒN "TRẮNG TRANG"
           </h1>
           <p
             className="text-lg lg:text-xl text-blue-50 mb-6 leading-relaxed max-w-2xl animate-slide-up"

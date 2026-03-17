@@ -1,35 +1,5 @@
-import { type DragEvent, useState } from "react";
-
-interface OutlineSlots {
-  gioiThieu: string;
-  yKien: string;
-  thaiDo: string;
-  thucChat: string;
-  liLe1: string;
-  bangChung1: string;
-  liLe2: string;
-  bangChung2: string;
-  liLe3: string;
-  bangChung3: string;
-  khangDinh: string;
-  yNghia: string;
-}
-
-interface IdeaAnswers {
-  q1: string;
-  q2: string;
-  q3: string;
-  q4: string;
-  q5_1: string;
-  q5_2: string;
-  q5_3: string;
-  q6_1: string;
-  q6_2: string;
-  q6_3: string;
-  q7: string;
-  q8: string;
-  [key: string]: string;
-}
+import { type DragEvent, useState, useMemo, useEffect, useRef } from "react";
+import type { TimYQuestion, OutlineSectionConfig } from "../../../data/writingMapConstants";
 
 interface DragItem {
   id: string;
@@ -37,38 +7,66 @@ interface DragItem {
   value: string;
 }
 
-export const useStepTwo = (ideaAnswers: IdeaAnswers) => {
-  const [outlineSlots, setOutlineSlots] = useState<OutlineSlots>({
-    gioiThieu: "",
-    yKien: "",
-    thaiDo: "",
-    thucChat: "",
-    liLe1: "",
-    bangChung1: "",
-    liLe2: "",
-    bangChung2: "",
-    liLe3: "",
-    bangChung3: "",
-    khangDinh: "",
-    yNghia: "",
-  });
+export const useStepTwo = (
+  ideaAnswers: Record<string, string>,
+  timYQuestions: TimYQuestion[],
+  outlineSlotConfig: OutlineSectionConfig[]
+) => {
+  // Build initial slots from outline config
+  const initialSlots = useMemo(() => {
+    const slots: Record<string, string> = {};
+    for (const section of outlineSlotConfig) {
+      for (const item of section.items) {
+        slots[item.key] = "";
+      }
+      if (section.subSection) {
+        for (const row of section.subSection.rows) {
+          slots[row.liLe] = "";
+          slots[row.bangChung] = "";
+        }
+      }
+    }
+    return slots;
+  }, [outlineSlotConfig]);
+
+  const [outlineSlots, setOutlineSlots] = useState<Record<string, string>>(initialSlots);
   const [usedDragItems, setUsedDragItems] = useState<string[]>([]);
   const [selectedDragItem, setSelectedDragItem] = useState<DragItem | null>(null);
 
-  const outlineItems = [
-    { id: "q1", label: "Vấn đề bàn luận", value: ideaAnswers.q1 },
-    { id: "q2", label: "Ý kiến", value: ideaAnswers.q2 },
-    { id: "q3", label: "Thái độ của em", value: ideaAnswers.q3 },
-    { id: "q4", label: "Thực chất ý kiến", value: ideaAnswers.q4 },
-    { id: "q5_1", label: "Lí lẽ 1", value: ideaAnswers.q5_1 },
-    { id: "q5_2", label: "Lí lẽ 2", value: ideaAnswers.q5_2 },
-    { id: "q5_3", label: "Lí lẽ 3", value: ideaAnswers.q5_3 },
-    { id: "q6_1", label: "Bằng chứng 1", value: ideaAnswers.q6_1 },
-    { id: "q6_2", label: "Bằng chứng 2", value: ideaAnswers.q6_2 },
-    { id: "q6_3", label: "Bằng chứng 3", value: ideaAnswers.q6_3 },
-    { id: "q7", label: "Khẳng định", value: ideaAnswers.q7 },
-    { id: "q8", label: "Ý nghĩa", value: ideaAnswers.q8 },
-  ];
+  // Reset state when outlineSlotConfig changes (grade switch)
+  const prevConfigRef = useRef(outlineSlotConfig);
+  useEffect(() => {
+    if (prevConfigRef.current !== outlineSlotConfig) {
+      prevConfigRef.current = outlineSlotConfig;
+      setOutlineSlots(initialSlots);
+      setUsedDragItems([]);
+      setSelectedDragItem(null);
+    }
+  }, [outlineSlotConfig, initialSlots]);
+
+  // Build outline items from idea answers dynamically
+  const outlineItems = useMemo(() => {
+    const items: DragItem[] = [];
+    for (const q of timYQuestions) {
+      if (q.subInputs && q.subInputs > 0) {
+        for (let i = 1; i <= q.subInputs; i++) {
+          const key = `${q.id}_${i}`;
+          items.push({
+            id: key,
+            label: q.subLabels?.[i - 1] || `${q.label} ${i}`,
+            value: ideaAnswers[key] || "",
+          });
+        }
+      } else {
+        items.push({
+          id: q.id,
+          label: q.label,
+          value: ideaAnswers[q.id] || "",
+        });
+      }
+    }
+    return items;
+  }, [timYQuestions, ideaAnswers]);
 
   const availableItems = outlineItems.filter(
     (item) => !usedDragItems.includes(item.id)
@@ -89,7 +87,7 @@ export const useStepTwo = (ideaAnswers: IdeaAnswers) => {
     e.dataTransfer.dropEffect = "move";
   };
 
-  const handleDrop = (e: DragEvent<HTMLDivElement>, slotKey: keyof OutlineSlots) => {
+  const handleDrop = (e: DragEvent<HTMLDivElement>, slotKey: string) => {
     e.preventDefault();
     const data = e.dataTransfer.getData("application/json");
     if (!data) return;
@@ -109,7 +107,7 @@ export const useStepTwo = (ideaAnswers: IdeaAnswers) => {
     }
   };
 
-  const handleSlotClick = (slotKey: keyof OutlineSlots) => {
+  const handleSlotClick = (slotKey: string) => {
     if (selectedDragItem) {
       setOutlineSlots((prev) => ({
         ...prev,
@@ -124,13 +122,14 @@ export const useStepTwo = (ideaAnswers: IdeaAnswers) => {
     }
   };
 
-  const updateOutlineSlot = (slotKey: keyof OutlineSlots, value: string) => {
+  const updateOutlineSlot = (slotKey: string, value: string) => {
     setOutlineSlots((prev) => ({ ...prev, [slotKey]: value }));
   };
 
-  const isComplete = Object.values(outlineSlots).every(
-    (value) => value.trim() !== ""
-  );
+  const isComplete = (() => {
+    const values = Object.values(outlineSlots);
+    return values.length > 0 && values.every((value) => value.trim() !== "");
+  })();
 
   return {
     outlineSlots,

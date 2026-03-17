@@ -1,5 +1,5 @@
 import { type DragEvent } from "react";
-import { OUTLINE_SLOT_CONFIG } from "../../../data/writingMapConstants";
+import type { OutlineSectionConfig } from "../../../data/writingMapConstants";
 
 interface DragItem {
   id: string;
@@ -19,6 +19,7 @@ interface StepTwoViewProps {
   handleItemClick: (item: DragItem) => void;
   handleSlotClick: (slotKey: string) => void;
   updateOutlineSlot: (slotKey: string, value: string) => void;
+  outlineSlotConfig: OutlineSectionConfig[];
 }
 
 const StepTwoView = ({
@@ -33,11 +34,12 @@ const StepTwoView = ({
   handleItemClick,
   handleSlotClick,
   updateOutlineSlot,
+  outlineSlotConfig,
 }: StepTwoViewProps) => {
   const outlineProgress = (filledCount / totalSlots) * 100;
 
   const renderSlotInput = (slotKey: string, label: string) => {
-    const hasValue = outlineSlots[slotKey].trim() !== "";
+    const hasValue = (outlineSlots[slotKey] || "").trim() !== "";
     return (
       <div
         key={slotKey}
@@ -48,7 +50,7 @@ const StepTwoView = ({
       >
         <input
           type="text"
-          value={outlineSlots[slotKey]}
+          value={outlineSlots[slotKey] || ""}
           onChange={(e) => updateOutlineSlot(slotKey, e.target.value)}
           placeholder={
             selectedDragItem
@@ -132,7 +134,7 @@ const StepTwoView = ({
 
       {/* Khung dàn ý với input slots */}
       <div className="space-y-4">
-        {OUTLINE_SLOT_CONFIG.map((section) => (
+        {outlineSlotConfig.map((section) => (
           <div
             key={section.section}
             className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden shadow-sm"
@@ -199,8 +201,7 @@ const StepTwoView = ({
           <div className="text-4xl mb-2">🎯</div>
           <h4 className="text-xl font-bold mb-1">Dàn ý hoàn chỉnh!</h4>
           <p className="text-sm opacity-90">
-            Em đã sắp xếp xong tất cả các ý. Hãy chuyển sang bước Kiểm
-            tra!
+            Em đã sắp xếp xong tất cả các ý. Hãy chuyển sang bước tiếp theo!
           </p>
         </div>
       )}

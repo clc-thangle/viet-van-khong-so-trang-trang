@@ -1,10 +1,12 @@
-import { CHECKLIST_ITEMS } from "../../../data/writingMapConstants";
+import type { ChecklistItem, WritingSection } from "../../../data/writingMapConstants";
 
 interface StepFourViewProps {
   checklist: Record<string, boolean>;
   completedCount: number;
   toggleChecklist: (item: string) => void;
   essayParagraphs: Record<string, string>;
+  checklistItems: ChecklistItem[];
+  writingSections: WritingSection[];
 }
 
 const StepFourView = ({
@@ -12,57 +14,34 @@ const StepFourView = ({
   completedCount,
   toggleChecklist,
   essayParagraphs,
+  checklistItems,
+  writingSections,
 }: StepFourViewProps) => {
-  const progress = (completedCount / CHECKLIST_ITEMS.length) * 100;
+  const progress = (completedCount / checklistItems.length) * 100;
 
   return (
     <div className="space-y-6">
       {/* Bài viết để kiểm tra */}
       <div className="bg-gradient-to-br from-gray-50 to-slate-50 rounded-xl p-5 border border-gray-200">
-        <h4 className="font-bold text-gray-900 mb-3">
-          📄 Bài viết của em
-        </h4>
+        <h4 className="font-bold text-gray-900 mb-3">📄 Bài viết của em</h4>
         <div className="bg-white rounded-lg p-4 border border-gray-100 prose prose-sm max-w-none">
-          {essayParagraphs.moBai.trim() && (
-            <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-              {essayParagraphs.moBai}
-            </p>
-          )}
-          {essayParagraphs.thanBai1.trim() && (
-            <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-              {essayParagraphs.thanBai1}
-            </p>
-          )}
-          {essayParagraphs.thanBai2.trim() && (
-            <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-              {essayParagraphs.thanBai2}
-            </p>
-          )}
-          {essayParagraphs.thanBai3.trim() && (
-            <p className="text-gray-700 leading-relaxed mb-3 indent-8">
-              {essayParagraphs.thanBai3}
-            </p>
-          )}
-          {essayParagraphs.ketBai.trim() && (
-            <p className="text-gray-700 leading-relaxed indent-8">
-              {essayParagraphs.ketBai}
-            </p>
+          {writingSections.map((section) =>
+            (essayParagraphs[section.key] || "").trim() ? (
+              <p key={section.key} className="text-gray-700 leading-relaxed mb-3 indent-8">
+                {essayParagraphs[section.key]}
+              </p>
+            ) : null
           )}
         </div>
         <p className="text-xs text-gray-500 mt-2 text-right">
           Tổng: ~
-          {
-            Object.values(essayParagraphs).join(" ").trim().split(/\s+/)
-              .length
-          }{" "}
+          {Object.values(essayParagraphs).join(" ").trim().split(/\s+/).length}{" "}
           từ
         </p>
       </div>
 
       <div className="bg-gradient-to-br from-orange-50 to-yellow-50 rounded-xl p-6 border border-orange-200">
-        <h4 className="font-bold text-gray-900 mb-3">
-          📊 Tiến độ kiểm tra
-        </h4>
+        <h4 className="font-bold text-gray-900 mb-3">📊 Tiến độ kiểm tra</h4>
         <div className="relative w-full h-4 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="absolute top-0 left-0 h-full bg-gradient-to-r from-orange-500 to-yellow-500 transition-all duration-500"
@@ -70,16 +49,17 @@ const StepFourView = ({
           ></div>
         </div>
         <p className="text-sm text-gray-700 mt-2">
-          {completedCount}/{CHECKLIST_ITEMS.length} tiêu chí đã kiểm tra (
+          {completedCount}/{checklistItems.length} tiêu chí đã kiểm tra (
           {Math.round(progress)}%)
         </p>
       </div>
 
       <div className="space-y-4">
         <h3 className="text-lg font-bold text-gray-900">
-          ✅ Danh sách kiểm tra
+          ✅ Em hãy kiểm tra lại bài viết của mình, nếu chỗ nào chưa đạt thì
+          quay lại bước trước để bổ sung, chỉnh sửa
         </h3>
-        {CHECKLIST_ITEMS.map((item) => (
+        {checklistItems.map((item) => (
           <button
             key={item.key}
             onClick={() => toggleChecklist(item.key)}
@@ -114,24 +94,21 @@ const StepFourView = ({
                 )}
               </div>
               <div className="flex-1">
-                <h5 className="font-bold text-gray-900 mb-1">
-                  {item.label}
-                </h5>
-                <p className="text-sm text-gray-600">
-                  {item.description}
-                </p>
+                <h5 className="font-bold text-gray-900 mb-1">{item.label}</h5>
+                <p className="text-sm text-gray-600">{item.description}</p>
               </div>
             </div>
           </button>
         ))}
       </div>
 
-      {completedCount === CHECKLIST_ITEMS.length && (
+      {completedCount === checklistItems.length && (
         <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl p-6 text-white text-center animate-scale-in shadow-xl">
           <div className="text-5xl mb-3">🎉</div>
           <h4 className="text-2xl font-bold mb-2">Xuất sắc!</h4>
           <p>
-            Em đã hoàn thành tất cả các bước. Bài văn của em đã sẵn sàng!
+            Em đã hoàn thành tất cả các bước. Bài văn của em đã sẵn sàng. Em có
+            thể Download bài viết của mình
           </p>
         </div>
       )}

@@ -1,11 +1,7 @@
 import { useState, useMemo } from "react";
-import {
-  allTopics,
-  topicQuizData,
-  getTopicType,
-} from "../../../data/writingMapConstants";
+import type { TopicQuiz, GradeData } from "../../../data/writingMapConstants";
 
-export const useStepZero = () => {
+export const useStepZero = (gradeData: GradeData) => {
   const [selectedTopic, setSelectedTopic] = useState<string>("");
   const [understandingAnswers, setUnderstandingAnswers] = useState<Record<string, string>>({
     q1: "",
@@ -16,10 +12,10 @@ export const useStepZero = () => {
   const [randomSeed, setRandomSeed] = useState<number>(0);
 
   const randomTopics = useMemo(() => {
-    const shuffled = [...allTopics].sort(() => Math.random() - 0.5);
+    const shuffled = [...gradeData.topics].sort(() => Math.random() - 0.5);
     return shuffled.slice(0, 5);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [randomSeed]);
+  }, [randomSeed, gradeData.topics]);
 
   const handleSelectTopic = (topic: string) => {
     setSelectedTopic(topic);
@@ -42,15 +38,13 @@ export const useStepZero = () => {
     setActiveHint((prev) => (prev === hintId ? null : hintId));
   };
 
-  const quizData = topicQuizData[selectedTopic];
+  const quizData: TopicQuiz | undefined = gradeData.topicQuizData[selectedTopic];
   const isComplete =
     selectedTopic !== "" &&
-    quizData &&
+    quizData !== undefined &&
     understandingAnswers.q1 === quizData.q1.correct &&
     understandingAnswers.q2 === quizData.q2.correct &&
     understandingAnswers.q3 === quizData.q3.correct;
-
-  const topicType = selectedTopic ? getTopicType(selectedTopic) : "";
 
   return {
     selectedTopic,
@@ -59,7 +53,6 @@ export const useStepZero = () => {
     randomTopics,
     quizData,
     isComplete,
-    topicType,
     handleSelectTopic,
     handleRefreshTopics,
     updateUnderstandingAnswer,

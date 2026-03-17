@@ -1,39 +1,38 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import type { TimYQuestion } from "../../../data/writingMapConstants";
 
-interface IdeaAnswers {
-  q1: string;
-  q2: string;
-  q3: string;
-  q4: string;
-  q5_1: string;
-  q5_2: string;
-  q5_3: string;
-  q6_1: string;
-  q6_2: string;
-  q6_3: string;
-  q7: string;
-  q8: string;
-}
+export const useStepOne = (timYQuestions: TimYQuestion[]) => {
+  // Build initial state from timYQuestions config
+  const initialAnswers = useMemo(() => {
+    const answers: Record<string, string> = {};
+    for (const q of timYQuestions) {
+      if (q.subInputs && q.subInputs > 0) {
+        for (let i = 1; i <= q.subInputs; i++) {
+          answers[`${q.id}_${i}`] = "";
+        }
+      } else {
+        answers[q.id] = "";
+      }
+    }
+    return answers;
+  }, [timYQuestions]);
 
-export const useStepOne = () => {
-  const [ideaAnswers, setIdeaAnswers] = useState<IdeaAnswers>({
-    q1: "",
-    q2: "",
-    q3: "",
-    q4: "",
-    q5_1: "",
-    q5_2: "",
-    q5_3: "",
-    q6_1: "",
-    q6_2: "",
-    q6_3: "",
-    q7: "",
-    q8: "",
-  });
+  const [ideaAnswers, setIdeaAnswers] = useState<Record<string, string>>(initialAnswers);
   const [activeIdeaHint, setActiveIdeaHint] = useState<string | null>(null);
   const [activeTopicHint, setActiveTopicHint] = useState<string | null>(null);
 
-  const updateIdeaAnswer = (field: keyof IdeaAnswers, value: string) => {
+  // Reset state when timYQuestions config changes (grade switch)
+  const prevQuestionsRef = useRef(timYQuestions);
+  useEffect(() => {
+    if (prevQuestionsRef.current !== timYQuestions) {
+      prevQuestionsRef.current = timYQuestions;
+      setIdeaAnswers(initialAnswers);
+      setActiveIdeaHint(null);
+      setActiveTopicHint(null);
+    }
+  }, [timYQuestions, initialAnswers]);
+
+  const updateIdeaAnswer = (field: string, value: string) => {
     setIdeaAnswers((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -47,19 +46,10 @@ export const useStepOne = () => {
     setActiveIdeaHint(null);
   };
 
-  const isComplete =
-    ideaAnswers.q1.trim() !== "" &&
-    ideaAnswers.q2.trim() !== "" &&
-    ideaAnswers.q3.trim() !== "" &&
-    ideaAnswers.q4.trim() !== "" &&
-    ideaAnswers.q5_1.trim() !== "" &&
-    ideaAnswers.q5_2.trim() !== "" &&
-    ideaAnswers.q5_3.trim() !== "" &&
-    ideaAnswers.q6_1.trim() !== "" &&
-    ideaAnswers.q6_2.trim() !== "" &&
-    ideaAnswers.q6_3.trim() !== "" &&
-    ideaAnswers.q7.trim() !== "" &&
-    ideaAnswers.q8.trim() !== "";
+  const isComplete = useMemo(() => {
+    const values = Object.values(ideaAnswers);
+    return values.length > 0 && values.every((v) => v.trim() !== "");
+  }, [ideaAnswers]);
 
   return {
     ideaAnswers,

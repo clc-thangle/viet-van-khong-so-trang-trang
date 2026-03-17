@@ -1,24 +1,36 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import type { WritingSection } from "../../../data/writingMapConstants";
 
-interface EssayParagraphs {
-  moBai: string;
-  thanBai1: string;
-  thanBai2: string;
-  thanBai3: string;
-  ketBai: string;
-}
+export const useStepThree = (writingSections: WritingSection[]) => {
+  // Track section keys to detect grade changes (not content changes)
+  const sectionKeys = useMemo(
+    () => writingSections.map((s) => s.key).join(","),
+    [writingSections]
+  );
 
-export const useStepThree = () => {
-  const [essayParagraphs, setEssayParagraphs] = useState<EssayParagraphs>({
-    moBai: "",
-    thanBai1: "",
-    thanBai2: "",
-    thanBai3: "",
-    ketBai: "",
-  });
+  const initialParagraphs = useMemo(() => {
+    const paragraphs: Record<string, string> = {};
+    for (const section of writingSections) {
+      paragraphs[section.key] = "";
+    }
+    return paragraphs;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sectionKeys]);
+
+  const [essayParagraphs, setEssayParagraphs] = useState<Record<string, string>>(initialParagraphs);
   const [activeWritingHint, setActiveWritingHint] = useState<string | null>(null);
 
-  const updateParagraph = (key: keyof EssayParagraphs, value: string) => {
+  // Reset state only when section structure changes (grade switch), not content
+  const prevKeysRef = useRef(sectionKeys);
+  useEffect(() => {
+    if (prevKeysRef.current !== sectionKeys) {
+      prevKeysRef.current = sectionKeys;
+      setEssayParagraphs(initialParagraphs);
+      setActiveWritingHint(null);
+    }
+  }, [sectionKeys, initialParagraphs]);
+
+  const updateParagraph = (key: string, value: string) => {
     setEssayParagraphs((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -35,12 +47,10 @@ export const useStepThree = () => {
   ).length;
   const totalParagraphs = Object.keys(essayParagraphs).length;
 
-  const isComplete =
-    essayParagraphs.moBai.trim() !== "" &&
-    essayParagraphs.thanBai1.trim() !== "" &&
-    essayParagraphs.thanBai2.trim() !== "" &&
-    essayParagraphs.thanBai3.trim() !== "" &&
-    essayParagraphs.ketBai.trim() !== "";
+  const isComplete = (() => {
+    const values = Object.values(essayParagraphs);
+    return values.length > 0 && values.every((v) => v.trim() !== "");
+  })();
 
   return {
     essayParagraphs,

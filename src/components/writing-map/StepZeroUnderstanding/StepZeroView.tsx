@@ -5,32 +5,43 @@ import {
   CheckCircle,
   X,
 } from "lucide-react";
-import { topicQuizData } from "../../../data/writingMapConstants";
+import type { TopicQuiz } from "../../../data/writingMapConstants";
 
 interface StepZeroViewProps {
   selectedTopic: string;
   understandingAnswers: Record<string, string>;
   randomTopics: string[];
+  topicQuizData: Record<string, TopicQuiz>;
   handleSelectTopic: (topic: string) => void;
   handleRefreshTopics: () => void;
   updateUnderstandingAnswer: (field: string, value: string) => void;
   setUnderstandingAnswers: (answers: Record<string, string>) => void;
+  essayType: string;
 }
 
 const StepZeroView = ({
   selectedTopic,
   understandingAnswers,
   randomTopics,
+  topicQuizData,
   handleSelectTopic,
   handleRefreshTopics,
   updateUnderstandingAnswer,
   setUnderstandingAnswers,
+  essayType,
 }: StepZeroViewProps) => {
   const currentQuiz = topicQuizData[selectedTopic];
 
   return (
     <div className="space-y-6">
-      {/* Chọn đề bài - random 5 đề từ tổng 20 đề */}
+      {/* Dạng bài */}
+      <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-4 border border-indigo-200">
+        <p className="text-sm font-bold text-indigo-700 uppercase tracking-wide">
+          {essayType}
+        </p>
+      </div>
+
+      {/* Chọn đề bài - random 5 đề từ tổng 10 đề */}
       <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -147,7 +158,7 @@ const StepZeroView = ({
                     )}
                   </div>
                   <div className="space-y-2 ml-8">
-                    {currentQuiz.q1.options.map((option, idx) => {
+                    {currentQuiz.q1.options?.map((option, idx) => {
                       const isSelected =
                         understandingAnswers.q1 === option;
                       const isCorrect = option === currentQuiz.q1.correct;
@@ -242,20 +253,9 @@ const StepZeroView = ({
                     )}
                   </div>
                   <div className="space-y-2 ml-8">
-                    {[
-                      {
-                        value: "tan-thanh",
-                        label: "Trình bày ý kiến tán thành",
-                      },
-                      {
-                        value: "phan-doi",
-                        label: "Trình bày ý kiến phản đối",
-                      },
-                    ].map((option, idx) => {
-                      const isSelected =
-                        understandingAnswers.q2 === option.value;
-                      const isCorrect =
-                        option.value === currentQuiz.q2.correct;
+                    {(currentQuiz.q2.options || []).map((option, idx) => {
+                      const isSelected = understandingAnswers.q2 === option;
+                      const isCorrect = option === currentQuiz.q2.correct;
                       let optionStyle =
                         "border-gray-200 bg-white hover:border-amber-300";
                       if (allAnswered) {
@@ -277,7 +277,7 @@ const StepZeroView = ({
                           key={idx}
                           onClick={() =>
                             !allAnswered &&
-                            updateUnderstandingAnswer("q2", option.value)
+                            updateUnderstandingAnswer("q2", option)
                           }
                           disabled={allAnswered}
                           className={`w-full text-left p-3 rounded-xl transition-all border-2 flex items-center gap-3 ${optionStyle}`}
@@ -314,7 +314,7 @@ const StepZeroView = ({
                                   : "text-gray-700"
                             }`}
                           >
-                            {option.label}
+                            {option}
                           </span>
                           {allAnswered && isSelected && isCorrect && (
                             <CheckCircle className="w-5 h-5 text-green-500 ml-auto" />
@@ -348,7 +348,7 @@ const StepZeroView = ({
                     )}
                   </div>
                   <div className="space-y-2 ml-8">
-                    {currentQuiz.q3.options.map((option, idx) => {
+                    {currentQuiz.q3.options?.map((option, idx) => {
                       const isSelected =
                         understandingAnswers.q3 === option;
                       const isCorrect = option === currentQuiz.q3.correct;
@@ -425,7 +425,7 @@ const StepZeroView = ({
                 </div>
               </div>
 
-              {/* Kết quả - hiện sau khi chọn xong cả 3 câu */}
+              {/* Kết quả */}
               {allAnswered && (
                 <div
                   className={`mt-6 bg-white rounded-xl p-5 border-2 shadow-sm animate-slide-up ${allCorrect ? "border-green-300" : "border-red-300"}`}
@@ -452,9 +452,7 @@ const StepZeroView = ({
                             ✅ Yêu cầu của đề:
                           </span>
                           <span className="text-sm text-gray-800 font-medium">
-                            {understandingAnswers.q2 === "tan-thanh"
-                              ? "Trình bày ý kiến tán thành"
-                              : "Trình bày ý kiến phản đối"}
+                            {understandingAnswers.q2}
                           </span>
                         </div>
                         <div className="flex items-center gap-2">

@@ -1,29 +1,36 @@
-import { useState } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
+import type { ChecklistItem } from "../../../data/writingMapConstants";
 
-interface Checklist {
-  hasClearOpinion: boolean;
-  hasExplicitAgreement: boolean;
-  hasConvincingArgument: boolean;
-  hasClearSignificance: boolean;
-  hasGoodExpression: boolean;
-}
+export const useStepFour = (checklistItems: ChecklistItem[]) => {
+  const initialChecklist = useMemo(() => {
+    const checklist: Record<string, boolean> = {};
+    for (const item of checklistItems) {
+      checklist[item.key] = false;
+    }
+    return checklist;
+  }, [checklistItems]);
 
-export const useStepFour = () => {
-  const [checklist, setChecklist] = useState<Checklist>({
-    hasClearOpinion: false,
-    hasExplicitAgreement: false,
-    hasConvincingArgument: false,
-    hasClearSignificance: false,
-    hasGoodExpression: false,
-  });
+  const [checklist, setChecklist] = useState<Record<string, boolean>>(initialChecklist);
 
-  const toggleChecklist = (item: keyof Checklist) => {
+  // Reset state when checklistItems changes (grade switch)
+  const prevItemsRef = useRef(checklistItems);
+  useEffect(() => {
+    if (prevItemsRef.current !== checklistItems) {
+      prevItemsRef.current = checklistItems;
+      setChecklist(initialChecklist);
+    }
+  }, [checklistItems, initialChecklist]);
+
+  const toggleChecklist = (item: string) => {
     setChecklist((prev) => ({ ...prev, [item]: !prev[item] }));
   };
 
   const completedCount = Object.values(checklist).filter(Boolean).length;
 
-  const isComplete = Object.values(checklist).every((value) => value === true);
+  const isComplete = (() => {
+    const values = Object.values(checklist);
+    return values.length > 0 && values.every((value) => value === true);
+  })();
 
   return {
     checklist,

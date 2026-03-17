@@ -1,13 +1,19 @@
+import { useState, useEffect, useCallback, useMemo } from "react";
 import {
   Lightbulb,
   PenTool,
   FileText,
   Edit3,
   CheckCircle,
+  ArrowLeft,
 } from "lucide-react";
-import { type LucideIcon } from 'lucide-react';
+import { type LucideIcon } from "lucide-react";
 import { STEPS_CONFIG } from "../data/writingMapConstants";
+import type { GradeData } from "../data/writingMapConstants";
+import { getGradeData } from "../data/gradeRegistry";
 import { useStepNavigation } from "../hooks/useStepNavigation";
+import { generateEssayPdf } from "../utils/generateEssayPdf";
+import GradeSelector from "../components/writing-map/GradeSelector";
 import StepIndicatorView from "../components/writing-map/StepIndicator/StepIndicatorView";
 import StepZeroView from "../components/writing-map/StepZeroUnderstanding/StepZeroView";
 import { useStepZero } from "../components/writing-map/StepZeroUnderstanding/useStepZero";
@@ -35,31 +41,72 @@ const steps = STEPS_CONFIG.map((step) => ({
   icon: ICON_MAP[step.icon] || Lightbulb,
 }));
 
+// Default empty grade data for initial render
+const EMPTY_GRADE_DATA: GradeData = {
+  grade: 0,
+  label: "",
+  essayType: "",
+  wordCount: 0,
+  topics: [],
+  topicQuizData: {},
+  topicKeywords: {},
+  timYQuestions: [],
+  topicSpecificHints: {},
+  generalHints: {},
+  outlineSlotConfig: [],
+  checklistItems: [],
+  getWritingSections: () => [],
+  stepsConfig: STEPS_CONFIG,
+};
+
 const WritingMap = () => {
-  // Step hooks
-  const stepZero = useStepZero();
-  const stepOne = useStepOne();
-  const stepTwo = useStepTwo(stepOne.ideaAnswers);
-  const stepThree = useStepThree();
-  const stepFour = useStepFour();
+  const [selectedGrade, setSelectedGrade] = useState<number | null>(null);
+  const [gradeData, setGradeData] = useState<GradeData>(EMPTY_GRADE_DATA);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  // Step hooks - using gradeData
+  const stepZero = useStepZero(gradeData);
+  const stepOne = useStepOne(gradeData.timYQuestions);
+  const stepTwo = useStepTwo(
+    stepOne.ideaAnswers,
+    gradeData.timYQuestions,
+    gradeData.outlineSlotConfig
+  );
+  const writingSections = useMemo(
+    () => gradeData.getWritingSections(stepTwo.outlineSlots),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [gradeData, JSON.stringify(stepTwo.outlineSlots)]
+  );
+  const stepThree = useStepThree(writingSections);
+  const stepFour = useStepFour(gradeData.checklistItems);
 
   // Step completion check
-  const isStepComplete = (stepIndex: number): boolean => {
-    switch (stepIndex) {
-      case 0:
-        return stepZero.isComplete;
-      case 1:
-        return stepOne.isComplete;
-      case 2:
-        return stepTwo.isComplete;
-      case 3:
-        return stepThree.isComplete;
-      case 4:
-        return stepFour.isComplete;
-      default:
-        return false;
-    }
-  };
+  const isStepComplete = useCallback(
+    (stepIndex: number): boolean => {
+      switch (stepIndex) {
+        case 0:
+          return stepZero.isComplete;
+        case 1:
+          return stepOne.isComplete;
+        case 2:
+          return stepTwo.isComplete;
+        case 3:
+          return stepThree.isComplete;
+        case 4:
+          return stepFour.isComplete;
+        default:
+          return false;
+      }
+    },
+    [
+      stepZero.isComplete,
+      stepOne.isComplete,
+      stepTwo.isComplete,
+      stepThree.isComplete,
+      stepFour.isComplete,
+    ]
+  );
 
   // Navigation
   const {
@@ -72,6 +119,27 @@ const WritingMap = () => {
     handleStepClick,
   } = useStepNavigation(steps, isStepComplete);
 
+  // Load grade data when selected
+  const handleSelectGrade = useCallback(async (grade: number) => {
+    setIsLoading(true);
+    try {
+      const data = await getGradeData(grade);
+      setGradeData(data);
+      setSelectedGrade(grade);
+    } catch (error) {
+      console.error("Lỗi khi tải dữ liệu lớp:", error);
+      alert("Có lỗi xảy ra. Vui lòng thử lại!");
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  // Handle back to grade selection
+  const handleBackToGradeSelect = () => {
+    setSelectedGrade(null);
+    setGradeData(EMPTY_GRADE_DATA);
+  };
+
   // Render step content
   const renderStepContent = () => {
     switch (activeStep) {
@@ -81,10 +149,12 @@ const WritingMap = () => {
             selectedTopic={stepZero.selectedTopic}
             understandingAnswers={stepZero.understandingAnswers}
             randomTopics={stepZero.randomTopics}
+            topicQuizData={gradeData.topicQuizData}
             handleSelectTopic={stepZero.handleSelectTopic}
             handleRefreshTopics={stepZero.handleRefreshTopics}
             updateUnderstandingAnswer={stepZero.updateUnderstandingAnswer}
             setUnderstandingAnswers={stepZero.setUnderstandingAnswers}
+            essayType={gradeData.essayType}
           />
         );
       case 1:
@@ -98,6 +168,9 @@ const WritingMap = () => {
             updateIdeaAnswer={stepOne.updateIdeaAnswer}
             toggleIdeaHint={stepOne.toggleIdeaHint}
             toggleTopicHint={stepOne.toggleTopicHint}
+            timYQuestions={gradeData.timYQuestions}
+            topicSpecificHints={gradeData.topicSpecificHints}
+            generalHints={gradeData.generalHints}
           />
         );
       case 2:
@@ -114,6 +187,7 @@ const WritingMap = () => {
             handleItemClick={stepTwo.handleItemClick}
             handleSlotClick={stepTwo.handleSlotClick}
             updateOutlineSlot={stepTwo.updateOutlineSlot}
+            outlineSlotConfig={gradeData.outlineSlotConfig}
           />
         );
       case 3:
@@ -126,7 +200,7 @@ const WritingMap = () => {
             updateParagraph={stepThree.updateParagraph}
             toggleWritingHint={stepThree.toggleWritingHint}
             getWordCount={stepThree.getWordCount}
-            outlineSlots={stepTwo.outlineSlots}
+            writingSections={writingSections}
           />
         );
       case 4:
@@ -136,6 +210,8 @@ const WritingMap = () => {
             completedCount={stepFour.completedCount}
             toggleChecklist={stepFour.toggleChecklist}
             essayParagraphs={stepThree.essayParagraphs}
+            checklistItems={gradeData.checklistItems}
+            writingSections={writingSections}
           />
         );
       default:
@@ -143,15 +219,81 @@ const WritingMap = () => {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    setIsDownloading(true);
+    try {
+      await generateEssayPdf(
+        stepThree.essayParagraphs,
+        writingSections,
+        stepZero.selectedTopic || undefined
+      );
+    } catch (error) {
+      console.error("Lỗi khi tạo PDF:", error);
+      alert("Có lỗi xảy ra khi tạo PDF. Vui lòng thử lại!");
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Đang tải dữ liệu...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Grade selection screen
+  if (selectedGrade === null) {
+    return (
+      <div className="space-y-6 animate-fade-in">
+        {/* Header */}
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-lg">
+          <h1 className="text-3xl font-bold mb-2">Bản đồ viết bài văn số</h1>
+          <p className="text-blue-100">
+            5 bước đơn giản giúp em viết đoạn văn nghị luận một cách khoa học và
+            hiệu quả
+          </p>
+        </div>
+
+        <div className="card p-8">
+          <GradeSelector onSelectGrade={handleSelectGrade} />
+        </div>
+      </div>
+    );
+  }
+
+  // Main writing map with selected grade
   return (
     <div className="space-y-6 animate-fade-in">
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white shadow-lg">
-        <h1 className="text-3xl font-bold mb-2">Bản đồ viết đoạn văn số</h1>
+        <div className="flex items-center justify-between mb-2">
+          <h1 className="text-3xl font-bold">Bản đồ viết bài văn số</h1>
+          <button
+            onClick={handleBackToGradeSelect}
+            className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-sm font-medium transition-all"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Đổi lớp
+          </button>
+        </div>
         <p className="text-blue-100">
           5 bước đơn giản giúp em viết đoạn văn nghị luận một cách khoa học và
           hiệu quả
         </p>
+        <div className="mt-3 flex items-center gap-3">
+          <span className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
+            {gradeData.label}
+          </span>
+          <span className="text-sm text-blue-200">
+            {gradeData.essayType}
+          </span>
+        </div>
       </div>
 
       {/* Progress Steps */}
@@ -210,9 +352,11 @@ const WritingMap = () => {
                       ? "Vui lòng chọn 1 đề bài để tiếp tục"
                       : "Vui lòng trả lời đúng 3 câu hỏi trắc nghiệm phần Hiểu đề để tiếp tục")}
                   {activeStep === 1 &&
-                    "Vui lòng trả lời đầy đủ tất cả các câu hỏi trong phần Khai phá ý tưởng để tiếp tục"}
+                    "Vui lòng trả lời đầy đủ tất cả các câu hỏi trong phần Tìm ý để tiếp tục"}
                   {activeStep === 2 &&
-                    "Vui lòng điền ít nhất câu mở đoạn và thân đoạn"}
+                    "Vui lòng điền đầy đủ tất cả các ô trong dàn ý để tiếp tục"}
+                  {activeStep === 3 &&
+                    "Vui lòng viết đầy đủ tất cả các đoạn văn để tiếp tục"}
                 </p>
               </div>
             </div>
@@ -226,6 +370,9 @@ const WritingMap = () => {
           canProceed={canProceedToNext()}
           onPrev={handlePrevStep}
           onNext={handleNextStep}
+          isAllComplete={stepFour.isComplete}
+          onDownloadPdf={handleDownloadPdf}
+          isDownloading={isDownloading}
         />
       </div>
 
