@@ -72,6 +72,9 @@ export default function Register() {
         return;
       }
 
+      // Refresh session để đảm bảo metadata (full_name) được load đầy đủ
+      await supabase.auth.refreshSession();
+
       navigate('/');
     } catch (_err) {
       setError('Không thể kết nối server, vui lòng thử lại!');

@@ -17,30 +17,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Lấy session hiện tại khi app khởi động, dùng getUser() để lấy data mới nhất từ server
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    // Lấy session hiện tại khi app khởi động
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
-      if (session) {
-        const { data: { user } } = await supabase.auth.getUser();
-        setUser(user);
-      } else {
-        setUser(null);
-      }
+      setUser(session?.user ?? null);
       setLoading(false);
     });
 
     // Lắng nghe thay đổi trạng thái auth (login, logout, token refresh...)
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-      if (session) {
-        // Luôn lấy user mới nhất từ server để có đầy đủ metadata
-        const { data: { user } } = await supabase.auth.getUser();
-        setUser(user);
-      } else {
-        setUser(null);
-      }
+      setUser(session?.user ?? null);
       setLoading(false);
     });
 
