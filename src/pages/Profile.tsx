@@ -17,10 +17,11 @@ export default function Profile() {
     }
   }, [user]);
 
-  const displayName = user?.user_metadata?.username
-    ?? user?.user_metadata?.full_name
-    ?? user?.email?.split('@')[0]
-    ?? 'Học sinh';
+  // Ưu tiên: họ tên đầy đủ → username → phần trước @ của email
+  const displayName = (user?.user_metadata?.full_name || '').trim()
+    || (user?.user_metadata?.username || '').trim()
+    || user?.email?.split('@')[0]
+    || 'Học sinh';
 
   const isGoogleUser = user?.app_metadata?.provider === 'google';
 
