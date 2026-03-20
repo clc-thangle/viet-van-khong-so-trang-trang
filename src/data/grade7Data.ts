@@ -11,16 +11,16 @@ import type {
 // ─── 10 đề bài dành cho lớp 7 (nghị luận xã hội – đạo lí) ──────────────────
 
 const topics: string[] = [
-  "Có ý kiến cho rằng: \"Lòng hiếu thảo là nền tảng của mọi đức hạnh\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Trung thực là phẩm chất quý giá nhất của con người\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Sự kiên trì là chìa khóa dẫn đến thành công\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Tình yêu thương là sức mạnh để thay đổi thế giới\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Sống có trách nhiệm là biểu hiện của người trưởng thành\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Sự tự tin là bước đầu tiên trên con đường thành công\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Đoàn kết là sức mạnh, chia rẽ là yếu đuối\". Em hãy viết 1 bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  'Có ý kiến cho rằng: "Lòng hiếu thảo là nền tảng của mọi đức hạnh". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Trung thực là phẩm chất quý giá nhất của con người". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Sự kiên trì là chìa khóa dẫn đến thành công". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Tình yêu thương là sức mạnh để thay đổi thế giới". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Sống có trách nhiệm là biểu hiện của người trưởng thành". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Sự tự tin là bước đầu tiên trên con đường thành công". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối". Em hãy viết một bài văn (khoảng 400 chữ) trình bày suy nghĩ của em về ý kiến đó',
 ];
 
 // ─── Dữ liệu trắc nghiệm cho phần Hiểu đề (3 câu hỏi / đề) ─────────────────
@@ -33,10 +33,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Lòng hiếu thảo",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -57,10 +54,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Trung thực",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -69,8 +63,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
         "Bàn về cách rèn luyện đạo đức cho học sinh",
         "Bàn về tầm quan trọng của giáo dục nhân cách",
       ],
-      correct:
-        "Bàn về giá trị và ý nghĩa của tính trung thực trong cuộc sống",
+      correct: "Bàn về giá trị và ý nghĩa của tính trung thực trong cuộc sống",
     },
   },
 
@@ -81,10 +74,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Lòng khoan dung",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -105,10 +95,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Sự kiên trì",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -129,10 +116,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Tình yêu thương",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -153,10 +137,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Lòng dũng cảm",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -177,10 +158,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Trách nhiệm",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -201,10 +179,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Lòng biết ơn",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -213,8 +188,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
         "Bàn về truyền thống uống nước nhớ nguồn của dân tộc",
         "Bàn về cách thể hiện tình cảm với thầy cô giáo",
       ],
-      correct:
-        "Bàn về ý nghĩa của lòng biết ơn đối với nhân cách con người",
+      correct: "Bàn về ý nghĩa của lòng biết ơn đối với nhân cách con người",
     },
   },
 
@@ -225,10 +199,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Sự tự tin",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -249,10 +220,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Đoàn kết",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -270,16 +238,64 @@ const topicQuizData: Record<string, TopicQuiz> = {
 // ─── Từ khóa cho mỗi đề (5 từ khóa / đề) ─────────────────────────────────────
 
 const topicKeywords: Record<string, string[]> = {
-  [topics[0]]: ["bổn phận con cái", "tôn kính cha mẹ", "chăm sóc phụng dưỡng", "truyền thống gia đình", "cội nguồn tổ tiên"],
-  [topics[1]]: ["thành thật", "ngay thẳng", "tín nhiệm", "liêm khiết", "đáng tin cậy"],
-  [topics[2]]: ["bao dung", "tha thứ", "vị tha", "cảm thông", "tâm hồn rộng mở"],
-  [topics[3]]: ["nhẫn nại", "bền bỉ", "không bỏ cuộc", "vượt khó khăn", "ý chí bền vững"],
+  [topics[0]]: [
+    "bổn phận con cái",
+    "tôn kính cha mẹ",
+    "chăm sóc phụng dưỡng",
+    "truyền thống gia đình",
+    "cội nguồn tổ tiên",
+  ],
+  [topics[1]]: [
+    "thành thật",
+    "ngay thẳng",
+    "tín nhiệm",
+    "liêm khiết",
+    "đáng tin cậy",
+  ],
+  [topics[2]]: [
+    "bao dung",
+    "tha thứ",
+    "vị tha",
+    "cảm thông",
+    "tâm hồn rộng mở",
+  ],
+  [topics[3]]: [
+    "nhẫn nại",
+    "bền bỉ",
+    "không bỏ cuộc",
+    "vượt khó khăn",
+    "ý chí bền vững",
+  ],
   [topics[4]]: ["yêu thương", "chăm sóc", "chia sẻ", "gắn kết", "đồng cảm"],
-  [topics[5]]: ["can đảm", "vượt khó", "dám hành động", "khẳng định bản thân", "đối mặt thực tại"],
-  [topics[6]]: ["nghĩa vụ", "trách nhiệm bản thân", "trách nhiệm xã hội", "cam kết", "chấp nhận hậu quả"],
+  [topics[5]]: [
+    "can đảm",
+    "vượt khó",
+    "dám hành động",
+    "khẳng định bản thân",
+    "đối mặt thực tại",
+  ],
+  [topics[6]]: [
+    "nghĩa vụ",
+    "trách nhiệm bản thân",
+    "trách nhiệm xã hội",
+    "cam kết",
+    "chấp nhận hậu quả",
+  ],
   [topics[7]]: ["tri ân", "nhớ ơn", "ghi nhớ công ơn", "trân trọng", "đền đáp"],
-  [topics[8]]: ["tin vào bản thân", "khẳng định cá nhân", "tự lực tự chủ", "can đảm thể hiện", "vượt qua tự ti"],
-  [topics[9]]: ["đoàn kết", "hợp tác", "cộng đồng", "tương trợ", "sức mạnh tập thể"],
+  [topics[8]]: [
+    "tin vào bản thân",
+    "khẳng định cá nhân",
+    "tự lực tự chủ",
+    "can đảm thể hiện",
+    "vượt qua tự ti",
+  ],
+  [topics[9]]: [
+    "đoàn kết",
+    "hợp tác",
+    "cộng đồng",
+    "tương trợ",
+    "sức mạnh tập thể",
+  ],
 };
 
 // ─── 8 câu hỏi Tìm ý ──────────────────────────────────────────────────────────
@@ -339,7 +355,7 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
   // 1. Lòng hiếu thảo
   [topics[0]]: {
     q1: "Lòng hiếu thảo",
-    q2: "Ý kiến: \"Lòng hiếu thảo là nền tảng của mọi đức hạnh\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Lòng hiếu thảo là nền tảng của mọi đức hạnh". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì hiếu thảo là đức tính tốt đẹp nhất, là gốc rễ của mọi phẩm chất đạo đức.",
     q4: "Hiếu thảo là tình cảm yêu thương, kính trọng, biết ơn và chăm sóc cha mẹ. Ý kiến khẳng định hiếu thảo là nền tảng, là cơ sở để phát triển các đức tính tốt đẹp khác.",
     q5_1: "Người hiếu thảo biết yêu thương cha mẹ sẽ biết yêu thương mọi người xung quanh.",
@@ -348,14 +364,15 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Trong cuộc sống, những người con hiếu thảo như em học sinh giỏi chăm sóc mẹ bệnh vẫn luôn được mọi người yêu quý và tôn trọng.",
     q6_2: "Bác Hồ - vị lãnh tụ vĩ đại luôn nhớ về quê hương, gia đình, thể hiện lòng hiếu thảo sâu sắc.",
     q6_3: "Ngược lại, những người bất hiếu thường bị xã hội lên án và gặp nhiều bất hạnh trong cuộc sống.",
-    q7: "Lòng hiếu thảo thực sự là nền tảng của mọi đức hạnh vì khi biết yêu thương cha mẹ, ta sẽ biết yêu thương con người và sống tốt đẹp hơn.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Lòng hiếu thảo thực sự là nền tảng của mọi đức hạnh vì khi biết yêu thương cha mẹ, ta sẽ biết yêu thương con người và sống tốt đẹp hơn.",
     q8: "Mỗi chúng ta cần biết vâng lời, chăm ngoan, học giỏi để cha mẹ vui lòng. Bản thân em sẽ luôn giúp đỡ cha mẹ việc nhà và cố gắng học tập thật tốt.",
   },
 
   // 2. Trung thực
   [topics[1]]: {
     q1: "Trung thực",
-    q2: "Ý kiến: \"Trung thực là phẩm chất quý giá nhất của con người\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Trung thực là phẩm chất quý giá nhất của con người". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì trung thực giúp xây dựng lòng tin, là nền tảng của mọi mối quan hệ tốt đẹp.",
     q4: "Trung thực là luôn nói đúng sự thật, không gian dối, sống ngay thẳng. Ý kiến khẳng định trong tất cả phẩm chất, trung thực là quý giá nhất vì nó tạo nên giá trị đích thực của con người.",
     q5_1: "Người trung thực được mọi người tin tưởng, tôn trọng, dễ dàng xây dựng các mối quan hệ bền vững.",
@@ -364,30 +381,32 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Bác Hồ sống cả cuộc đời trung thực, giản dị, nhờ đó được nhân dân và bạn bè quốc tế kính trọng, tin yêu.",
     q6_2: "Trong lớp em, bạn luôn thành thật khi làm bài, dù điểm không cao nhưng được cô giáo và các bạn rất tin tưởng.",
     q6_3: "Ngược lại, những người gian dối khi bị phát hiện sẽ mất uy tín, mất lòng tin của mọi người xung quanh.",
-    q7: "Trung thực thực sự là phẩm chất quý giá nhất vì nó là nền tảng để xây dựng mọi giá trị tốt đẹp khác trong cuộc sống.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Trung thực thực sự là phẩm chất quý giá nhất vì nó là nền tảng để xây dựng mọi giá trị tốt đẹp khác trong cuộc sống.",
     q8: "Mỗi người cần rèn luyện tính trung thực trong học tập và cuộc sống. Bản thân em sẽ luôn nói thật, làm thật và sống thật với chính mình.",
   },
 
   // 3. Lòng khoan dung
   [topics[2]]: {
     q1: "Lòng khoan dung",
-    q2: "Ý kiến: \"Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Lòng khoan dung giúp con người sống thanh thản và hạnh phúc hơn". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì khi biết tha thứ, bao dung, con người sẽ không bị oán hận làm nặng lòng.",
     q4: "Khoan dung là biết tha thứ, bao dung, không chấp nhặt lỗi lầm của người khác. Ý kiến khẳng định rằng khoan dung mang lại sự thanh thản và hạnh phúc cho chính người biết tha thứ.",
     q5_1: "Khi tha thứ cho người khác, ta giải thoát chính mình khỏi sự oán giận, tâm hồn nhẹ nhàng, thanh thản hơn.",
     q5_2: "Khoan dung giúp hàn gắn các mối quan hệ bị rạn nứt, mang lại hạnh phúc cho cả hai bên.",
     q5_3: "Người khoan dung luôn được mọi người yêu quý, kính trọng, từ đó cuộc sống thêm ý nghĩa và hạnh phúc.",
-    q6_1: "Trong truyện cổ tích, những nhân vật biết tha thứ như Tấm luôn được phù hộ và có kết cục hạnh phúc.",
+    q6_1: "Bạn em từng bị bạn cùng lớp nói xấu, nhưng sau khi hiểu ra sự hiểu lầm, bạn em chọn tha thứ và hai người trở thành bạn thân.",
     q6_2: "Bạn em từng giận bạn cùng bàn vì hiểu lầm, nhưng khi tha thứ, hai bạn lại thân thiết hơn trước.",
     q6_3: "Ngược lại, những người mãi ôm hận thù thường sống trong đau khổ, cô đơn và bất hạnh.",
-    q7: "Lòng khoan dung thực sự giúp con người sống thanh thản và hạnh phúc hơn vì nó giải phóng tâm hồn khỏi oán hận.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Lòng khoan dung thực sự giúp con người sống thanh thản và hạnh phúc hơn vì nó giải phóng tâm hồn khỏi oán hận.",
     q8: "Mỗi người cần rèn luyện lòng khoan dung, biết tha thứ và bao dung. Bản thân em sẽ không chấp nhặt lỗi nhỏ của bạn bè và luôn sẵn lòng tha thứ.",
   },
 
   // 4. Sự kiên trì
   [topics[3]]: {
     q1: "Sự kiên trì",
-    q2: "Ý kiến: \"Sự kiên trì là chìa khóa dẫn đến thành công\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Sự kiên trì là chìa khóa dẫn đến thành công". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì không có thành công nào đến dễ dàng, chỉ có kiên trì mới giúp ta vượt qua khó khăn.",
     q4: "Kiên trì là sự bền bỉ, nhẫn nại, không bỏ cuộc trước khó khăn, thử thách. Ý kiến khẳng định kiên trì chính là yếu tố quan trọng nhất, là chìa khóa mở cánh cửa thành công.",
     q5_1: "Kiên trì giúp con người vượt qua thất bại, biến khó khăn thành động lực để cố gắng hơn.",
@@ -396,14 +415,15 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Edison đã thất bại hàng nghìn lần trước khi phát minh ra bóng đèn, nhờ kiên trì mà ông thành công.",
     q6_2: "Trong lớp em, bạn từng yếu Toán nhưng kiên trì luyện tập mỗi ngày, cuối năm đạt học sinh giỏi.",
     q6_3: "Ngược lại, nhiều người tài giỏi nhưng thiếu kiên trì, nửa chừng bỏ cuộc nên không bao giờ thành công.",
-    q7: "Sự kiên trì thực sự là chìa khóa dẫn đến thành công vì nó giúp con người không bỏ cuộc cho đến khi đạt được mục tiêu.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Sự kiên trì thực sự là chìa khóa dẫn đến thành công vì nó giúp con người không bỏ cuộc cho đến khi đạt được mục tiêu.",
     q8: "Mỗi người cần rèn luyện tính kiên trì trong học tập và cuộc sống. Bản thân em sẽ kiên trì luyện tập mỗi ngày và không bỏ cuộc khi gặp khó khăn.",
   },
 
   // 5. Tình yêu thương
   [topics[4]]: {
     q1: "Tình yêu thương",
-    q2: "Ý kiến: \"Tình yêu thương là sức mạnh để thay đổi thế giới\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Tình yêu thương là sức mạnh để thay đổi thế giới". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì yêu thương có thể cảm hóa con người, xóa bỏ hận thù và xây dựng một thế giới tốt đẹp hơn.",
     q4: "Tình yêu thương là tình cảm quan tâm, chăm sóc, sẻ chia giữa con người với nhau. Ý kiến khẳng định yêu thương không chỉ là tình cảm mà còn là sức mạnh có thể thay đổi cả thế giới.",
     q5_1: "Yêu thương có sức mạnh cảm hóa, biến kẻ thù thành bạn, biến hận thù thành hòa bình.",
@@ -412,14 +432,15 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Mẹ Teresa dành cả đời chăm sóc người nghèo, người bệnh, tình yêu thương của bà đã thay đổi cuộc đời hàng triệu người.",
     q6_2: "Trong lớp em, khi bạn gặp khó khăn, cả lớp cùng giúp đỡ, tình yêu thương đó giúp bạn vượt qua và học tốt hơn.",
     q6_3: "Các phong trào thiện nguyện, quyên góp giúp đỡ đồng bào vùng lũ cho thấy sức mạnh to lớn của tình yêu thương.",
-    q7: "Tình yêu thương thực sự là sức mạnh vĩ đại có thể thay đổi thế giới vì nó kết nối con người và lan tỏa những điều tốt đẹp.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Tình yêu thương thực sự là sức mạnh vĩ đại có thể thay đổi thế giới vì nó kết nối con người và lan tỏa những điều tốt đẹp.",
     q8: "Mỗi người cần biết yêu thương, sẻ chia với mọi người xung quanh. Bản thân em sẽ luôn quan tâm, giúp đỡ bạn bè và tham gia các hoạt động thiện nguyện.",
   },
 
   // 6. Lòng dũng cảm
   [topics[5]]: {
     q1: "Lòng dũng cảm",
-    q2: "Ý kiến: \"Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Lòng dũng cảm không phải là không biết sợ, mà là vượt qua nỗi sợ hãi". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì ai cũng có lúc sợ hãi, nhưng người dũng cảm là người dám đối mặt và vượt qua nỗi sợ đó.",
     q4: "Dũng cảm không phải là liều lĩnh hay không biết sợ. Dũng cảm thực sự là khi biết sợ nhưng vẫn dám hành động, dám đối mặt với khó khăn, nguy hiểm vì điều đúng đắn.",
     q5_1: "Mọi người đều có nỗi sợ, nhưng người dũng cảm không để nỗi sợ ngăn cản mình làm điều đúng đắn.",
@@ -428,14 +449,15 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Những chiến sĩ cứu hỏa dù biết nguy hiểm vẫn lao vào đám cháy để cứu người, đó mới thực sự là dũng cảm.",
     q6_2: "Bạn em tuy sợ nước nhưng vẫn dũng cảm học bơi, cuối cùng bạn ấy bơi giỏi và tự tin hơn rất nhiều.",
     q6_3: "Ngược lại, người liều lĩnh hành động mà không suy nghĩ không phải là dũng cảm mà là thiếu suy xét.",
-    q7: "Lòng dũng cảm thực sự nằm ở việc vượt qua nỗi sợ hãi chứ không phải không biết sợ, vì đó mới là phẩm chất đáng quý.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Lòng dũng cảm thực sự nằm ở việc vượt qua nỗi sợ hãi chứ không phải không biết sợ, vì đó mới là phẩm chất đáng quý.",
     q8: "Mỗi người cần rèn luyện lòng dũng cảm, dám đối mặt với khó khăn. Bản thân em sẽ dũng cảm nhận lỗi khi sai và dám bảo vệ lẽ phải.",
   },
 
   // 7. Sống có trách nhiệm
   [topics[6]]: {
     q1: "Sống có trách nhiệm",
-    q2: "Ý kiến: \"Sống có trách nhiệm là biểu hiện của người trưởng thành\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Sống có trách nhiệm là biểu hiện của người trưởng thành". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì người trưởng thành thực sự là người biết chịu trách nhiệm với lời nói, hành động của mình.",
     q4: "Sống có trách nhiệm là biết bổn phận, nghĩa vụ của mình và hoàn thành tốt. Ý kiến khẳng định rằng trách nhiệm là thước đo quan trọng nhất của sự trưởng thành, không phải tuổi tác.",
     q5_1: "Người có trách nhiệm luôn hoàn thành tốt công việc, không đổ lỗi cho hoàn cảnh hay người khác.",
@@ -444,30 +466,32 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Nhiều bạn trẻ tuy còn nhỏ tuổi nhưng biết chăm sóc gia đình, học tập chăm chỉ - đó là biểu hiện của sự trưởng thành.",
     q6_2: "Trong lớp em, bạn lớp trưởng luôn hoàn thành tốt nhiệm vụ, chịu trách nhiệm trước tập thể, được mọi người tin tưởng.",
     q6_3: "Ngược lại, người vô trách nhiệm dù lớn tuổi vẫn bị coi là chưa trưởng thành, thiếu đáng tin cậy.",
-    q7: "Sống có trách nhiệm thực sự là biểu hiện quan trọng nhất của sự trưởng thành vì nó thể hiện nhân cách và giá trị con người.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Sống có trách nhiệm thực sự là biểu hiện quan trọng nhất của sự trưởng thành vì nó thể hiện nhân cách và giá trị con người.",
     q8: "Mỗi người cần rèn luyện tinh thần trách nhiệm từ những việc nhỏ. Bản thân em sẽ hoàn thành tốt bài tập, giữ lời hứa và chịu trách nhiệm với hành động của mình.",
   },
 
   // 8. Lòng biết ơn
   [topics[7]]: {
     q1: "Lòng biết ơn",
-    q2: "Ý kiến: \"Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Lòng biết ơn là dấu hiệu của một tâm hồn cao đẹp". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì người biết ơn là người biết trân trọng, không vô ơn, thể hiện tâm hồn đẹp.",
     q4: "Biết ơn là ghi nhớ, trân trọng công lao, tình cảm mà người khác dành cho mình. Ý kiến khẳng định rằng biết ơn là phẩm chất phản ánh vẻ đẹp tâm hồn con người.",
     q5_1: "Người biết ơn là người biết trân trọng những gì mình nhận được, không coi đó là điều hiển nhiên.",
     q5_2: "Biết ơn giúp con người sống khiêm tốn, nhận ra mình luôn cần sự giúp đỡ của người khác.",
     q5_3: "Lòng biết ơn thúc đẩy con người sống tốt hơn, muốn đền đáp và lan tỏa yêu thương ra cộng đồng.",
-    q6_1: "Dân tộc ta có truyền thống \"Uống nước nhớ nguồn\", mỗi dịp lễ Tết con cháu thắp hương tưởng nhớ tổ tiên.",
+    q6_1: 'Dân tộc ta có truyền thống "Uống nước nhớ nguồn", mỗi dịp lễ Tết con cháu thắp hương tưởng nhớ tổ tiên.',
     q6_2: "Bạn em luôn viết thiệp cảm ơn thầy cô nhân ngày Nhà giáo, hành động nhỏ nhưng thể hiện tâm hồn đẹp.",
     q6_3: "Ngược lại, người vô ơn, quên ơn người đã giúp đỡ mình thường bị xã hội xa lánh và lên án.",
-    q7: "Lòng biết ơn thực sự là dấu hiệu của tâm hồn cao đẹp vì nó cho thấy con người biết trân trọng cuộc sống và tình cảm của mọi người.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Lòng biết ơn thực sự là dấu hiệu của tâm hồn cao đẹp vì nó cho thấy con người biết trân trọng cuộc sống và tình cảm của mọi người.",
     q8: "Mỗi người cần ghi nhớ và biết ơn những điều tốt đẹp mình nhận được. Bản thân em sẽ luôn cảm ơn cha mẹ, thầy cô và bạn bè đã giúp đỡ mình.",
   },
 
   // 9. Sự tự tin
   [topics[8]]: {
     q1: "Sự tự tin",
-    q2: "Ý kiến: \"Sự tự tin là bước đầu tiên trên con đường thành công\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Sự tự tin là bước đầu tiên trên con đường thành công". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì tự tin giúp con người dám hành động, dám theo đuổi ước mơ.",
     q4: "Tự tin là tin vào năng lực, giá trị của bản thân. Ý kiến khẳng định tự tin là bước khởi đầu quan trọng nhất trên hành trình đạt đến thành công.",
     q5_1: "Người tự tin dám đặt mục tiêu cao và nỗ lực thực hiện, không ngại thất bại.",
@@ -476,14 +500,15 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q6_1: "Jack Ma từng bị từ chối hàng chục lần khi xin việc nhưng vẫn tự tin theo đuổi ước mơ, cuối cùng xây dựng đế chế Alibaba.",
     q6_2: "Trong lớp, những bạn tự tin phát biểu thường được thầy cô đánh giá cao và tiến bộ nhanh hơn.",
     q6_3: "Ngược lại, nhiều người tài giỏi nhưng thiếu tự tin nên không dám thể hiện, bỏ lỡ nhiều cơ hội.",
-    q7: "Tự tin đúng là bước đầu tiên trên con đường thành công vì nếu không tin vào bản thân thì không thể bắt đầu bất cứ điều gì.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Tự tin đúng là bước đầu tiên trên con đường thành công vì nếu không tin vào bản thân thì không thể bắt đầu bất cứ điều gì.",
     q8: "Học sinh cần rèn luyện sự tự tin bằng cách chuẩn bị kỹ bài học và mạnh dạn tham gia hoạt động. Bản thân em sẽ tự tin hơn trong giao tiếp và học tập.",
   },
 
   // 10. Đoàn kết
   [topics[9]]: {
     q1: "Đoàn kết",
-    q2: "Ý kiến: \"Đoàn kết là sức mạnh, chia rẽ là yếu đuối\". Em tán thành ý kiến này.",
+    q2: 'Ý kiến: "Đoàn kết là sức mạnh, chia rẽ là yếu đuối". Em tán thành ý kiến này.',
     q3: "Em đồng ý vì khi đoàn kết, sức mạnh tập thể luôn lớn hơn sức mạnh cá nhân.",
     q4: "Đoàn kết là sự gắn bó, hợp tác cùng nhau vì mục tiêu chung. Ý kiến khẳng định đoàn kết tạo nên sức mạnh, còn chia rẽ dẫn đến yếu đuối, thất bại.",
     q5_1: "Đoàn kết giúp chia sẻ công việc, phát huy thế mạnh của từng người để đạt kết quả tốt nhất.",
@@ -491,8 +516,9 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q5_3: "Chia rẽ khiến sức mạnh bị phân tán, dễ bị kẻ xấu lợi dụng, dẫn đến thất bại.",
     q6_1: "Lịch sử Việt Nam cho thấy nhờ đoàn kết toàn dân mà chúng ta đã chiến thắng nhiều kẻ thù xâm lược hùng mạnh.",
     q6_2: "Trong lớp em, khi cả lớp cùng nhau chuẩn bị cho hội thi văn nghệ, nhờ đoàn kết mà lớp đạt giải nhất.",
-    q6_3: "Câu chuyện \"Bó đũa\" dạy rằng mỗi chiếc đũa riêng lẻ dễ bẻ gãy, nhưng cả bó đũa thì không ai bẻ nổi.",
-    q7: "Đoàn kết thực sự là sức mạnh vì nó gộp sức mạnh của nhiều người thành một khối vững chắc, không thế lực nào có thể phá vỡ.",
+    q6_3: "Ngược lại, trong các nhóm làm việc khi mỗi người chỉ lo phần mình, không hỗ trợ nhau, kết quả thường kém và mọi người đều chịu thiệt.",
+    q7_1: "Tóm lại, ý kiến trên là hoàn toàn đúng.",
+    q7_2: "Đoàn kết thực sự là sức mạnh vì nó gộp sức mạnh của nhiều người thành một khối vững chắc, không thế lực nào có thể phá vỡ.",
     q8: "Mỗi chúng ta cần biết hợp tác, tôn trọng và hỗ trợ lẫn nhau. Bản thân em sẽ luôn đoàn kết với bạn bè, không gây chia rẽ trong lớp.",
   },
 };
@@ -500,10 +526,7 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
 // ─── Gợi ý chung cho 8 câu hỏi Tìm ý ─────────────────────────────────────────
 
 const generalHints: Record<string, string[]> = {
-  q1: [
-    "Hãy xác định vấn đề đạo lí mà đề bài đưa ra để bàn luận.",
-    "Vấn đề đó liên quan đến phẩm chất, đức tính nào của con người?",
-  ],
+  q1: ["Đề bài đã nhắc đến vấn đề nào trong đời sống?"],
   q2: [
     "Hãy nêu rõ ý kiến trong đề bài mà em cần tán thành hoặc phản đối.",
     "Viết lại nguyên văn ý kiến đó và cho biết em tán thành hay phản đối.",
@@ -523,7 +546,7 @@ const generalHints: Record<string, string[]> = {
   ],
   q6: [
     "Hãy tìm ví dụ cụ thể để chứng minh cho mỗi khía cạnh đã nêu.",
-    "Ví dụ có thể từ cuộc sống, lịch sử, văn học hoặc trải nghiệm bản thân.",
+    "Ví dụ có thể từ cuộc sống, lịch sử, hoặc trải nghiệm bản thân.",
     "Ví dụ càng cụ thể, bài viết càng thuyết phục.",
   ],
   q7: [
@@ -608,9 +631,7 @@ const checklistItems: ChecklistItem[] = [
 
 // ─── Hàm tạo cấu hình các phần viết bài (5 phần) ──────────────────────────────
 
-function getWritingSections(
-  slots: Record<string, string>,
-): WritingSection[] {
+function getWritingSections(slots: Record<string, string>): WritingSection[] {
   return [
     {
       key: "moBai",

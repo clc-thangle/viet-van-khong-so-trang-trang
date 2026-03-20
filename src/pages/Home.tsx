@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   Map,
   /* ClipboardList, Bot, CheckSquare, */ ArrowRight,
@@ -8,6 +8,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { type LucideIcon } from "lucide-react";
+import { useAuth } from "../contexts/AuthContext";
 
 interface StepInfo {
   step: number;
@@ -18,6 +19,12 @@ interface StepInfo {
 }
 
 const Home = () => {
+  const { user } = useAuth();
+
+  // Admin không cần trang chủ → redirect thẳng sang trang quản lý
+  if (user?.user_metadata?.role === 'admin') {
+    return <Navigate to="/admin" replace />;
+  }
   const steps: StepInfo[] = [
     {
       step: 1,
@@ -46,6 +53,13 @@ const Home = () => {
       description: "Viết từng đoạn văn hoàn chỉnh theo dàn ý đã lập",
       icon: PenTool,
       color: "from-purple-500 to-violet-600",
+    },
+    {
+      step: 5,
+      title: "Kiểm tra",
+      description: "Tự đánh giá và hoàn thiện bài viết sau khi hoàn thành",
+      icon: CheckCircle,
+      color: "from-teal-500 to-cyan-600",
     },
   ];
 
@@ -85,14 +99,14 @@ const Home = () => {
       {/* Writing Map Feature - Highlighted */}
       <div className="animate-slide-up" style={{ animationDelay: "0.3s" }}>
         <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-          Quy trình 4 bước viết văn nghị luận
+          Quy trình 5 bước viết văn nghị luận
         </h2>
         <p className="text-gray-500 mb-6">
-          Bản đồ viết văn giúp bạn đi từ hiểu đề đến hoàn thành bài viết một
-          cách có hệ thống
+          Bản đồ viết văn giúp bạn đi từ hiểu đề đến hoàn thành và kiểm tra
+          bài viết một cách có hệ thống
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
           {steps.map((item, index) => (
             <Link
               key={item.step}

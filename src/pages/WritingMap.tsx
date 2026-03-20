@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
+import { supabase } from "../lib/supabase";
+import { useAuth } from "../contexts/AuthContext";
 import {
   Lightbulb,
   PenTool,
@@ -60,10 +62,13 @@ const EMPTY_GRADE_DATA: GradeData = {
 };
 
 const WritingMap = () => {
+  const { user } = useAuth();
   const [selectedGrade, setSelectedGrade] = useState<number | null>(null);
   const [gradeData, setGradeData] = useState<GradeData>(EMPTY_GRADE_DATA);
   const [isLoading, setIsLoading] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Step hooks - using gradeData
   const stepZero = useStepZero(gradeData);
@@ -71,12 +76,12 @@ const WritingMap = () => {
   const stepTwo = useStepTwo(
     stepOne.ideaAnswers,
     gradeData.timYQuestions,
-    gradeData.outlineSlotConfig
+    gradeData.outlineSlotConfig,
   );
   const writingSections = useMemo(
     () => gradeData.getWritingSections(stepTwo.outlineSlots),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [gradeData, JSON.stringify(stepTwo.outlineSlots)]
+    [gradeData, JSON.stringify(stepTwo.outlineSlots)],
   );
   const stepThree = useStepThree(writingSections);
   const stepFour = useStepFour(gradeData.checklistItems);
@@ -105,7 +110,7 @@ const WritingMap = () => {
       stepTwo.isComplete,
       stepThree.isComplete,
       stepFour.isComplete,
-    ]
+    ],
   );
 
   // Navigation
@@ -138,6 +143,36 @@ const WritingMap = () => {
   const handleBackToGradeSelect = () => {
     setSelectedGrade(null);
     setGradeData(EMPTY_GRADE_DATA);
+    setIsSubmitted(false);
+  };
+
+  // Handle submit essay
+  const handleSubmit = async () => {
+    if (!user || !selectedGrade || !stepZero.selectedTopic) return;
+    setIsSubmitting(true);
+
+    const username =
+      user.user_metadata?.username ?? user.email?.split("@")[0] ?? "";
+    const fullName = user.user_metadata?.full_name ?? "";
+
+    const { error } = await supabase.from("submissions").insert({
+      user_id: user.id,
+      username,
+      full_name: fullName,
+      grade: selectedGrade,
+      topic: stepZero.selectedTopic,
+      essay_paragraphs: stepThree.essayParagraphs,
+      writing_sections: writingSections,
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      alert("Nộp bài thất bại, vui lòng thử lại!");
+      return;
+    }
+
+    setIsSubmitted(true);
   };
 
   // Render step content
@@ -225,7 +260,7 @@ const WritingMap = () => {
       await generateEssayPdf(
         stepThree.essayParagraphs,
         writingSections,
-        stepZero.selectedTopic || undefined
+        stepZero.selectedTopic || undefined,
       );
     } catch (error) {
       console.error("Lỗi khi tạo PDF:", error);
@@ -290,9 +325,7 @@ const WritingMap = () => {
           <span className="px-3 py-1 bg-white/20 rounded-full text-sm font-semibold">
             {gradeData.label}
           </span>
-          <span className="text-sm text-blue-200">
-            {gradeData.essayType}
-          </span>
+          <span className="text-sm text-blue-200">{gradeData.essayType}</span>
         </div>
       </div>
 
@@ -373,6 +406,9 @@ const WritingMap = () => {
           isAllComplete={stepFour.isComplete}
           onDownloadPdf={handleDownloadPdf}
           isDownloading={isDownloading}
+          onSubmit={handleSubmit}
+          isSubmitting={isSubmitting}
+          isSubmitted={isSubmitted}
         />
       </div>
 

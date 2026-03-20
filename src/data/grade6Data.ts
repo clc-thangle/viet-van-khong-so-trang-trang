@@ -520,8 +520,7 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
 
 const generalHints: Record<string, string[]> = {
   q1: [
-    "Hãy nêu ngắn gọn hiện tượng mà đề bài yêu cầu bàn luận.",
-    "Hiện tượng đó diễn ra ở đâu, với ai?",
+    "Đề bài đã nhắc đến vấn đề nào trong đời sống?",
   ],
   q2: [
     "Em đồng tình hay không đồng tình với hiện tượng đó?",

@@ -136,10 +136,22 @@ const StepOneView = ({
                       ) : null;
                     })
                   ) : (
-                    currentTopicHints[question.id] && (
-                      <p className="text-blue-800">
-                        {currentTopicHints[question.id]}
-                      </p>
+                    // Kiểm tra nếu có dạng q7_1, q7_2 thì render dạng danh sách
+                    currentTopicHints[`${question.id}_1`] ? (
+                      [1, 2, 3, 4].map(i => {
+                        const key = `${question.id}_${i}`;
+                        return currentTopicHints[key] ? (
+                          <p key={i} className="text-blue-800">
+                            • {currentTopicHints[key]}
+                          </p>
+                        ) : null;
+                      })
+                    ) : (
+                      currentTopicHints[question.id] && (
+                        <p className="text-blue-800">
+                          {currentTopicHints[question.id]}
+                        </p>
+                      )
                     )
                   )}
                 </div>

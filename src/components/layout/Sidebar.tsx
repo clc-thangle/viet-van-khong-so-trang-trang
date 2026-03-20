@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Map, /* ClipboardList, Bot, CheckSquare, */ X, type LucideIcon } from 'lucide-react';
+import { Home, Map, ShieldCheck, X, type LucideIcon } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -10,16 +11,23 @@ interface NavItem {
   path: string;
   icon: LucideIcon;
   label: string;
+  adminOnly?: boolean;
 }
 
 const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
+  const { user } = useAuth();
+  const isAdmin = user?.user_metadata?.role === 'admin';
+
   const navItems: NavItem[] = [
-    { path: '/', icon: Home, label: 'Trang chủ' },
-    { path: '/writing-map', icon: Map, label: 'Bản đồ viết văn' },
-    // { path: '/tasks', icon: ClipboardList, label: 'Thẻ nhiệm vụ' },
-    // { path: '/ai-assistant', icon: Bot, label: 'AI trợ lý' },
-    // { path: '/self-assessment', icon: CheckSquare, label: 'Tự đánh giá' },
+    { path: '/', icon: Home, label: 'Trang chủ', adminOnly: false },
+    { path: '/writing-map', icon: Map, label: 'Bản đồ viết văn', adminOnly: false },
+    { path: '/admin', icon: ShieldCheck, label: 'Quản lý bài nộp', adminOnly: true },
   ];
+
+  // Admin chỉ thấy trang quản lý, học sinh thấy trang chủ + bản đồ
+  const visibleItems = isAdmin
+    ? navItems.filter(item => item.adminOnly)
+    : navItems.filter(item => !item.adminOnly);
 
   return (
     <>
@@ -52,7 +60,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         </div>
 
         <nav className="p-4 space-y-2">
-          {navItems.map((item) => (
+          {visibleItems.map((item) => (
             <NavLink
               key={item.path}
               to={item.path}
@@ -67,6 +75,11 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             >
               <item.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
               <span>{item.label}</span>
+              {item.adminOnly && (
+                <span className="ml-auto text-xs bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full font-medium">
+                  Admin
+                </span>
+              )}
             </NavLink>
           ))}
         </nav>

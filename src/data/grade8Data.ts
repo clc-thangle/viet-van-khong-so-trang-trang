@@ -25,16 +25,16 @@ const WORD_COUNT = 500;
 // ============================================
 
 const topics: string[] = [
-  "Có ý kiến cho rằng: \"Nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Gian lận trong thi cử là hành vi đáng lên án\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Lãng phí thức ăn đang trở thành vấn đề đáng báo động\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Thói quen đọc sách đang dần bị thay thế bởi các thiết bị điện tử\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Nói tục chửi thề trong giới trẻ ngày càng phổ biến và đáng lo ngại\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Sống ảo trên mạng xã hội đang làm méo mó giá trị thực của cuộc sống\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Xả rác bừa bãi đang hủy hoại môi trường sống\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Học sinh thiếu kỹ năng sống là vấn đề đáng quan tâm\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
-  "Có ý kiến cho rằng: \"Nghiện game online ảnh hưởng nghiêm trọng đến học tập và sức khỏe của học sinh\". Em hãy viết 1 bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó",
+  'Có ý kiến cho rằng: "Nghiện mạng xã hội đang ảnh hưởng nghiêm trọng đến giới trẻ". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Bạo lực học đường là vấn đề nhức nhối cần được giải quyết triệt để". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Gian lận trong thi cử là hành vi đáng lên án". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Lãng phí thức ăn đang trở thành vấn đề đáng báo động". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Thói quen đọc sách đang dần bị thay thế bởi các thiết bị điện tử". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Nói tục chửi thề trong giới trẻ ngày càng phổ biến và đáng lo ngại". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Sống ảo trên mạng xã hội đang làm méo mó giá trị thực của cuộc sống". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Xả rác bừa bãi đang hủy hoại môi trường sống". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Học sinh thiếu kỹ năng sống là vấn đề đáng quan tâm". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
+  'Có ý kiến cho rằng: "Nghiện game online ảnh hưởng nghiêm trọng đến học tập và sức khỏe của học sinh". Em hãy viết một bài văn (khoảng 500 chữ) trình bày suy nghĩ của em về ý kiến đó',
 ];
 
 // ============================================
@@ -42,10 +42,26 @@ const topics: string[] = [
 // ============================================
 
 const timYQuestions: TimYQuestion[] = [
-  { id: "q1", label: "Vấn đề cần bàn luận là gì?", placeholder: "Nhập vấn đề cần bàn luận..." },
-  { id: "q2", label: "Nêu ý kiến về vấn đề được bàn luận", placeholder: "Nhập ý kiến của em..." },
-  { id: "q3", label: "Giải thích thực chất của vấn đề được bàn luận", placeholder: "Giải thích thực chất..." },
-  { id: "q4", label: "Ý kiến trên muốn khẳng định điều gì?", placeholder: "Nhập điều muốn khẳng định..." },
+  {
+    id: "q1",
+    label: "Vấn đề cần bàn luận là gì?",
+    placeholder: "Nhập vấn đề cần bàn luận...",
+  },
+  {
+    id: "q2",
+    label: "Nêu ý kiến về vấn đề được bàn luận",
+    placeholder: "Nhập ý kiến của em...",
+  },
+  {
+    id: "q3",
+    label: "Giải thích thực chất của vấn đề được bàn luận",
+    placeholder: "Giải thích thực chất...",
+  },
+  {
+    id: "q4",
+    label: "Ý kiến trên muốn khẳng định điều gì?",
+    placeholder: "Nhập điều muốn khẳng định...",
+  },
   {
     id: "q5",
     label: "Vì sao lại có ý kiến như vậy?",
@@ -67,8 +83,16 @@ const timYQuestions: TimYQuestion[] = [
     subInputs: 3,
     subLabels: ["Ví dụ 1", "Ví dụ 2", "Ví dụ 3"],
   },
-  { id: "q8", label: "Có ý kiến nào khác không?", placeholder: "Nhập ý kiến khác (phản biện)..." },
-  { id: "q9", label: "Vấn đề được bàn luận có ý nghĩa gì?", placeholder: "Nhập ý nghĩa..." },
+  {
+    id: "q8",
+    label: "Có ý kiến nào khác không?",
+    placeholder: "Nhập ý kiến khác (phản biện)...",
+  },
+  {
+    id: "q9",
+    label: "Vấn đề được bàn luận có ý nghĩa gì?",
+    placeholder: "Nhập ý nghĩa...",
+  },
   {
     id: "q10",
     label: "Có những phương hướng hành động nào?",
@@ -90,10 +114,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Nghiện mạng xã hội",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -113,10 +134,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Bạo lực học đường",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -137,10 +155,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Gian lận thi cử",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -161,10 +176,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Lãng phí thức ăn",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -185,10 +197,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Đọc sách",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -209,10 +218,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Nói tục chửi thề",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -233,10 +239,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Sống ảo",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -257,10 +260,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Xả rác bừa bãi",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -281,10 +281,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Thiếu kỹ năng sống",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -305,10 +302,7 @@ const topicQuizData: Record<string, TopicQuiz> = {
       correct: "Nghiện game online",
     },
     q2: {
-      options: [
-        "Trình bày ý kiến tán thành",
-        "Trình bày ý kiến phản đối",
-      ],
+      options: ["Trình bày ý kiến tán thành", "Trình bày ý kiến phản đối"],
       correct: "Trình bày ý kiến tán thành",
     },
     q3: {
@@ -328,16 +322,76 @@ const topicQuizData: Record<string, TopicQuiz> = {
 // ============================================
 
 const topicKeywords: Record<string, string[]> = {
-  [topics[0]]: ["lãng phí thời gian", "sống ảo", "ảnh hưởng học tập", "sức khỏe tinh thần", "tương tác thực"],
-  [topics[1]]: ["bạo lực thể chất", "bắt nạt", "tổn thương tâm lý", "môi trường học tập", "giáo dục nhân cách"],
-  [topics[2]]: ["đạo đức học đường", "năng lực thực sự", "công bằng thi cử", "học thực chất", "tính liêm chính"],
-  [topics[3]]: ["lãng phí tài nguyên", "ý thức cộng đồng", "an ninh lương thực", "hành vi tiêu dùng", "tôn trọng lao động"],
-  [topics[4]]: ["văn hóa đọc", "kiến thức chiều sâu", "tư duy phân tích", "sự kiên nhẫn", "giải trí lành mạnh"],
-  [topics[5]]: ["lịch sự văn minh", "ngôn ngữ đẹp", "ý thức giao tiếp", "văn hóa ứng xử", "nhân cách con người"],
-  [topics[6]]: ["hình ảnh ảo", "áp lực so sánh", "bản sắc cá nhân", "thực tế cuộc sống", "định giá bản thân"],
-  [topics[7]]: ["ô nhiễm môi trường", "rác thải", "ý thức công dân", "sức khỏe cộng đồng", "hệ sinh thái"],
-  [topics[8]]: ["kỹ năng tự lập", "giao tiếp xã hội", "xử lý tình huống", "giáo dục thực hành", "phát triển toàn diện"],
-  [topics[9]]: ["mất tập trung", "sa sút học tập", "sức khỏe giảm sút", "nghiện điện tử", "quản lý thời gian"],
+  [topics[0]]: [
+    "lãng phí thời gian",
+    "sống ảo",
+    "ảnh hưởng học tập",
+    "sức khỏe tinh thần",
+    "tương tác thực",
+  ],
+  [topics[1]]: [
+    "bạo lực thể chất",
+    "bắt nạt",
+    "tổn thương tâm lý",
+    "môi trường học tập",
+    "giáo dục nhân cách",
+  ],
+  [topics[2]]: [
+    "đạo đức học đường",
+    "năng lực thực sự",
+    "công bằng thi cử",
+    "học thực chất",
+    "tính liêm chính",
+  ],
+  [topics[3]]: [
+    "lãng phí tài nguyên",
+    "ý thức cộng đồng",
+    "an ninh lương thực",
+    "hành vi tiêu dùng",
+    "tôn trọng lao động",
+  ],
+  [topics[4]]: [
+    "văn hóa đọc",
+    "kiến thức chiều sâu",
+    "tư duy phân tích",
+    "sự kiên nhẫn",
+    "giải trí lành mạnh",
+  ],
+  [topics[5]]: [
+    "lịch sự văn minh",
+    "ngôn ngữ đẹp",
+    "ý thức giao tiếp",
+    "văn hóa ứng xử",
+    "nhân cách con người",
+  ],
+  [topics[6]]: [
+    "hình ảnh ảo",
+    "áp lực so sánh",
+    "bản sắc cá nhân",
+    "thực tế cuộc sống",
+    "định giá bản thân",
+  ],
+  [topics[7]]: [
+    "ô nhiễm môi trường",
+    "rác thải",
+    "ý thức công dân",
+    "sức khỏe cộng đồng",
+    "hệ sinh thái",
+  ],
+  [topics[8]]: [
+    "kỹ năng tự lập",
+    "giao tiếp xã hội",
+    "xử lý tình huống",
+    "giáo dục thực hành",
+    "phát triển toàn diện",
+  ],
+  [topics[9]]: [
+    "mất tập trung",
+    "sa sút học tập",
+    "sức khỏe giảm sút",
+    "nghiện điện tử",
+    "quản lý thời gian",
+  ],
 };
 
 // ============================================
@@ -361,8 +415,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều vụ việc đáng tiếc xảy ra khi giới trẻ bắt chước các trào lưu nguy hiểm trên mạng xã hội.",
     q8: "Có người cho rằng mạng xã hội cũng có nhiều lợi ích như kết nối, học hỏi, nhưng vấn đề nằm ở việc sử dụng quá mức, mất kiểm soát mới thực sự nguy hại.",
     q9: "Nghiện mạng xã hội thực sự đang ảnh hưởng nghiêm trọng đến giới trẻ, đây là vấn đề cần được quan tâm giải quyết.",
-    q10_1: "Tự đặt giới hạn thời gian sử dụng mạng xã hội, ưu tiên học tập và vận động ngoài trời.",
-    q10_2: "Học sinh cần tìm hiểu và tham gia các hoạt động ngoại khóa bổ ích thay vì lướt mạng cả ngày.",
+    q10_1:
+      "Tự đặt giới hạn thời gian sử dụng mạng xã hội, ưu tiên học tập và vận động ngoài trời.",
+    q10_2:
+      "Học sinh cần tìm hiểu và tham gia các hoạt động ngoại khóa bổ ích thay vì lướt mạng cả ngày.",
   },
 
   // ---- 2. Bạo lực học đường ----
@@ -380,8 +436,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều quốc gia đã ban hành luật chống bắt nạt học đường, cho thấy đây là vấn đề toàn cầu cần giải quyết quyết liệt.",
     q8: "Có người cho rằng bạo lực học đường chỉ là chuyện trẻ con, nhưng thực tế hậu quả của nó rất nghiêm trọng và lâu dài đối với cả nạn nhân lẫn người gây bạo lực.",
     q9: "Bạo lực học đường thực sự là vấn đề nhức nhối vì nó ảnh hưởng trực tiếp đến sự phát triển và tương lai của học sinh.",
-    q10_1: "Mỗi học sinh cần nói không với bạo lực, biết bảo vệ bản thân và báo cho thầy cô khi bị bắt nạt.",
-    q10_2: "Luôn đối xử tốt với bạn bè, lên tiếng khi thấy bất công và tham gia các hoạt động phòng chống bạo lực học đường.",
+    q10_1:
+      "Mỗi học sinh cần nói không với bạo lực, biết bảo vệ bản thân và báo cho thầy cô khi bị bắt nạt.",
+    q10_2:
+      "Luôn đối xử tốt với bạn bè, lên tiếng khi thấy bất công và tham gia các hoạt động phòng chống bạo lực học đường.",
   },
 
   // ---- 3. Gian lận thi cử ----
@@ -399,8 +457,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều nước trên thế giới xử lý rất nghiêm hành vi gian lận thi cử, thậm chí cấm thi vĩnh viễn.",
     q8: "Có người cho rằng gian lận chỉ là lỗi nhỏ, ai cũng có thể mắc phải, nhưng thực tế nó phản ánh sự thiếu trung thực trong nhân cách và gây hậu quả lâu dài.",
     q9: "Gian lận thi cử đúng là hành vi đáng lên án vì nó phá hoại sự công bằng và làm mất giá trị thực của giáo dục.",
-    q10_1: "Học sinh cần tự giác học bài, trung thực trong kiểm tra, làm bài bằng năng lực thật của mình.",
-    q10_2: "Nhắc nhở bạn bè không gian lận và ủng hộ các biện pháp chống gian lận của nhà trường.",
+    q10_1:
+      "Học sinh cần tự giác học bài, trung thực trong kiểm tra, làm bài bằng năng lực thật của mình.",
+    q10_2:
+      "Nhắc nhở bạn bè không gian lận và ủng hộ các biện pháp chống gian lận của nhà trường.",
   },
 
   // ---- 4. Lãng phí thức ăn ----
@@ -418,8 +478,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều nhà hàng, tiệc cưới ở Việt Nam thường thừa rất nhiều thức ăn, phần lớn bị vứt bỏ.",
     q8: "Có người cho rằng lãng phí thức ăn là chuyện nhỏ, nhưng khi nhìn vào con số thống kê toàn cầu, đây thực sự là vấn đề rất nghiêm trọng.",
     q9: "Lãng phí thức ăn thực sự là vấn đề đáng báo động vì nó ảnh hưởng đến cả kinh tế, xã hội và môi trường.",
-    q10_1: "Mỗi người cần lấy thức ăn vừa đủ, bảo quản thực phẩm đúng cách, ăn hết phần cơm của mình.",
-    q10_2: "Nhắc nhở gia đình không mua quá nhiều đồ ăn và tham gia các chương trình chia sẻ thực phẩm cho người nghèo.",
+    q10_1:
+      "Mỗi người cần lấy thức ăn vừa đủ, bảo quản thực phẩm đúng cách, ăn hết phần cơm của mình.",
+    q10_2:
+      "Nhắc nhở gia đình không mua quá nhiều đồ ăn và tham gia các chương trình chia sẻ thực phẩm cho người nghèo.",
   },
 
   // ---- 5. Đọc sách bị thay thế ----
@@ -437,8 +499,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều quốc gia phát triển như Nhật Bản, Hàn Quốc có chương trình khuyến đọc mạnh mẽ vì họ hiểu giá trị của việc đọc sách.",
     q8: "Có người cho rằng sách điện tử cũng là đọc sách, nhưng vấn đề là giới trẻ dùng thiết bị điện tử chủ yếu để giải trí, mạng xã hội chứ không phải đọc sách.",
     q9: "Đọc sách đúng là đang bị thay thế bởi thiết bị điện tử, đây là thực trạng đáng lo ngại cần được khắc phục.",
-    q10_1: "Học sinh cần dành ít nhất 15-30 phút mỗi ngày để đọc sách, xây dựng thói quen đọc trước khi ngủ.",
-    q10_2: "Giảm thời gian dùng điện thoại cho giải trí và tham gia các câu lạc bộ đọc sách tại trường.",
+    q10_1:
+      "Học sinh cần dành ít nhất 15-30 phút mỗi ngày để đọc sách, xây dựng thói quen đọc trước khi ngủ.",
+    q10_2:
+      "Giảm thời gian dùng điện thoại cho giải trí và tham gia các câu lạc bộ đọc sách tại trường.",
   },
 
   // ---- 6. Nói tục chửi thề ----
@@ -456,8 +520,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều công ty từ chối tuyển dụng ứng viên có cách nói chuyện thiếu lịch sự, cho thấy tác hại lâu dài của thói quen này.",
     q8: "Có người cho rằng nói tục chỉ là cách thể hiện cảm xúc, nhưng thực tế có rất nhiều cách diễn đạt văn minh hơn mà không cần dùng lời tục.",
     q9: "Nói tục chửi thề thực sự là hiện tượng đáng lo ngại vì nó phản ánh sự xuống cấp về văn hóa ứng xử của giới trẻ.",
-    q10_1: "Học sinh cần ý thức sử dụng lời nói văn minh, lịch sự trong mọi tình huống giao tiếp.",
-    q10_2: "Không nói tục và nhắc nhở bạn bè cùng sử dụng ngôn ngữ đẹp, tham gia các hoạt động rèn luyện kỹ năng giao tiếp.",
+    q10_1:
+      "Học sinh cần ý thức sử dụng lời nói văn minh, lịch sự trong mọi tình huống giao tiếp.",
+    q10_2:
+      "Không nói tục và nhắc nhở bạn bè cùng sử dụng ngôn ngữ đẹp, tham gia các hoạt động rèn luyện kỹ năng giao tiếp.",
   },
 
   // ---- 7. Sống ảo ----
@@ -467,16 +533,18 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q3: "Sống ảo là tạo hình ảnh không thật về bản thân trên mạng xã hội để nhận được sự ngưỡng mộ. Ý kiến khẳng định hiện tượng này đang làm méo mó giá trị thực.",
     q4: "Khẳng định sống ảo đang khiến con người đánh mất bản thân, chạy theo hào nhoáng bên ngoài thay vì phát triển giá trị thực.",
     q5_1: "Sống ảo khiến con người tốn thời gian, tiền bạc để tạo hình ảnh giả tạo thay vì phát triển bản thân.",
-    q5_2: "Sống ảo tạo áp lực so sánh, khiến nhiều người tự ti, trầm cảm khi thấy cuộc sống người khác \"hoàn hảo\".",
+    q5_2: 'Sống ảo tạo áp lực so sánh, khiến nhiều người tự ti, trầm cảm khi thấy cuộc sống người khác "hoàn hảo".',
     q6_1: "Khi chạy theo lượt like và follow, con người dần đánh mất bản sắc cá nhân, sống theo kỳ vọng của người khác.",
     q6_2: "Sống ảo tạo ra một thế giới giả tạo, khiến con người không còn biết trân trọng những giá trị thực của cuộc sống.",
     q7_1: "Nhiều bạn trẻ vay tiền mua đồ hiệu, thuê xe sang chỉ để chụp ảnh đăng mạng xã hội khoe khoang.",
     q7_2: "Nghiên cứu cho thấy việc thường xuyên so sánh bản thân với hình ảnh hoàn hảo trên Instagram làm tăng tỷ lệ trầm cảm ở giới trẻ.",
-    q7_3: "Nhiều \"influencer\" bị phanh phui cuộc sống sang chảnh trên mạng chỉ là dàn dựng, gây mất niềm tin trong cộng đồng.",
+    q7_3: 'Nhiều "influencer" bị phanh phui cuộc sống sang chảnh trên mạng chỉ là dàn dựng, gây mất niềm tin trong cộng đồng.',
     q8: "Có người cho rằng mạng xã hội là nơi thể hiện cá tính, nhưng thể hiện cá tính thật khác với tạo dựng hình ảnh giả tạo để đánh lừa người khác.",
     q9: "Sống ảo thực sự đang làm méo mó giá trị cuộc sống vì nó khiến con người chạy theo hào nhoáng bên ngoài mà quên đi giá trị bên trong.",
-    q10_1: "Mỗi người cần sống thật với chính mình, trân trọng giá trị thực và không chạy theo lượt like.",
-    q10_2: "Sử dụng mạng xã hội một cách lành mạnh, chia sẻ những điều tích cực và phát triển bản thân trong đời thực.",
+    q10_1:
+      "Mỗi người cần sống thật với chính mình, trân trọng giá trị thực và không chạy theo lượt like.",
+    q10_2:
+      "Sử dụng mạng xã hội một cách lành mạnh, chia sẻ những điều tích cực và phát triển bản thân trong đời thực.",
   },
 
   // ---- 8. Xả rác bừa bãi ----
@@ -494,8 +562,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Hình ảnh rùa biển chết vì nuốt phải túi nilon, cá voi mắc kẹt trong rác thải nhựa gây chấn động thế giới.",
     q8: "Có người cho rằng xả rác chỉ là hành vi nhỏ, không ảnh hưởng gì, nhưng thực tế nếu triệu người cùng xả rác, hậu quả sẽ vô cùng nghiêm trọng.",
     q9: "Xả rác bừa bãi thực sự đang hủy hoại môi trường sống và nếu không thay đổi, hậu quả sẽ rất nghiêm trọng.",
-    q10_1: "Mỗi người cần bỏ rác đúng nơi quy định, phân loại rác và hạn chế dùng đồ nhựa.",
-    q10_2: "Luôn mang theo túi để đựng rác, tham gia dọn vệ sinh khu phố và tuyên truyền ý thức bảo vệ môi trường.",
+    q10_1:
+      "Mỗi người cần bỏ rác đúng nơi quy định, phân loại rác và hạn chế dùng đồ nhựa.",
+    q10_2:
+      "Luôn mang theo túi để đựng rác, tham gia dọn vệ sinh khu phố và tuyên truyền ý thức bảo vệ môi trường.",
   },
 
   // ---- 9. Thiếu kỹ năng sống ----
@@ -513,8 +583,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Một số học sinh không biết cách tự bảo vệ bản thân trước những tình huống nguy hiểm như đuối nước, cháy nổ.",
     q8: "Có người cho rằng kỹ năng sống sẽ tự có khi lớn lên, nhưng thực tế nếu không được rèn luyện từ nhỏ, nhiều kỹ năng sẽ rất khó hình thành.",
     q9: "Thiếu kỹ năng sống thực sự là vấn đề đáng quan tâm vì kỹ năng sống quan trọng không kém kiến thức sách vở.",
-    q10_1: "Học sinh cần chủ động rèn luyện kỹ năng sống: tự lập, giao tiếp, làm việc nhóm, xử lý tình huống.",
-    q10_2: "Tự giác phụ việc nhà, tham gia hoạt động ngoại khóa và các khóa học kỹ năng sống do nhà trường tổ chức.",
+    q10_1:
+      "Học sinh cần chủ động rèn luyện kỹ năng sống: tự lập, giao tiếp, làm việc nhóm, xử lý tình huống.",
+    q10_2:
+      "Tự giác phụ việc nhà, tham gia hoạt động ngoại khóa và các khóa học kỹ năng sống do nhà trường tổ chức.",
   },
 
   // ---- 10. Nghiện game online ----
@@ -532,8 +604,10 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
     q7_3: "Nhiều gia đình tan vỡ hạnh phúc vì con cái nghiện game, trộm tiền cha mẹ để nạp game.",
     q8: "Có người cho rằng game cũng rèn luyện trí tuệ, nhưng vấn đề nằm ở chỗ nghiện - tức là mất kiểm soát, dành quá nhiều thời gian cho game mà bỏ bê mọi thứ khác.",
     q9: "Nghiện game online thực sự ảnh hưởng nghiêm trọng đến học sinh vì nó cướp đi thời gian, sức khỏe và tương lai.",
-    q10_1: "Học sinh cần tự giới hạn thời gian chơi game, ưu tiên học tập và vận động thể thao.",
-    q10_2: "Chỉ chơi game tối đa 30 phút/ngày vào cuối tuần sau khi hoàn thành bài tập, tìm kiếm các hoạt động giải trí lành mạnh thay thế.",
+    q10_1:
+      "Học sinh cần tự giới hạn thời gian chơi game, ưu tiên học tập và vận động thể thao.",
+    q10_2:
+      "Chỉ chơi game tối đa 30 phút/ngày vào cuối tuần sau khi hoàn thành bài tập, tìm kiếm các hoạt động giải trí lành mạnh thay thế.",
   },
 };
 
@@ -542,6 +616,9 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
 // ============================================
 
 const generalHints: Record<string, string[]> = {
+  q1: [
+    "Đề bài đã nhắc đến vấn đề nào trong đời sống?",
+  ],
   moBai: [
     "Giới thiệu vấn đề/hiện tượng đời sống cần bàn luận một cách tự nhiên, hấp dẫn.",
     "Nêu rõ ý kiến, quan điểm của bản thân về hiện tượng đó.",
@@ -615,12 +692,14 @@ const checklistItems: ChecklistItem[] = [
   {
     key: "structure",
     label: "Bố cục rõ ràng",
-    description: "Bài viết có đủ 3 phần: mở bài, thân bài, kết bài với bố cục mạch lạc.",
+    description:
+      "Bài viết có đủ 3 phần: mở bài, thân bài, kết bài với bố cục mạch lạc.",
   },
   {
     key: "argument",
     label: "Lập luận thuyết phục",
-    description: "Các luận điểm rõ ràng, lí lẽ chặt chẽ, có dẫn chứng cụ thể minh họa.",
+    description:
+      "Các luận điểm rõ ràng, lí lẽ chặt chẽ, có dẫn chứng cụ thể minh họa.",
   },
   {
     key: "evidence",
@@ -630,12 +709,14 @@ const checklistItems: ChecklistItem[] = [
   {
     key: "counterargument",
     label: "Có phản biện",
-    description: "Bài viết đề cập và phản biện ý kiến trái chiều để thêm sâu sắc.",
+    description:
+      "Bài viết đề cập và phản biện ý kiến trái chiều để thêm sâu sắc.",
   },
   {
     key: "language",
     label: "Ngôn ngữ phù hợp",
-    description: "Sử dụng từ ngữ chính xác, câu văn mạch lạc, giọng văn nghị luận rõ ràng.",
+    description:
+      "Sử dụng từ ngữ chính xác, câu văn mạch lạc, giọng văn nghị luận rõ ràng.",
   },
   {
     key: "wordcount",
@@ -680,7 +761,11 @@ function getWritingSections(slots: Record<string, string>): WritingSection[] {
       color: "purple",
       prompt:
         "Viết phần triển khai các lí lẽ, bằng chứng và ví dụ minh họa. Mỗi lí lẽ nên đi kèm dẫn chứng cụ thể.",
-      hints: [generalHints.thanBai[2], generalHints.thanBai[3], generalHints.thanBai[4]],
+      hints: [
+        generalHints.thanBai[2],
+        generalHints.thanBai[3],
+        generalHints.thanBai[4],
+      ],
       outlineItems: [
         { label: "Lí lẽ 1", value: slots.liLe1 || "" },
         { label: "Bằng chứng 1", value: slots.bangChung1 || "" },

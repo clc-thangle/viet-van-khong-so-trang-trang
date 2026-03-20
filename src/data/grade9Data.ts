@@ -553,8 +553,7 @@ const topicSpecificHints: Record<string, Record<string, string>> = {
 
 const generalHints: Record<string, string[]> = {
   q1: [
-    "Hãy xác định rõ vấn đề cần giải quyết mà đề bài đặt ra.",
-    "Vấn đề đó xảy ra ở đâu, với ai, trong phạm vi nào?",
+    "Đề bài đã nhắc đến vấn đề nào trong đời sống?",
   ],
   q2: [
     "Hãy suy nghĩ: Tại sao vấn đề này cần được giải quyết?",
